@@ -21,21 +21,21 @@ sort -o ./lists/ip_list.txt -u ./lists/ip_list.txt	## sort out duplicate ip
 # SMNP
 snmp_scan(){
 	echo "Status: Performing SNMP scan..."
-	nmap -Pn -sU -p161 --script=snmp-interfaces -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
+	nmap -Pn -sU -p161 -sV --version-intensity 2--script=snmp-interfaces -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
 	echo "Status: SNMP scan done."
 }
 
 # DHCP
 dhcp_scan(){
 	echo "Status: Performing DHCP scan..."
-	nmap -Pn -sU -p67-68 --script=dhcp-discover -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
+	nmap -Pn -sU -p67-68 -sV --version-intensity 2 --script=dhcp-discover -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
 	echo "Status: DHCP scan done."
 }
 
 # Ports and Services
 port_scan(){
 	echo "Status: Probing for open ports..."
-	nmap -Pn -sS -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
+	nmap -Pn -sS -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
 	### check what port protocols ip use
 	nmap -Pn -sO -p17 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/pp_log.xml &> /dev/null &	## port protocol scan ip_list to see if ip uses udp, results stored in xml
 	wait
@@ -43,7 +43,7 @@ port_scan(){
 		## line above parses pp_log to search for IPs that uses UDP and stores it in udp_list 
 	snmp_scan &
 	dhcp_scan &	## run snmp and dhcp scan once udp_list is formed
-	nmap -Pn -sU -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
+	nmap -Pn -sU -sV --version-intensity 2 -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
 	echo "Status: Ports and services acquired."
 }
 

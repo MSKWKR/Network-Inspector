@@ -2,31 +2,55 @@
 
 from bs4 import BeautifulSoup
 
+# create data dictionary to store all data, and ipv4 list
 data_dict = {}
 ipv4_list = []
-with open('./log/ping_log.xml', 'r') as f:
-    log = f.read()
 
-Bs_data = BeautifulSoup(log, "xml")
+# turn ip_list.txt into ipv4 list     
+with open('./lists/ip_list.txt', 'r') as f:
+    file = f.readlines()
+    for line in file:
+        ipv4_list.append(line.strip()) 
+    ## create a dictionary for each ip address in data_dict
+    for ip in ipv4_list:
+        data_dict[ip] = {}
+
+# read tcp_log using BeautifulSoup
+with open('./log/tcp_log.xml', 'r') as f:
+    file = f.read()
+data = BeautifulSoup(file, "xml")
+
+## grab data from tcp_log file
+host_list = data.find_all('host')
+for host in host_list:
+    try:    ### search for hostname base on ip address
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'hostname': host.find('hostname').get('name')})
+    except AttributeError:  ### if error: NONE TYPE, then insert 'None'
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'hostname': 'None'})
+    try:    ### search for mac_address base on ip address
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'mac_address': host.find('address', {'addrtype': 'mac'}).get('addr')})
+    except AttributeError:  ### if error: NONE TYPE, then insert 'None'
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'mac_address': 'None'})
+    try:    ### search for vendor base on ip address
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'vendor': host.find('address', {'addrtype': 'mac'}).get('vendor')})
+    except AttributeError:  ### if error: NONE TYPE, then insert 'None'
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'vendor': 'None'})
+    port_list = host.find_all('port')
+    for port in port_list:  ### create tcp dictionary base on port id and insert protocol, status and service name
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
+
+# read udp_log using BeautifulSoap
+with open('./log/udp_log.xml', 'r') as f:
+    file = f.read()
+data = BeautifulSoup(file, "xml")
+
+## grab data from udp_log file
+host_list = data.find_all('host')
+for host in host_list:
+    port_list = host.find_all('port')
+    for port in port_list:  ### create udp dictionary base on port id and insert protocol, status and service name
+        data_dict[host.find('address', {'addrtype': 'ipv4'}).get('addr')].update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})   
 
 
-xml_ipv4 = Bs_data.find_all('address', {'addrtype':'ipv4'})
-for ipv4 in xml_ipv4:
-    ipv4_list.append(ipv4.get('addr'))
-    data_dict[ipv4.get('addr')] = {}
 
-xml_address = Bs_data.find_all('address')
-for data in xml_address:
-    if data.get('addr') in ipv4_list:
-        inlist = True
-        temp_ip = data.get('addr')
-    else: 
-        inlist = False
-    if inlist == False:
-        data_dict[temp_ip].update({"mac_address": data.get('addr')})
-        data_dict[temp_ip].update({"vendor": data.get('vendor')})
-
-
-
-
-    
+print(data_dict)

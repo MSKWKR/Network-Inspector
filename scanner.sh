@@ -21,7 +21,7 @@ sort -o ./lists/ip_list.txt -u ./lists/ip_list.txt	## sort out duplicate ip
 # SMNP
 snmp_scan(){
 	echo "Status: Performing SNMP scan..."
-	nmap -Pn -sU -p161 -sV --version-intensity 2--script=snmp-interfaces -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
+	nmap -Pn -sU -p161 -sV --version-intensity 2 --script=snmp-interfaces -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
 	echo "Status: SNMP scan done."
 }
 

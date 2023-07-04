@@ -1,7 +1,7 @@
 #!usr/bin/env python
 
 from bs4 import BeautifulSoup
-import pprint
+import json
 
 # create data dictionary to store all data, and ipv4 list
 data_dict = {}
@@ -16,6 +16,7 @@ with open('./lists/ip_list.txt', 'r') as f:
     for ip in ipv4_list:
         data_dict[ip] = {}
 
+# initialize BeautifulSoup to parse xml
 class Data_dict:
     ## read log file using BeautifulSoup
     def __init__(self, log_type):
@@ -29,39 +30,93 @@ class Data_dict:
 
 # grab data from tcp_log file
 tcp = Data_dict("tcp")
-host_list = tcp.data.find_all('host')
+host_list = tcp.data.find_all('host')   ## each host tag contains all information
 for host in host_list:
-    try:    ### search for hostname base on ip address
+    try:    ## search for hostname base on ip address
         tcp.dict().update({'hostname': host.find('hostname').get('name')})
-    except AttributeError:  ### if error: NONE TYPE, then insert 'None'
-        tcp.dict().update({'hostname': 'None'})
-    try:    ### search for mac_address base on ip address
+    except AttributeError:  ## if error: NONE TYPE, then insert 'None'
+        tcp.dict().update({'hostname': None})
+    try:    ## search for mac_address base on ip address
         tcp.dict().update({'mac_address': host.find('address', {'addrtype': 'mac'}).get('addr')})
-    except AttributeError:  ### if error: NONE TYPE, then insert 'None'
-        tcp.dict().update({'mac_address': 'None'})
-    try:    ### search for vendor base on ip address
+    except AttributeError:  ## if error: NONE TYPE, then insert 'None'
+        tcp.dict().update({'mac_address': None})
+    try:    ## search for vendor base on ip address
         tcp.dict().update({'vendor': host.find('address', {'addrtype': 'mac'}).get('vendor')})
-    except AttributeError:  ### if error: NONE TYPE, then insert 'None'
-        tcp.dict().update({'vendor': 'None'})
+    except AttributeError:  ## if error: NONE TYPE, then insert 'None'
+        tcp.dict().update({'vendor': None})
     port_list = host.find_all('port')
-    for port in port_list:  ### create tcp dictionary base on port id and insert protocol, status and service details
-        tcp.dict().update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name'), 'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')}})
+    for port in port_list:  ## create tcp dictionary base on port id and insert protocol, status and service name
+        tcp.dict().update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
+        ## service details: product_name, service_fingerprint, os_type, device_type and extra_info
+        tcp.dict()['port:'+port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
 
 # grab data from udp_log file
 udp = Data_dict("udp")
-host_list = udp.data.find_all('host')
+host_list = udp.data.find_all('host')   ## each host tag contains all information
 for host in host_list:
     port_list = host.find_all('port')
-    for port in port_list:  ### create udp dictionary base on port id and insert protocol, status and service name
-        udp.dict().update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name'), 'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')}})   
+    for port in port_list:  ## create udp dictionary base on port id and insert protocol, status and service name
+        udp.dict().update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
+        ## service details: product_name, service_fingerprint, os_type, device_type and extra_info
+        udp.dict()['port:'+port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
 
 # grab highest OS probability
 os = Data_dict("os")
-host_list = os.data.find_all('host')
+host_list = os.data.find_all('host')   ## each host tag contains all information
 for host in host_list:
-    try:
+    try:    ## search for highest os probability base on ip address
         os.dict().update({'operating_system': host.find('osmatch').get('name')})
-    except AttributeError:
-        os.dict().update({'operating_system': 'None'})
+    except AttributeError:  ## if error: NONE TYPE, then insert 'None'
+        os.dict().update({'operating_system': None})
 
-pprint.pprint(data_dict)
+# grab data from snmp_log file:
+snmp = Data_dict("snmp")
+host_list = snmp.data.find_all('host')   ## each host tag contains all information
+for host in host_list:
+    ## create info_list to store entire snmp script output
+    info_list = []
+    ## create device_list to store every device in snmp info
+    device_list = []
+    num = 0
+    try:
+        info_list = host.find('script').get('output').split("\n")   ## insert entire snmp script output to info_list
+        info_list = [x for x in info_list if x] ## remove empty strings in info_list
+        device_list.append(info_list[0].lstrip())   ## insert first device from info_list
+        snmp.dict().update({'snmp_info': {device_list[0]: {}}}) ## create dictionary to store details of the device
+    except AttributeError:  ## if error: NONE TYPE, then insert 'None'
+        snmp.dict().update({'snmp_info': None})
+    ## loop through info_list to grab data
+    for info in info_list:
+        ## pass if info is device name
+        if device_list[num] in info:
+            pass
+        elif "IP address" in info:
+            ## grab ipv4 address and network mask of the device
+            snmp.dict()['snmp_info'][device_list[num]].update({'ip': info.split("IP address:")[1].split("Netmask")[0].strip()})
+            snmp.dict()['snmp_info'][device_list[num]].update({'mask': info.split("Netmask:")[1].strip()})
+        elif "MAC address" in info:
+            ## grab mac address and vendor of the device
+            snmp.dict()['snmp_info'][device_list[num]].update({'mac': info.split("MAC address:")[1].strip().split()[0]})
+            snmp.dict()['snmp_info'][device_list[num]].update({'vendor': info.split("MAC address:")[1].strip().split()[1].strip("()")})
+        elif "Type" in info:
+            ## grab device type and transmission speed of the device
+            snmp.dict()['snmp_info'][device_list[num]].update({'type': info.split("Type:")[1].split("Speed:")[0].strip()})
+            snmp.dict()['snmp_info'][device_list[num]].update({'speed': info.split("Type:")[1].split("Speed:")[1].lstrip()})
+        elif "Status" in info:
+            ## grab the status of the device
+            snmp.dict()['snmp_info'][device_list[num]].update({'status': info.split("Status:")[1].strip()})
+        elif "Traffic stats" in info:
+            ## grab amount of data sent and received by device
+            snmp.dict()['snmp_info'][device_list[num]].update({'sent': info.split("Traffic stats:")[1].split("sent")[0].strip()})
+            snmp.dict()['snmp_info'][device_list[num]].update({'received': info.split("sent,")[1].split("received")[0].strip()})
+        else:
+            ## if the data type is unrecognized then it might be a new device name, add the new device name to device_list and create a dictionary for it 
+            device_list.append(info.lstrip())
+            num=num+1
+            snmp.dict()['snmp_info'].update({device_list[num]: {}})
+
+# turn dictionary into json format
+jsonify = json.dumps(data_dict, indent = 4)
+print(jsonify)
+
+# output results to database or api

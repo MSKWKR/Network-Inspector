@@ -21,7 +21,8 @@ sort -o ./lists/ip_list.txt -u ./lists/ip_list.txt	## sort out duplicate ip
 # SMNP
 snmp_scan(){
 	echo "Status: Performing SNMP scan..."
-	nmap -Pn -sU -p161 -sV --version-intensity 2 --script=snmp-interfaces -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
+	## scanning for every snmp information possible, this will take a long time
+	nmap -Pn -sU -p161 --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
 	echo "Status: SNMP scan done."
 }
 
@@ -44,6 +45,7 @@ port_scan(){
 	snmp_scan &
 	dhcp_scan &	## run snmp and dhcp scan once udp_list is formed
 	nmap -Pn -sU -sV --version-intensity 2 -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
+	wait
 	echo "Status: Ports and services acquired."
 }
 

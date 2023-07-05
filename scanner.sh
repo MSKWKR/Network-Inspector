@@ -5,8 +5,8 @@ mkdir log &> /dev/null
 mkdir lists &> /dev/null
 
 # IP and mask of local machine
-ip=$(hostname -I)	## grab ip using hostname -I
-mask=$(ip r | grep $ip | awk '{print $1}')	## grab network mask using ip
+ip=$(ip a | grep -v "NO-CARRIER" | grep -A 4 "BROADCAST" | grep "inet " | awk {'print $2'} | cut -d '/' -f 1)	## grab ip that is connected to internet
+mask=$(ip r | grep $ip | awk '{print $1}')	## grab network mask
 
 # Responsive IPs and MAC Addresses
 echo "Status: Initiating ARP scan..."

@@ -62,6 +62,16 @@ for host in host_list:
         ## service details: product_name, service_fingerprint, os_type, device_type and extra_info
         udp.dict()['port:'+port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
 
+# tag dhcp server and router ip
+dhcp = Data_dict("dhcp")
+host_list = dhcp.data.find_all('host')
+for host in host_list:
+    try:
+        dhcp.dict().update({'dhcp_server': host.find('script').find('elem', {'key': 'Server Identifier'}).string})
+        dhcp.dict().update({'router': host.find('script').find('elem', {'key': 'Router'}).string})
+    except AttributeError:
+        pass 
+
 # grab highest OS probability
 os = Data_dict("os")
 host_list = os.data.find_all('host')   ## each host tag contains all information

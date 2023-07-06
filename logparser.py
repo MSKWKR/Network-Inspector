@@ -46,10 +46,11 @@ for host in host_list:
         tcp.dict().update({'vendor': None})
     ## port_list stores all port related information
     port_list = host.find_all('port')
+    tcp.dict().update({'tcp_ports': {}})
     for port in port_list:  ## create tcp dictionary base on port id and insert protocol, status and service name
-        tcp.dict().update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
+        tcp.dict()['tcp_ports'].update({port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
         ## service details: product_name, service_fingerprint, os_type, device_type and extra_info
-        tcp.dict()['port:'+port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
+        tcp.dict()['tcp_ports'][port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
 
 # grab data from udp_log file
 udp = Data_dict("udp")
@@ -57,10 +58,11 @@ host_list = udp.data.find_all('host')   ## each host tag contains all informatio
 for host in host_list:
     ## port_list stores all port related information
     port_list = host.find_all('port')
-    for port in port_list:  ## create udp dictionary base on port id and insert protocol, status and service name
-        udp.dict().update({'port:'+port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
+    udp.dict().update({'udp_ports': {}})
+    for port in port_list:  ## create tcp dictionary base on port id and insert protocol, status and service name
+        udp.dict()['udp_ports'].update({port.get('portid'): {'protocol': port.get('protocol'), 'status': port.find('state').get('state'), 'service': port.find('service').get('name')}})
         ## service details: product_name, service_fingerprint, os_type, device_type and extra_info
-        udp.dict()['port:'+port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
+        udp.dict()['udp_ports'][port.get('portid')].update({'product': port.find('service').get('product'), 'service_fingerprint': port.find('service').get('servicefp'), 'os_type': port.find('service').get('ostype'), 'device_type': port.find('service').get('devicetype'), 'extra_info': port.find('service').get('extrainfo')})
 
 # tag dhcp server and router ip
 dhcp = Data_dict("dhcp")
@@ -192,6 +194,11 @@ for host in host_list:
             device_list.append(info.lstrip())
             num=num+1
             snmp.dict()['snmp_interface'].update({device_list[num]: {}})
+
+# grab data from dns_log file
+dns=Data_dict("dns")
+script_list = dns.data.find_all('script', {'id': 'broadcast-dns-service-discovery'})
+
 
 # turn dictionary into json format
 jsonify = json.dumps(data_dict, indent = 4)

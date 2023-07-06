@@ -22,29 +22,45 @@ sort -o ./lists/ip_list.txt -u ./lists/ip_list.txt	## sort out duplicate ip
 snmp_scan(){
 	echo "Status: Performing SNMP scan..."
 	## scanning for every snmp information possible, this will take a long time
-	nmap -Pn -sU -p161 --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
+	nmap -Pn -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
 	echo "Status: SNMP scan done."
 }
 
 # DHCP
 dhcp_scan(){
 	echo "Status: Performing DHCP scan..."
-	nmap -Pn -sU -p67-68 -sV --version-intensity 2 --script=dhcp-discover -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
+	nmap -Pn -sU -p67 -n --script=dhcp-discover -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
 	echo "Status: DHCP scan done."
+	dns_scan &
+}
+
+# DNS
+dns_scan(){
+	echo "Status: Scanning for DNS services..."
+	ns=$(xmllint --xpath '//table[@key="Domain Name Server"]/elem/text()' ./log/dhcp_log.xml)	## parse out dns server ip from dhcp_log
+	## read top 1000 domains from domain_list
+	filename='./lists/domain_list.txt'
+	domain='domain'
+	while read line; do
+		domain+=,$line
+	done < $filename
+	## get dns services and dns cache domains
+	nmap --script=broadcast-dns-service-discovery -sU -p53 --script dns-cache-snoop.nse --script-args dns-cache-snoop.domains={$domain} $ns -oX ./log/dns_log.xml &> /dev/null
+	echo "Status: DNS scan done."
 }
 
 # Ports and Services
 port_scan(){
 	echo "Status: Probing for open ports..."
-	nmap -Pn -sS -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
+	nmap -Pn -sS -n -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
 	### check what port protocols ip use
-	nmap -Pn -sO -p17 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/pp_log.xml &> /dev/null &	## port protocol scan ip_list to see if ip uses udp, results stored in xml
+	nmap -Pn -sO -p17 -n -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/pp_log.xml &> /dev/null &	## port protocol scan ip_list to see if ip uses udp, results stored in xml
 	wait
 	xmllint --xpath '//address[@addrtype="ipv4"] | //port' ./log/pp_log.xml | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > ./lists/udp_list.txt 
 		## line above parses pp_log to search for IPs that uses UDP and stores it in udp_list 
 	snmp_scan &
 	dhcp_scan &	## run snmp and dhcp scan once udp_list is formed
-	nmap -Pn -sU -sV --version-intensity 2 -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
+	nmap -Pn -sU -n -sV --version-intensity 2 -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
 	wait
 	echo "Status: Ports and services acquired."
 }

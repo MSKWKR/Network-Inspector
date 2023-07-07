@@ -7,7 +7,6 @@ mkdir lists &> /dev/null
 # IP and mask of local machine
 ip=$(ip a | grep -v "NO-CARRIER" | grep -A 4 "BROADCAST" | grep "inet " | awk {'print $2'} | cut -d '/' -f 1)	## grab ip that is connected to internet
 mask=$(ip r | grep $ip | awk '{print $1}')	## grab network mask
-
 # Responsive IPs and MAC Addresses
 echo "Status: Initiating ARP scan..."
 arp-scan -q -x $mask | awk '{print $1}' | sort -u > ./lists/ip_list.txt	## arp-scan to pull ipv4 and mac from cache and store it in ip_list
@@ -52,7 +51,7 @@ dns_scan(){
 # Ports and Services
 port_scan(){
 	echo "Status: Probing for open ports..."
-	nmap -Pn -sS -n -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
+	nmap -Pn -sS -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
 	### check what port protocols ip use
 	nmap -Pn -sO -p17 -n -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/pp_log.xml &> /dev/null &	## port protocol scan ip_list to see if ip uses udp, results stored in xml
 	wait

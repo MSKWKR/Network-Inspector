@@ -14,6 +14,7 @@ def file_checker(file_name: str, file_type:str) -> None:
             # Check if log is empty
             if len(host_list) == 0:
                 print("Error: Empty log file.")
+                exit()
         elif file_type == "list":
             with open('./lists/'+file_name+'_list.txt', 'r') as f:
                 file_list = f.readlines()
@@ -48,6 +49,7 @@ class Parser:
             file = f.read()
         data = BeautifulSoup(file, "xml")
         self.host_list = data.find_all('host')
+        self.data = data
 
     # Find ip and mac from host tag
     def find_address(self, host: str, type: str) -> str:
@@ -207,6 +209,45 @@ class Parser:
         else:
             return None
 
+    # Pull dns services
+    def find_dns(self, data: str, type: str) -> dict:
+        # Using dns service discovery to pull information about services that are usually hidden
+        if type == "service":
+            if data.find('prescript'):
+                service_dict = {}
+                extra_info = []
+                service_list = data.find('script', {'id': 'broadcast-dns-service-discovery'}).get('output').strip().split("\n")
+                del service_list[0] # First entry of the output is mdns ip
+                # Parse out port id, protocol and service type
+                for text in service_list:
+                    if "tcp" in text or "udp" in text:
+                        port = text.split("/")[0].strip()
+                        protocol = text.split("/")[1].split()[0]
+                        service = text.split("/")[1].split()[1]
+                    elif "Address" in text:
+                        ip = text.split("=")[1].split()[0]
+                        if extra_info:
+                            pass
+                        else:
+                            extra_info = None
+                        # Create dictionary for every port with the format similar to find_port()
+                        port_dict = {
+                            'protocol': protocol,
+                            'state': "open",
+                            'service': service,
+                            'extra_info': extra_info
+                        }
+                        # Create dictionary for every ip in service list
+                        ip_dict = {port: port_dict}
+                        if ip in service_dict:
+                            service_dict[ip].update(ip_dict)
+                        else:
+                            service_dict.update({ip: ip_dict})
+                        extra_info = []
+                    else:
+                        extra_info.append(text.strip())
+                return service_dict
+                    
 # Add mac address, vendor and hostname to dictionary
 def basic_parser() -> None:
     parse = Parser("tcp")
@@ -281,12 +322,39 @@ def snmp_parser() -> None:
             else:
                 DicManager.big_dict[ip_address].update({'snmp_info': None})
                 
+# Add dns cache to dictionary and update port information based on service discovery
+def dns_parser() -> None:
+    parse = Parser("dns")
+    # Add a dictionary for dns cache domains
+    DicManager.big_dict.update({'dns_cache': {}})
+
+    # Update the port dictionary
+    if parse.find_dns(parse.data, "service"):
+        dns_dict = parse.find_dns(parse.data, "service")
+        for ip in dns_dict:
+            if ip in DicManager.big_dict:
+                for port in dns_dict[ip]:
+                    if port in DicManager.big_dict[ip]['ports']:
+                        state = DicManager.big_dict[ip]['ports'][port]['state']
+                        # If port is found in dns services, then the port is open
+                        if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
+                             DicManager.big_dict[ip]['ports'][port]['state'].update("open")
+                        # If service name is found in dns services then update big_dict
+                        if DicManager.big_dict[ip]['ports'][port]['service'] == None:
+                            DicManager.big_dict[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
+                        if DicManager.big_dict[ip]['ports'][port]['extra_info'] == None:
+                            if dns_dict[ip][port]["extra_info"]:
+                                DicManager.big_dict[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
+                    # If the port is not found in big_dict, then create a dictionary for the port and format it to have basic information
+                    else:
+                        DicManager.big_dict[ip]['ports'].update({port: dns_dict[ip][port]})
 
 def main():
     basic_parser()
     port_parser()
     dhcp_parser()
     snmp_parser()
+    dns_parser()
     print(json.dumps(DicManager.big_dict, indent = 4))
 
 if __name__ == "__main__":

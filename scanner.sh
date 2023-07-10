@@ -39,7 +39,7 @@ dns_scan(){
 	echo "Status: Scanning for DNS services..."
 	ns=$(xmllint --xpath '//table[@key="Domain Name Server"]/elem/text()' ./log/dhcp_log.xml | sort -u)	## parse out dns server ip from dhcp_log
 	## read top 1000 domains from domain_list
-	filename='domains.csv'
+	filename='./lists/domain_list.txt'
 	domain='domain'
 	while read line; do
 		domain+=,$line

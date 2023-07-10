@@ -209,10 +209,17 @@ class Parser:
         else:
             return None
 
-    # Pull dns services
+    # Pull dns cache and services
     def find_dns(self, data: str, type: str) -> dict:
+        # Pull cache from -script=dns-cache-snoop.nse
+        if type == "cache":
+            if data.find('script', {'id': 'dns-cache-snoop'}):
+                cache = data.find('script', {'id': 'dns-cache-snoop'}).get('output').split("\n")
+                del cache[0]    # Remove header
+                return {self.find_address(data, "ipv4"): cache}
+
         # Using dns service discovery to pull information about services that are usually hidden
-        if type == "service":
+        elif type == "service":
             if data.find('prescript'):
                 service_dict = {}
                 extra_info = []
@@ -327,7 +334,10 @@ def dns_parser() -> None:
     parse = Parser("dns")
     # Add a dictionary for dns cache domains
     DicManager.big_dict.update({'dns_cache': {}})
-
+    for host in parse.host_list:
+        if parse.find_dns(host, "cache"):
+            # Create dictionary for each dns server
+            DicManager.big_dict['dns_cache'].update(parse.find_dns(host, "cache"))
     # Update the port dictionary
     if parse.find_dns(parse.data, "service"):
         dns_dict = parse.find_dns(parse.data, "service")
@@ -338,7 +348,7 @@ def dns_parser() -> None:
                         state = DicManager.big_dict[ip]['ports'][port]['state']
                         # If port is found in dns services, then the port is open
                         if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
-                             DicManager.big_dict[ip]['ports'][port]['state'].update("open")
+                             DicManager.big_dict[ip]['ports'][port]['state'] = "open"
                         # If service name is found in dns services then update big_dict
                         if DicManager.big_dict[ip]['ports'][port]['service'] == None:
                             DicManager.big_dict[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]

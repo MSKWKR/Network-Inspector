@@ -7,6 +7,7 @@ mkdir lists &> /dev/null
 # IP and mask of local machine
 ip=$(ip a | grep -v "NO-CARRIER" | grep -A 4 "BROADCAST" | grep "inet " | awk {'print $2'} | cut -d '/' -f 1)	## grab ip that is connected to internet
 mask=$(ip r | grep $ip | awk '{print $1}')	## grab network mask
+#mask="172.16.6.0/24"
 # Responsive IPs and MAC Addresses
 echo "Status: Initiating ARP scan..."
 arp-scan -q -x $mask | awk '{print $1}' | sort -u > ./lists/ip_list.txt	## arp-scan to pull ipv4 and mac from cache and store it in ip_list
@@ -36,9 +37,9 @@ dhcp_scan(){
 # DNS
 dns_scan(){
 	echo "Status: Scanning for DNS services..."
-	ns=$(xmllint --xpath '//table[@key="Domain Name Server"]/elem/text()' ./log/dhcp_log.xml)	## parse out dns server ip from dhcp_log
+	ns=$(xmllint --xpath '//table[@key="Domain Name Server"]/elem/text()' ./log/dhcp_log.xml | sort -u)	## parse out dns server ip from dhcp_log
 	## read top 1000 domains from domain_list
-	filename='./lists/domain_list.txt'
+	filename='domains.csv'
 	domain='domain'
 	while read line; do
 		domain+=,$line
@@ -48,18 +49,36 @@ dns_scan(){
 	echo "Status: DNS scan done."
 }
 
+# TCP
+tcp_scan(){
+	echo "Status: Scanning TCP ports..."
+	nmap -Pn -sS -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null	## tcp port scan ip_list, results stored in xml
+	echo "Status: Finished TCP scanning."
+}
+
+# Port Protocol
+pp_scan(){
+	### check what port protocols ip use
+	nmap -Pn -sO -p17 -n -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/pp_log.xml &> /dev/null	## port protocol scan ip_list to see if ip uses udp, results stored in xml
+	xmllint --xpath '//address[@addrtype="ipv4"] | //port' ./log/pp_log.xml | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > ./lists/udp_list.txt 
+		## line above parses pp_log to search for IPs that uses UDP and stores it in udp_list	
+}
+
+# UDP
+udp_scan(){
+	echo "Status: Scanning UDP ports..."
+	nmap -Pn -sU -n -sV --version-intensity 2 -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
+	echo "Status: Finished UDP scanning."
+}
+
 # Ports and Services
 port_scan(){
 	echo "Status: Probing for open ports..."
-	nmap -Pn -sS -sV --version-intensity 2 -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null &	## tcp port scan ip_list, results stored in xml
-	### check what port protocols ip use
-	nmap -Pn -sO -p17 -n -iL ./lists/ip_list.txt --min-parallelism 10000 -T5 -oX ./log/pp_log.xml &> /dev/null &	## port protocol scan ip_list to see if ip uses udp, results stored in xml
-	wait
-	xmllint --xpath '//address[@addrtype="ipv4"] | //port' ./log/pp_log.xml | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > ./lists/udp_list.txt 
-		## line above parses pp_log to search for IPs that uses UDP and stores it in udp_list 
+	tcp_scan &
+	pp_scan
 	snmp_scan &
 	dhcp_scan &	## run snmp and dhcp scan once udp_list is formed
-	nmap -Pn -sU -n -sV --version-intensity 2 -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
+	udp_scan
 	wait
 	echo "Status: Ports and services acquired."
 }

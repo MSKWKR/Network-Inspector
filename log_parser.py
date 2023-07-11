@@ -25,20 +25,6 @@ def file_checker(file_name: str, file_type:str) -> None:
     except FileNotFoundError:
         print("Error: Missing "+file_name+file_type+" file.")
         exit()
-     
-class DicManager:
-    # Create dictionary template
-    file_checker("ip", "list")
-    big_dict = {}
-    with open('./lists/ip_list.txt', 'r') as f:
-        ip_list = f.readlines()
-    # Every ip address is a dictionary
-    for ip in ip_list:
-        big_dict.update({ip.strip(): {}})
-        big_dict[ip.strip()].update({'ports': {}})
-
-    def __init__(self) -> None:
-        pass
 
 class Parser:
     # File check and pull host tag from log file
@@ -254,118 +240,144 @@ class Parser:
                     else:
                         extra_info.append(text.strip())
                 return service_dict
-                    
-# Add mac address, vendor and hostname to dictionary
-def basic_parser() -> None:
-    parse = Parser("tcp")
-    for host in parse.host_list:
-        ip_address = parse.find_address(host, "ipv4")
-        if ip_address in DicManager.big_dict:
-            DicManager.big_dict[ip_address].update({'mac_address': parse.find_address(host, "mac")})
-            DicManager.big_dict[ip_address].update({'vendor': parse.find_vendor(host)})
-            DicManager.big_dict[ip_address].update({'hostname': parse.find_host_name(host)})
 
-# Add tcp port information
-def tcp_parser() -> None:
-    parse = Parser("tcp")
-    for host in parse.host_list:
-        ip_address = parse.find_address(host, "ipv4")
-        if ip_address in DicManager.big_dict:
-            if parse.find_ports(host):
-                for port_dict in parse.find_ports(host):
-                    DicManager.big_dict[ip_address]['ports'].update(port_dict)
+class DicManager:
+    def __init__(self) -> None:
+        # Create dictionary template
+        file_checker("ip", "list")
+        big_dict = {}
+        with open('./lists/ip_list.txt', 'r') as f:
+            ip_list = f.readlines()
+        # Every ip address is a dictionary
+        for ip in ip_list:
+            big_dict.update({ip.strip(): {}})
+            big_dict[ip.strip()].update({'ports': {}})
+        self.big_dict = big_dict
 
-# Add udp port information
-def udp_parser() -> None:
-    parse = Parser("udp")
-    for host in parse.host_list:
-        ip_address = parse.find_address(host, "ipv4")
-        if ip_address in DicManager.big_dict:
-            if parse.find_ports(host):
-                for port_dict in parse.find_ports(host):
-                    DicManager.big_dict[ip_address]['ports'].update(port_dict)
+    # Add mac address, vendor and hostname to dictionary
+    def basic_parser(self) -> None:
+        parse = Parser("tcp")
+        for host in parse.host_list:
+            ip_address = parse.find_address(host, "ipv4")
+            if ip_address in self.big_dict:
+                self.big_dict[ip_address].update({'mac_address': parse.find_address(host, "mac")})
+                self.big_dict[ip_address].update({'vendor': parse.find_vendor(host)})
+                self.big_dict[ip_address].update({'hostname': parse.find_host_name(host)})
 
-# Check results of tcp_parser and udp_parser
-def port_parser() -> None:
-    tcp_parser()
-    udp_parser()
-    parse = Parser("tcp")
-    for host in parse.host_list:
-        ip_address = parse.find_address(host, "ipv4")
-        if ip_address in DicManager.big_dict:
-            if DicManager.big_dict[ip_address]['ports']:
-                pass
+    # Add tcp port information
+    def tcp_parser(self) -> None:
+        parse = Parser("tcp")
+        for host in parse.host_list:
+            ip_address = parse.find_address(host, "ipv4")
+            if ip_address in self.big_dict:
+                if parse.find_ports(host):
+                    for port_dict in parse.find_ports(host):
+                        self.big_dict[ip_address]['ports'].update(port_dict)
+
+    # Add udp port information
+    def udp_parser(self) -> None:
+        parse = Parser("udp")
+        for host in parse.host_list:
+            ip_address = parse.find_address(host, "ipv4")
+            if ip_address in self.big_dict:
+                if parse.find_ports(host):
+                    for port_dict in parse.find_ports(host):
+                        self.big_dict[ip_address]['ports'].update(port_dict)
+
+    # Check results of tcp_parser and udp_parser
+    def port_parser(self) -> None:
+        self.tcp_parser()
+        self.udp_parser()
+        parse = Parser("tcp")
+        for host in parse.host_list:
+            ip_address = parse.find_address(host, "ipv4")
+            if ip_address in self.big_dict:
+                if self.big_dict[ip_address]['ports']:
+                    pass
+                else:
+                    self.big_dict[ip_address].update({'ports': None})
+
+    # Add dhcp server ip and router ip
+    def dhcp_parser(self) -> None:
+        parse = Parser("dhcp")
+        for host in parse.host_list:
+            ip_address = parse.find_address(host, "ipv4")
+            if ip_address in self.big_dict:
+                self.big_dict[ip_address].update({'dhcp_server': parse.find_dhcp(host, "dhcp")})
+                self.big_dict[ip_address].update({'router_ip': parse.find_dhcp(host, "router")})
             else:
-                DicManager.big_dict[ip_address].update({'ports': None})
+                self.big_dict.update({'dhcp_server': parse.find_dhcp(host, "dhcp")})
+                self.big_dict.update({'router_ip': parse.find_dhcp(host, "router")})
 
-# Add dhcp server ip and router ip
-def dhcp_parser() -> None:
-    parse = Parser("dhcp")
-    for host in parse.host_list:
-        ip_address = parse.find_address(host, "ipv4")
-        if ip_address in DicManager.big_dict:
-            DicManager.big_dict[ip_address].update({'dhcp_server': parse.find_dhcp(host, "dhcp")})
-            DicManager.big_dict[ip_address].update({'router_ip': parse.find_dhcp(host, "router")})
+    # Add snmp information to dictionary   
+    def snmp_parser(self) -> None:
+        parse = Parser("snmp")
+        for host in parse.host_list:
+            ip_address = parse.find_address(host, "ipv4")
+            if ip_address in self.big_dict:
+                self.big_dict[ip_address].update({'snmp_info': {}})
+                if parse.find_snmp(host, "snmp-sysdescr"):
+                    self.big_dict[ip_address]['snmp_info'].update(parse.find_snmp(host, "snmp-sysdescr"))
+                if parse.find_snmp(host, "snmp-info"):
+                    self.big_dict[ip_address]['snmp_info'].update(parse.find_snmp(host, "snmp-info"))
+                if parse.find_snmp(host, "snmp-interfaces"):
+                    self.big_dict[ip_address]['snmp_info'].update({'interfaces': parse.find_snmp(host, "snmp-interfaces")})
+                if parse.find_snmp(host, "snmp-processes"):
+                    self.big_dict[ip_address]['snmp_info'].update({'processes': parse.find_snmp(host, "snmp-processes")})
+                if parse.find_snmp(host, "snmp-win32-software"):
+                    self.big_dict[ip_address]['snmp_info'].update({'softwares': parse.find_snmp(host, "snmp-win32-software")})
+                if self.big_dict[ip_address]['snmp_info']:
+                    pass
+                else:
+                    self.big_dict[ip_address].update({'snmp_info': None})
 
-# Add snmp information to dictionary   
-def snmp_parser() -> None:
-    parse = Parser("snmp")
-    for host in parse.host_list:
-        ip_address = parse.find_address(host, "ipv4")
-        if ip_address in DicManager.big_dict:
-            DicManager.big_dict[ip_address].update({'snmp_info': {}})
-            if parse.find_snmp(host, "snmp-sysdescr"):
-                DicManager.big_dict[ip_address]['snmp_info'].update(parse.find_snmp(host, "snmp-sysdescr"))
-            if parse.find_snmp(host, "snmp-info"):
-                DicManager.big_dict[ip_address]['snmp_info'].update(parse.find_snmp(host, "snmp-info"))
-            if parse.find_snmp(host, "snmp-interfaces"):
-                DicManager.big_dict[ip_address]['snmp_info'].update({'interfaces': parse.find_snmp(host, "snmp-interfaces")})
-            if parse.find_snmp(host, "snmp-processes"):
-                DicManager.big_dict[ip_address]['snmp_info'].update({'processes': parse.find_snmp(host, "snmp-processes")})
-            if parse.find_snmp(host, "snmp-win32-software"):
-                DicManager.big_dict[ip_address]['snmp_info'].update({'softwares': parse.find_snmp(host, "snmp-win32-software")})
-            if DicManager.big_dict[ip_address]['snmp_info']:
-                pass
-            else:
-                DicManager.big_dict[ip_address].update({'snmp_info': None})
-                
-# Add dns cache to dictionary and update port information based on service discovery
-def dns_parser() -> None:
-    parse = Parser("dns")
-    # Add a dictionary for dns cache domains
-    DicManager.big_dict.update({'dns_cache': {}})
-    for host in parse.host_list:
-        if parse.find_dns(host, "cache"):
-            # Create dictionary for each dns server
-            DicManager.big_dict['dns_cache'].update(parse.find_dns(host, "cache"))
-    # Update the port dictionary
-    if parse.find_dns(parse.data, "service"):
-        dns_dict = parse.find_dns(parse.data, "service")
-        for ip in dns_dict:
-            if ip in DicManager.big_dict:
-                for port in dns_dict[ip]:
-                    if port in DicManager.big_dict[ip]['ports']:
-                        state = DicManager.big_dict[ip]['ports'][port]['state']
-                        # If port is found in dns services, then the port is open
-                        if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
-                             DicManager.big_dict[ip]['ports'][port]['state'] = "open"
-                        # If service name is found in dns services then update big_dict
-                        if DicManager.big_dict[ip]['ports'][port]['service'] == None:
-                            DicManager.big_dict[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
-                        if DicManager.big_dict[ip]['ports'][port]['extra_info'] == None:
-                            if dns_dict[ip][port]["extra_info"]:
-                                DicManager.big_dict[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
-                    # If the port is not found in big_dict, then create a dictionary for the port and format it to have basic information
-                    else:
-                        DicManager.big_dict[ip]['ports'].update({port: dns_dict[ip][port]})
+    # Add dns cache to dictionary and update port information based on service discovery
+    def dns_parser(self) -> None:
+        parse = Parser("dns")
+        # Add a dictionary for dns cache domains
+        self.big_dict.update({'dns_cache': {}})
+        for host in parse.host_list:
+            if parse.find_dns(host, "cache"):
+                # Create dictionary for each dns server
+                self.big_dict['dns_cache'].update(parse.find_dns(host, "cache"))
+        # Update the port dictionary
+        if parse.find_dns(parse.data, "service"):
+            dns_dict = parse.find_dns(parse.data, "service")
+            for ip in dns_dict:
+                if ip in self.big_dict:
+                    for port in dns_dict[ip]:
+                        if port in self.big_dict[ip]['ports']:
+                            state = self.big_dict[ip]['ports'][port]['state']
+                            # If port is found in dns services, then the port is open
+                            if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
+                                 self.big_dict[ip]['ports'][port]['state'] = "open"
+                            # If service name is found in dns services then update big_dict
+                            if self.big_dict[ip]['ports'][port]['service'] == None:
+                                self.big_dict[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
+                            if self.big_dict[ip]['ports'][port]['extra_info'] == None:
+                                if dns_dict[ip][port]["extra_info"]:
+                                    self.big_dict[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
+                        # If the port is not found in big_dict, then create a dictionary for the port and format it to have basic information
+                        else:
+                            self.big_dict[ip]['ports'].update({port: dns_dict[ip][port]})
+
+    # Export the dictionary
+    def export(self) -> dict:
+        return self.big_dict
+
+    # Run entire script then export
+    def packaged_export(self) -> dict:
+        self.basic_parser()
+        self.port_parser()
+        self.dhcp_parser()
+        self.snmp_parser()
+        self.dns_parser()
+        return self.export()
 
 def main():
-    basic_parser()
-    port_parser()
-    dhcp_parser()
-    snmp_parser()
-    dns_parser()
-    print(json.dumps(DicManager.big_dict, indent = 4))
+    run = DicManager()
+    output = run.packaged_export()
+    print(json.dumps(output, indent = 4))
 
 if __name__ == "__main__":
     main()

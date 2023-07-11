@@ -45,11 +45,9 @@
         "mac_address": "18:B1:69:07:57:80",
         "vendor": "Sonicwall",
         "hostname": "_gateway",
-        "dhcp_server": "172.16.6.16",
-        "router_ip": "172.16.7.1",
         "snmp_info": {
             "system_name": "SonicWALL TZ 500 (SonicOS Enhanced 6.5.4.12-101n)",
-            "system_uptime": "3d09h18m32.35s (29271235 timeticks)",
+            "system_uptime": "4d09h32m37.25s (37995725 timeticks)",
             "boot_cycle": "54",
             "interfaces": {
                 "X0 (Portshield Host)": {
@@ -60,8 +58,8 @@
                     "device_type": "ethernetCsmacd",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "3.65 Gb",
-                    "received": "1.93 Gb"
+                    "sent": "1.69 Gb",
+                    "received": "1.99 Gb"
                 },
                 "X1 (WAN)": {
                     "ip": "122.146.12.10",
@@ -71,8 +69,8 @@
                     "device_type": "ethernetCsmacd",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "670.48 Mb",
-                    "received": "4.14 Gb"
+                    "sent": "2.74 Gb",
+                    "received": "2.65 Gb"
                 },
                 "X2 (Portshielded To X0)": {
                     "mac": "18:b1:69:07:57:82",
@@ -91,8 +89,8 @@
                     "device_type": "ethernetCsmacd",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "1.66 Gb",
-                    "received": "2.67 Gb"
+                    "sent": "1.35 Gb",
+                    "received": "968.72 Mb"
                 },
                 "X4 (Portshielded To X0)": {
                     "mac": "18:b1:69:07:57:84",
@@ -129,8 +127,8 @@
                     "device_type": "ethernetCsmacd",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "3.64 Gb",
-                    "received": "1.87 Gb"
+                    "sent": "401.77 Mb",
+                    "received": "4.13 Gb"
                 },
                 "U0 (WAN)": {
                     "mac": "18:b1:69:07:57:88",
@@ -158,8 +156,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "895.53 Mb",
-                    "received": "328.67 Mb"
+                    "sent": "672.60 Mb",
+                    "received": "2.82 Gb"
                 },
                 "X0:V8 (FDS_VoIP)": {
                     "ip": "172.16.8.1",
@@ -169,8 +167,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "150.48 Mb",
-                    "received": "246.81 Mb"
+                    "sent": "200.65 Mb",
+                    "received": "325.21 Mb"
                 },
                 "X0:V17 (FDS_Client)": {
                     "ip": "172.16.17.1",
@@ -180,8 +178,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "3.01 Gb",
-                    "received": "2.36 Gb"
+                    "sent": "3.16 Gb",
+                    "received": "1.79 Gb"
                 },
                 "X0:V19 (FDS_Wireless)": {
                     "ip": "172.16.19.1",
@@ -191,8 +189,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "1.58 Gb",
-                    "received": "1.35 Gb"
+                    "sent": "899.25 Mb",
+                    "received": "4.12 Gb"
                 },
                 "X0:V20 (LAB)": {
                     "ip": "192.168.200.1",
@@ -202,8 +200,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "4.28 Gb",
-                    "received": "1.10 Gb"
+                    "sent": "3.20 Gb",
+                    "received": "4.16 Gb"
                 },
                 "X0:V21 (HX)": {
                     "ip": "172.16.100.1",
@@ -213,8 +211,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "2.32 Gb",
-                    "received": "1.73 Gb"
+                    "sent": "785.06 Mb",
+                    "received": "2.25 Gb"
                 },
                 "X0:V33 (NiMiCDR)": {
                     "ip": "192.168.2.1",
@@ -224,8 +222,8 @@
                     "device_type": "l2vlan",
                     "device_speed": "1 Gbps",
                     "device_status": "up",
-                    "sent": "563.26 Mb",
-                    "received": "1.06 Gb"
+                    "sent": "2.47 Gb",
+                    "received": "2.35 Gb"
                 }
             }
         }
@@ -236,7 +234,7 @@
                 "protocol": "tcp",
                 "state": "open",
                 "service": "http",
-                "product": null,
+                "product": "lighttpd",
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
@@ -252,107 +250,97 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42": {
+            "22": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "nameserver",
+                "service": "ssh",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "434": {
+            "445": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "mobileip-agent",
+                "service": "microsoft-ds",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "1051": {
+            "500": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "optima-vnet",
+                "service": "isakmp",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "4008": {
+            "517": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "netcheque",
+                "service": "talk",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "9001": {
+            "626": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "etlservicemgr",
+                "service": "serialnumberd",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "16449": {
+            "829": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "pkix-3-ca-ra",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "16674": {
+            "1035": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "mxxrlogin",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "18980": {
+            "1090": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "ff-fms",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "19022": {
+            "1761": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "cft-0",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "19161": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "20389": {
+            "16786": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -362,7 +350,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -372,7 +360,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "25462": {
+            "18807": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -382,7 +370,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -392,7 +390,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42056": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -402,7 +400,67 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "52503": {
+            "21663": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "33744": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "39888": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49189": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "62677": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -416,8 +474,6 @@
         "mac_address": "00:15:65:72:24:B1",
         "vendor": "Xiamen Yealink Network Technology",
         "hostname": "SIP-T21P.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.100": {
@@ -436,8 +492,6 @@
         "mac_address": "C4:9D:ED:E7:3F:39",
         "vendor": "Microsoft",
         "hostname": "FDS-E1061230303.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.102": {
@@ -456,8 +510,6 @@
         "mac_address": "B0:4F:13:F4:32:28",
         "vendor": null,
         "hostname": "FDS-E1090230621.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.103": {
@@ -506,8 +558,6 @@
         "mac_address": "38:14:28:C7:0D:D3",
         "vendor": null,
         "hostname": "FDS-Debby2.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.105": {
@@ -536,15 +586,215 @@
         "mac_address": "38:14:28:C8:DE:4C",
         "vendor": null,
         "hostname": "FDS-Jack.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.11": {
-        "ports": null,
+        "ports": {
+            "38": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "rap",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "199": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "smux",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "767": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "phonebook",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "1044": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "dcutility",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "1056": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "vfo",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "16947": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "18683": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19197": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19719": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "21282": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "21556": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "24279": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "29810": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "32777": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "sometimes-rpc18",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "40732": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "53838": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "61481": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            }
+        },
         "mac_address": "CA:DD:20:1A:48:AA",
         "vendor": null,
-        "hostname": "Galaxy-S20-FE-5G.freedom.local"
+        "hostname": "Galaxy-S20-FE-5G.freedom.local",
+        "snmp_info": null
     },
     "172.16.7.110": {
         "ports": {
@@ -584,7 +834,7 @@
                 "service": "remoteanything",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port4000-TCP:V=7.80%I=2%D=7/10%Time=64ABC9F7%P=x86_64-pc-linux-gnu%r(GetRequest,8,\"5\\*\\*\\*\\*\\*\\*\\*\");",
+                "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
@@ -592,18 +842,16 @@
                 "protocol": "udp",
                 "state": "open",
                 "service": "netbios-ns",
-                "product": "Microsoft Windows netbios-ns",
+                "product": "Microsoft Windows or Samba netbios-ns",
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
+                "os_type": null,
                 "extra_info": "workgroup: FREEDOM"
             }
         },
         "mac_address": "58:82:A8:91:FD:57",
         "vendor": "Microsoft",
         "hostname": "FDS-AliciaChien.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.111": {
@@ -652,8 +900,227 @@
         "mac_address": "28:16:A8:06:D6:08",
         "vendor": "Microsoft",
         "hostname": "FDS-Mandy1.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
+        "snmp_info": null
+    },
+    "172.16.7.112": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            },
+            "139": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "netbios-ssn",
+                "product": "Microsoft Windows netbios-ssn",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            },
+            "445": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "microsoft-ds",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "137": {
+                "protocol": "udp",
+                "state": "open",
+                "service": "netbios-ns",
+                "product": "Microsoft Windows netbios-ns",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": "workgroup: FREEDOM"
+            }
+        },
+        "mac_address": "58:82:A8:96:12:81",
+        "vendor": "Microsoft",
+        "hostname": "FDS-Vida.freedom.local",
+        "snmp_info": null
+    },
+    "172.16.7.114": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            },
+            "139": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "netbios-ssn",
+                "product": "Microsoft Windows netbios-ssn",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            },
+            "445": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "microsoft-ds",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "1801": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msmq",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "2103": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "zephyr-clt",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "2105": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "eklogin",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "2107": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msmq-mgmt",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "137": {
+                "protocol": "udp",
+                "state": "open",
+                "service": "netbios-ns",
+                "product": "Microsoft Windows netbios-ns",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": "workgroup: FREEDOM"
+            }
+        },
+        "mac_address": "C4:9D:ED:EB:06:0A",
+        "vendor": "Microsoft",
+        "hostname": "FDS-DESRAY.freedom.local",
+        "snmp_info": null
+    },
+    "172.16.7.117": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            },
+            "139": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "netbios-ssn",
+                "product": "Microsoft Windows netbios-ssn",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            },
+            "445": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "microsoft-ds",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            }
+        },
+        "mac_address": "0C:DD:24:FD:83:AB",
+        "vendor": "Intel Corporate",
+        "hostname": "FDS-Amy.freedom.local"
+    },
+    "172.16.7.121": {
+        "ports": {
+            "22": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ssh",
+                "product": "OpenSSH",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Linux",
+                "extra_info": "Ubuntu Linux; protocol 2.0"
+            },
+            "68": {
+                "protocol": "udp",
+                "state": "closed|filtered",
+                "service": "dhcpc",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "631": {
+                "protocol": "udp",
+                "state": "closed|filtered",
+                "service": "ipp",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "5353": {
+                "protocol": "udp",
+                "state": "closed|filtered",
+                "service": "zeroconf",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            }
+        },
+        "mac_address": null,
+        "vendor": null,
+        "hostname": "fdsa.freedom.local",
         "snmp_info": null
     },
     "172.16.7.123": {
@@ -678,57 +1145,47 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "434": {
+            "664": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "mobileip-agent",
+                "service": "secure-aux-bus",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "657": {
+            "684": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "rmc",
+                "service": "corba-iiop-ssl",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "1812": {
+            "780": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "radius",
+                "service": "wpgs",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "9199": {
+            "3457": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "vat-control",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "17787": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "18980": {
+            "16711": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -738,17 +1195,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19283": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "keysrvr",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "20389": {
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -758,7 +1205,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20424": {
+            "19197": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -768,7 +1215,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "19222": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -778,7 +1225,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "25931": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -788,7 +1245,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "31109": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -798,7 +1255,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "20120": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -808,7 +1265,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42056": {
+            "21405": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -818,7 +1275,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "43514": {
+            "23781": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -828,7 +1285,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "49154": {
+            "31335": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "Trinoo_Register",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "33744": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -838,7 +1305,57 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "53838": {
+            "36384": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "44968": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49163": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "61024": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -852,8 +1369,6 @@
         "mac_address": "A0:2E:F3:00:64:F5",
         "vendor": "United Integrated Services",
         "hostname": null,
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.13": {
@@ -893,6 +1408,23 @@
         "vendor": "Microsoft",
         "hostname": "FDS-Mandy1.freedom.local"
     },
+    "172.16.7.139": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            }
+        },
+        "mac_address": "28:16:A8:58:73:18",
+        "vendor": "Microsoft",
+        "hostname": "FDS-P1063230201.freedom.local"
+    },
     "172.16.7.16": {
         "ports": {
             "49152": {
@@ -925,78 +1457,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "53780": {
+            "54041": {
                 "protocol": "tcp",
                 "state": "open",
                 "service": "companion-link",
                 "extra_info": [
                     "rpMac=0",
-                    "rpHN=92c2a7223ce6"
+                    "rpHN=b66f49f2c542"
                 ]
             }
         },
         "mac_address": "3E:2A:56:69:85:0D",
-        "vendor": null,
-        "hostname": null
-    },
-    "172.16.7.18": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            }
-        },
-        "mac_address": "EC:63:D7:0C:12:E6",
-        "vendor": null,
-        "hostname": "FDS-E12041207.freedom.local"
-    },
-    "172.16.7.20": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            }
-        },
-        "mac_address": "D0:3C:1F:1B:77:40",
-        "vendor": null,
-        "hostname": "FDS-E1211230327.freedom.local"
-    },
-    "172.16.7.21": {
-        "ports": {
-            "49154": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "62078": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "tcpwrapped",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            }
-        },
-        "mac_address": "7A:D3:0A:80:C8:27",
         "vendor": null,
         "hostname": null
     },
@@ -1006,15 +1477,15 @@
                 "protocol": "tcp",
                 "state": "open",
                 "service": "http",
-                "product": null,
-                "service_type": null,
+                "product": "HP LaserJet Pro MFP config httpd",
+                "service_type": "printer",
                 "service_fingerprint": null,
                 "os_type": null,
-                "extra_info": null
+                "extra_info": "model: M26nw; private IP: 172.16.7.217"
             },
             "443": {
                 "protocol": "tcp",
-                "state": "filtered",
+                "state": "open",
                 "service": "https",
                 "product": null,
                 "service_type": null,
@@ -1067,12 +1538,12 @@
             "8080": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "http-proxy",
-                "product": null,
-                "service_type": null,
+                "service": "http",
+                "product": "HP LaserJet Pro MFP config httpd",
+                "service_type": "printer",
                 "service_fingerprint": null,
                 "os_type": null,
-                "extra_info": null
+                "extra_info": "model: M26nw; private IP: 172.16.7.217"
             },
             "9100": {
                 "protocol": "tcp",
@@ -1153,11 +1624,9 @@
         "mac_address": "80:CE:62:E9:74:18",
         "vendor": "Hewlett Packard",
         "hostname": null,
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": {
             "system_name": "HP ETHERNET MULTI-ENVIRONMENT",
-            "system_uptime": "3d02h49m56.20s (26939620 timeticks)",
+            "system_uptime": "7h01m34.00s (2529400 timeticks)",
             "interfaces": {
                 "LOOPBACK": {
                     "ip": "127.0.0.1",
@@ -1165,8 +1634,8 @@
                     "device_type": "softwareLoopback",
                     "device_speed": "0 Kbps",
                     "device_status": "up",
-                    "sent": "679.34 Kb",
-                    "received": "679.34 Kb"
+                    "sent": "230.14 Kb",
+                    "received": "230.02 Kb"
                 },
                 "NetDrvr": {
                     "ip": "172.16.7.217",
@@ -1176,8 +1645,8 @@
                     "device_type": "ethernetCsmacd",
                     "device_speed": "10 Mbps",
                     "device_status": "up",
-                    "sent": "17.92 Mb",
-                    "received": "235.28 Mb"
+                    "sent": "15.79 Mb",
+                    "received": "84.56 Mb"
                 },
                 "uAP_drvr": {
                     "device_type": "ethernetCsmacd",
@@ -1188,6 +1657,43 @@
                 }
             }
         }
+    },
+    "172.16.7.22": {
+        "ports": {
+            "49152": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49153": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "62078": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "tcpwrapped",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            }
+        },
+        "mac_address": "E2:45:85:3F:9C:2A",
+        "vendor": null,
+        "hostname": null
     },
     "172.16.7.23": {
         "ports": {
@@ -1235,8 +1741,6 @@
         "mac_address": "38:14:28:C0:4C:1A",
         "vendor": null,
         "hostname": "FDS-Ryanlo.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.24": {
@@ -1256,29 +1760,6 @@
         "vendor": "Microsoft",
         "hostname": "FDS-E1207220103.freedom.local"
     },
-    "172.16.7.25": {
-        "ports": {
-            "62078": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "tcpwrapped",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "57378": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "rdlink",
-                "extra_info": null
-            }
-        },
-        "mac_address": "8A:EB:DE:A2:87:31",
-        "vendor": null,
-        "hostname": null
-    },
     "172.16.7.250": {
         "ports": {
             "80": {
@@ -1287,7 +1768,7 @@
                 "service": "http",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/10%Time=64ABC9F2%P=x86_64-pc-linux-gnu%r(GetRequest,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x203d9efcaa-7160-4f5c-985c-63884af22a7b\\r\\nX-Response-Time:\\x207ms\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:05:54\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\")%r(HTTPOptions,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x20aca8c5af-ce44-4095-8aad-c47c9314c0fc\\r\\nX-Response-Time:\\x201ms\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:05:54\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\")%r(RTSPRequest,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x20ab5429c1-40cd-42fe-88d2-cf9fc1d318e0\\r\\nX-Response-Time:\\x200ms\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:05:54\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\");",
+                "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/11%Time=64AD1ED4%P=x86_64-pc-linux-gnu%r(GetRequest,215,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x20fcf6c762-0720-4b73-8d3b-461e8fa771a7\\r\\nX-Response-Time:\\x20182ms\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:20\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\")%r(HTTPOptions,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x20474c6a70-f92b-4b4d-8a3c-b72edb98f2ba\\r\\nX-Response-Time:\\x201ms\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:20\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\")%r(RTSPRequest,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x205301e051-9ddb-4027-9dc3-55aa597a6a71\\r\\nX-Response-Time:\\x201ms\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:20\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\");",
                 "os_type": null,
                 "extra_info": null
             },
@@ -1297,7 +1778,7 @@
                 "service": "https",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port443-TCP:V=7.80%T=SSL%I=2%D=7/10%Time=64ABC9F9%P=x86_64-pc-linux-gnu%r(GetRequest,416,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x20484\\r\\nX-CSRF-Token:\\x20e191d912-1eaf-4a4c-8533-658472e4e31a\\r\\nX-Response-Time:\\x205ms\\r\\nSet-Cookie:\\x20TOKEN=;\\x20path=/;\\x20expires=Thu,\\x2001\\x20Jan\\x201970\\x2000:00:00\\x20GMT;\\x20samesite=none;\\x20secure;\\x20httponly\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:00\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><meta\\x20charset=\\\"utf-8\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/favicon\\.ico\\?v3\\\"\\x20sizes=\\\"any\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/icon\\.svg\\?v3\\\"\\x20type=\\\"image/svg\\+xml\\\"><link\\x20rel=\\\"apple-touch-icon\\\"\\x20href=\\\"/apple-touch-icon\\.png\\?v3\\\"><title>UniFi\\x20OS</title><meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width,initial-scale=1\\\"><script\\x20defer=\\\"def\")%r(HTTPOptions,416,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x20484\\r\\nX-CSRF-Token:\\x2095cf29a9-eb49-45f7-b5a7-d78494deec85\\r\\nX-Response-Time:\\x200ms\\r\\nSet-Cookie:\\x20TOKEN=;\\x20path=/;\\x20expires=Thu,\\x2001\\x20Jan\\x201970\\x2000:00:00\\x20GMT;\\x20samesite=none;\\x20secure;\\x20httponly\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:01\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><meta\\x20charset=\\\"utf-8\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/favicon\\.ico\\?v3\\\"\\x20sizes=\\\"any\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/icon\\.svg\\?v3\\\"\\x20type=\\\"image/svg\\+xml\\\"><link\\x20rel=\\\"apple-touch-icon\\\"\\x20href=\\\"/apple-touch-icon\\.png\\?v3\\\"><title>UniFi\\x20OS</title><meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width,initial-scale=1\\\"><script\\x20defer=\\\"def\");",
+                "service_fingerprint": "SF-Port443-TCP:V=7.80%T=SSL%I=2%D=7/11%Time=64AD1EDA%P=x86_64-pc-linux-gnu%r(GetRequest,416,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x20484\\r\\nX-CSRF-Token:\\x207b81abcb-bbad-4185-9acd-3b4c5305d6fb\\r\\nX-Response-Time:\\x202ms\\r\\nSet-Cookie:\\x20TOKEN=;\\x20path=/;\\x20expires=Thu,\\x2001\\x20Jan\\x201970\\x2000:00:00\\x20GMT;\\x20samesite=none;\\x20secure;\\x20httponly\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:26\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><meta\\x20charset=\\\"utf-8\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/favicon\\.ico\\?v3\\\"\\x20sizes=\\\"any\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/icon\\.svg\\?v3\\\"\\x20type=\\\"image/svg\\+xml\\\"><link\\x20rel=\\\"apple-touch-icon\\\"\\x20href=\\\"/apple-touch-icon\\.png\\?v3\\\"><title>UniFi\\x20OS</title><meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width,initial-scale=1\\\"><script\\x20defer=\\\"def\")%r(HTTPOptions,416,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x20484\\r\\nX-CSRF-Token:\\x206c4f3248-825a-41aa-b3e5-ffbefc85cfb1\\r\\nX-Response-Time:\\x201ms\\r\\nSet-Cookie:\\x20TOKEN=;\\x20path=/;\\x20expires=Thu,\\x2001\\x20Jan\\x201970\\x2000:00:00\\x20GMT;\\x20samesite=none;\\x20secure;\\x20httponly\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:26\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><meta\\x20charset=\\\"utf-8\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/favicon\\.ico\\?v3\\\"\\x20sizes=\\\"any\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/icon\\.svg\\?v3\\\"\\x20type=\\\"image/svg\\+xml\\\"><link\\x20rel=\\\"apple-touch-icon\\\"\\x20href=\\\"/apple-touch-icon\\.png\\?v3\\\"><title>UniFi\\x20OS</title><meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width,initial-scale=1\\\"><script\\x20defer=\\\"def\");",
                 "os_type": null,
                 "extra_info": null
             },
@@ -1317,7 +1798,7 @@
                 "service": "oracleas-https",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port7443-TCP:V=7.80%T=SSL%I=2%D=7/10%Time=64ABC9F8%P=x86_64-pc-linux-gnu%r(GetRequest,3A6,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nContent-Security-Policy:\\x20default-src\\x20'self';base-uri\\x20'self';block-all-mixed-content;font-src\\x20'self'\\x20https:\\x20data:;frame-ancestors\\x20'self';img-src\\x20'self'\\x20data:;object-src\\x20'none';script-src\\x20'self';script-src-attr\\x20'none';style-src\\x20'self'\\x20https:\\x20'unsafe-inline';upgrade-insecure-requests\\r\\nCross-Origin-Resource-Policy:\\x20same-site\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nExpect-CT:\\x20max-age=0\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-Permitted-Cross-Domain-Policies:\\x20none\\r\\nReferrer-Policy:\\x20strict-origin-when-cross-origin\\r\\nX-XSS-Protection:\\x200\\r\\nVary:\\x20Origin,\\x20Accept\\r\\nAccess-Control-Allow-Credentials:\\x20true\\r\\nLocation:\\x20https://undefined:443/protect\\r\\nContent-Type:\\x20text/plain;\\x20charset=utf-8\\r\\nContent-Length:\\x2051\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:00\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nFound\\.\\x20Redirectin\");",
+                "service_fingerprint": "SF-Port7443-TCP:V=7.80%T=SSL%I=2%D=7/11%Time=64AD1EDA%P=x86_64-pc-linux-gnu%r(GetRequest,3A6,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nContent-Security-Policy:\\x20default-src\\x20'self';base-uri\\x20'self';block-all-mixed-content;font-src\\x20'self'\\x20https:\\x20data:;frame-ancestors\\x20'self';img-src\\x20'self'\\x20data:;object-src\\x20'none';script-src\\x20'self';script-src-attr\\x20'none';style-src\\x20'self'\\x20https:\\x20'unsafe-inline';upgrade-insecure-requests\\r\\nCross-Origin-Resource-Policy:\\x20same-site\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nExpect-CT:\\x20max-age=0\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-Permitted-Cross-Domain-Policies:\\x20none\\r\\nReferrer-Policy:\\x20strict-origin-when-cross-origin\\r\\nX-XSS-Protection:\\x200\\r\\nVary:\\x20Origin,\\x20Accept\\r\\nAccess-Control-Allow-Credentials:\\x20true\\r\\nLocation:\\x20https://undefined:443/protect\\r\\nContent-Type:\\x20text/plain;\\x20charset=utf-8\\r\\nContent-Length:\\x2051\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:26\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nFound\\.\\x20Redirectin\")%r(SSLSessionReq,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConnection:\\x20close\\r\\n\\r\\n\");",
                 "os_type": null,
                 "extra_info": null
             },
@@ -1327,7 +1808,7 @@
                 "service": "http-proxy",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port8080-TCP:V=7.80%I=2%D=7/10%Time=64ABC9F1%P=x86_64-pc-linux-gnu%r(GetRequest,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:05:53\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(HTTPOptions,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:05:53\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(RTSPRequest,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:05:53\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\");",
+                "service_fingerprint": "SF-Port8080-TCP:V=7.80%I=2%D=7/11%Time=64AD1ED3%P=x86_64-pc-linux-gnu%r(GetRequest,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:19\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(HTTPOptions,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:19\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(RTSPRequest,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:19\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\");",
                 "os_type": null,
                 "extra_info": null
             },
@@ -1337,71 +1818,61 @@
                 "service": "https-alt",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port8443-TCP:V=7.80%T=SSL%I=2%D=7/10%Time=64ABC9F8%P=x86_64-pc-linux-gnu%r(GetRequest,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:00\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(HTTPOptions,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:00\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(FourOhFourRequest,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:00\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(SSLSessionReq,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:06\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(TLSSessionReq,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Mon,\\x2010\\x20Jul\\x202023\\x2009:06:06\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\");",
+                "service_fingerprint": "SF-Port8443-TCP:V=7.80%T=SSL%I=2%D=7/11%Time=64AD1EDA%P=x86_64-pc-linux-gnu%r(GetRequest,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:26\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(HTTPOptions,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:26\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(FourOhFourRequest,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:26\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(SSLSessionReq,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Tue,\\x2011\\x20Jul\\x202023\\x2009:20:31\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\");",
                 "os_type": null,
                 "extra_info": null
             },
-            "434": {
+            "684": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "mobileip-agent",
+                "service": "corba-iiop-ssl",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "657": {
+            "1070": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "rmc",
+                "service": "gmrupdateserv",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "9001": {
+            "1701": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "etlservicemgr",
+                "service": "L2TP",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "16498": {
+            "4008": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "netcheque",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "16948": {
+            "6050": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "x11",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "17359": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "18980": {
+            "17282": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1411,17 +1882,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19283": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "keysrvr",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "20389": {
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1431,7 +1892,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20424": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1441,7 +1912,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21104": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1451,7 +1922,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21186": {
+            "21405": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1461,7 +1932,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "21556": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1471,7 +1942,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "22053": {
+            "23781": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1481,7 +1952,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "28547": {
+            "24007": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1491,7 +1962,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "32815": {
+            "30303": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1501,7 +1972,67 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "32776": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "sometimes-rpc16",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "36384": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "43094": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "46093": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "51905": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -1515,8 +2046,6 @@
         "mac_address": "68:D7:9A:3F:58:D1",
         "vendor": "Ubiquiti Networks",
         "hostname": null,
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.253": {
@@ -1537,7 +2066,7 @@
                 "service": "http",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/10%Time=64ABC9F2%P=x86_64-pc-linux-gnu%r(GetRequest,2F7,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nPragma:\\x20no-cache\\r\\n\\r\\n\\n\\x20\\x20\\x20<!DOCTYPE\\x20HTML\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01\\x20Frameset//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/frameset\\.dtd\\\">\\n\\n\\n<!DOCTYPE\\x20html\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01\\x20Transitional//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/loose\\.dtd\\\">\\n<html>\\n<head>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=UTF-8\\\">\\n<title></title>\\n<script\\x20language=\\\"javascript\\\"\\x20type=\\\"text/javascript\\\">\\nwindow\\.top\\.location\\.href\\x20=\\x20\\\"dell_login\\.html\\\";\\n</script>\\n</head>\\n<body>\\n<div\\x20style=\\\"display:\\x20none;\\\"\\x20\\x20id=\\\"progressPage\\\">\\n<div\\x20class=\\\"progressBackground\\\"></div>\\n<div\\x20class=\\\"progressContainer\\\">\\n<div\\x20id=\\\"progressGraphicNone\\\"></div>\\n</div>\\n</div></body>\\n\\n</html>\\n\\n\\n\\n\")%r(HTTPOptions,72,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Length:\\x200\\r\\nAllow:\\x20HEAD,\\x20GET,\\x20OPTIONS\\r\\n\\r\\n\")%r(RTSPRequest,71,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Length:\\x200\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\")%r(FourOhFourRequest,5A,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n404\\x20Not\\x20Found\\r\\n\")%r(SSLSessionReq,5E,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\")%r(TLSSessionReq,5E,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\");",
+                "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/11%Time=64AD1ED4%P=x86_64-pc-linux-gnu%r(GetRequest,2F7,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nPragma:\\x20no-cache\\r\\n\\r\\n\\n\\x20\\x20\\x20<!DOCTYPE\\x20HTML\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01\\x20Frameset//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/frameset\\.dtd\\\">\\n\\n\\n<!DOCTYPE\\x20html\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01\\x20Transitional//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/loose\\.dtd\\\">\\n<html>\\n<head>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=UTF-8\\\">\\n<title></title>\\n<script\\x20language=\\\"javascript\\\"\\x20type=\\\"text/javascript\\\">\\nwindow\\.top\\.location\\.href\\x20=\\x20\\\"dell_login\\.html\\\";\\n</script>\\n</head>\\n<body>\\n<div\\x20style=\\\"display:\\x20none;\\\"\\x20\\x20id=\\\"progressPage\\\">\\n<div\\x20class=\\\"progressBackground\\\"></div>\\n<div\\x20class=\\\"progressContainer\\\">\\n<div\\x20id=\\\"progressGraphicNone\\\"></div>\\n</div>\\n</div></body>\\n\\n</html>\\n\\n\\n\\n\")%r(HTTPOptions,72,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Length:\\x200\\r\\nAllow:\\x20HEAD,\\x20GET,\\x20OPTIONS\\r\\n\\r\\n\")%r(RTSPRequest,71,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Length:\\x200\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\")%r(FourOhFourRequest,5A,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n404\\x20Not\\x20Found\\r\\n\")%r(SSLSessionReq,5E,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\")%r(TLSSessionReq,5E,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\");",
                 "os_type": null,
                 "extra_info": null
             },
@@ -1564,7 +2093,7 @@
                 "service": "http",
                 "product": null,
                 "service_type": null,
-                "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/10%Time=64ABC9F2%P=x86_64-pc-linux-gnu%r(GetRequest,23F,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nExpires:\\x20-1\\r\\n\\r\\n<html>\\n<head>\\n<title>Redirect\\x20to\\x20Login</title>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=utf-8\\\">\\n<link\\x20rel=\\\"stylesheet\\\"\\x20type=\\\"text/css\\\"\\x20href=\\\"/style\\.css\\?b1\\.6\\.0\\.4\\\">\\n<script\\x20type=\\\"text/javascript\\\"\\x20language=\\\"JavaScript\\\">\\nfunction\\x20RedirectToLoginPage\\(\\)\\n{\\n\\ttop\\.location\\.href\\x20=\\x20\\\"/login\\.cgi\\\";\\n}\\n</script>\\n</head>\\n<body\\x20onload=\\\"RedirectToLoginPage\\(\\);\\\">\\n</body>\\n</html>\\n\")%r(FourOhFourRequest,23F,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nExpires:\\x20-1\\r\\n\\r\\n<html>\\n<head>\\n<title>Redirect\\x20to\\x20Login</title>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=utf-8\\\">\\n<link\\x20rel=\\\"stylesheet\\\"\\x20type=\\\"text/css\\\"\\x20href=\\\"/style\\.css\\?b1\\.6\\.0\\.4\\\">\\n<script\\x20type=\\\"text/javascript\\\"\\x20language=\\\"JavaScript\\\">\\nfunction\\x20RedirectToLoginPage\\(\\)\\n{\\n\\ttop\\.location\\.href\\x20=\\x20\\\"/login\\.cgi\\\";\\n}\\n</script>\\n</head>\\n<body\\x20onload=\\\"RedirectToLoginPage\\(\\);\\\">\\n</body>\\n</html>\\n\");",
+                "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/11%Time=64AD1ED4%P=x86_64-pc-linux-gnu%r(GetRequest,23F,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nExpires:\\x20-1\\r\\n\\r\\n<html>\\n<head>\\n<title>Redirect\\x20to\\x20Login</title>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=utf-8\\\">\\n<link\\x20rel=\\\"stylesheet\\\"\\x20type=\\\"text/css\\\"\\x20href=\\\"/style\\.css\\?b1\\.6\\.0\\.4\\\">\\n<script\\x20type=\\\"text/javascript\\\"\\x20language=\\\"JavaScript\\\">\\nfunction\\x20RedirectToLoginPage\\(\\)\\n{\\n\\ttop\\.location\\.href\\x20=\\x20\\\"/login\\.cgi\\\";\\n}\\n</script>\\n</head>\\n<body\\x20onload=\\\"RedirectToLoginPage\\(\\);\\\">\\n</body>\\n</html>\\n\")%r(FourOhFourRequest,23F,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nExpires:\\x20-1\\r\\n\\r\\n<html>\\n<head>\\n<title>Redirect\\x20to\\x20Login</title>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=utf-8\\\">\\n<link\\x20rel=\\\"stylesheet\\\"\\x20type=\\\"text/css\\\"\\x20href=\\\"/style\\.css\\?b1\\.6\\.0\\.4\\\">\\n<script\\x20type=\\\"text/javascript\\\"\\x20language=\\\"JavaScript\\\">\\nfunction\\x20RedirectToLoginPage\\(\\)\\n{\\n\\ttop\\.location\\.href\\x20=\\x20\\\"/login\\.cgi\\\";\\n}\\n</script>\\n</head>\\n<body\\x20onload=\\\"RedirectToLoginPage\\(\\);\\\">\\n</body>\\n</html>\\n\");",
                 "os_type": null,
                 "extra_info": null
             }
@@ -1572,8 +2101,6 @@
         "mac_address": "C0:FF:D4:D4:BD:EC",
         "vendor": "Netgear",
         "hostname": null,
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.26": {
@@ -1662,23 +2189,6 @@
         "mac_address": "F8:5E:A0:95:49:3A",
         "vendor": null,
         "hostname": "FDS-TomTang.freedom.local"
-    },
-    "172.16.7.27": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            }
-        },
-        "mac_address": "D0:3C:1F:1B:F5:99",
-        "vendor": null,
-        "hostname": "FDS-E1206230201.freedom.local"
     },
     "172.16.7.29": {
         "ports": {
@@ -1776,36 +2286,7 @@
         "mac_address": "74:78:27:F3:FE:2F",
         "vendor": null,
         "hostname": "FDS-TomTang.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
-    },
-    "172.16.7.3": {
-        "ports": {
-            "49152": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "62078": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "tcpwrapped",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            }
-        },
-        "mac_address": "D2:EB:C8:42:59:90",
-        "vendor": null,
-        "hostname": null
     },
     "172.16.7.31": {
         "ports": {
@@ -1900,8 +2381,6 @@
         "mac_address": "54:B2:03:F7:1A:3A",
         "vendor": "Pegatron",
         "hostname": "freedom-pizza.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.34": {
@@ -1920,82 +2399,44 @@
         "mac_address": "C8:4B:D6:B4:D4:87",
         "vendor": null,
         "hostname": "FDS-JudyHou.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
-    "172.16.7.37": {
+    "172.16.7.35": {
         "ports": {
-            "135": {
+            "49152": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "139": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "netbios-ssn",
-                "product": "Microsoft Windows netbios-ssn",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "445": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "microsoft-ds",
+                "service": "unknown",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "137": {
-                "protocol": "udp",
-                "state": "open",
-                "service": "netbios-ns",
-                "product": "Microsoft Windows netbios-ns",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": "workgroup: FREEDOM"
-            }
-        },
-        "mac_address": "58:82:A8:97:36:5B",
-        "vendor": "Microsoft",
-        "hostname": "FDS-E1210230301.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
-        "snmp_info": null
-    },
-    "172.16.7.38": {
-        "ports": {
-            "135": {
+            "49163": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
+                "service": "unknown",
+                "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
+                "os_type": null,
+                "extra_info": null
+            },
+            "62078": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "iphone-sync",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
                 "extra_info": null
             }
         },
-        "mac_address": "80:B6:55:0E:27:ED",
+        "mac_address": "56:32:5F:F5:0C:63",
         "vendor": null,
-        "hostname": "FDS-E1213230424.freedom.local"
-    },
-    "172.16.7.39": {
-        "ports": null,
-        "mac_address": null,
-        "vendor": null,
-        "hostname": "Hub2SH.freedom.local"
+        "hostname": null
     },
     "172.16.7.40": {
         "ports": {
@@ -2029,13 +2470,13 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "53484": {
+            "54310": {
                 "protocol": "tcp",
                 "state": "open",
                 "service": "companion-link",
                 "extra_info": [
                     "rpMac=0",
-                    "rpHN=f05890644a5f"
+                    "rpHN=70c694e05814"
                 ]
             }
         },
@@ -2043,22 +2484,84 @@
         "vendor": null,
         "hostname": null
     },
-    "172.16.7.46": {
+    "172.16.7.42": {
         "ports": {
-            "135": {
+            "5000": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
+                "service": "rtsp",
+                "product": "AirTunes rtspd",
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
+                "os_type": null,
+                "extra_info": null
+            },
+            "7000": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "afs3-fileserver",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": "SF-Port7000-TCP:V=7.80%I=2%D=7/11%Time=64AD1EE8%P=x86_64-pc-linux-gnu%r(GetRequest,47,\"HTTP/1\\.1\\x20403\\x20Forbidden\\r\\nContent-Length:\\x200\\r\\nServer:\\x20AirTunes/690\\.7\\.1\\r\\n\\r\\n\");",
+                "os_type": null,
+                "extra_info": [
+                    "act=2",
+                    "acl=0",
+                    "deviceid=1C:57:DC:57:0B:B2",
+                    "fex=1c9/St5PFbgmIQQ",
+                    "features=0x4A7FCFD5,0xB8154FDE",
+                    "rsf=0x8",
+                    "flags=0x204",
+                    "gid=4767151F-85D2-4495-A579-29D655735644",
+                    "igl=0",
+                    "gcgl=0",
+                    "model=Mac14,2",
+                    "at=4",
+                    "protovers=1.1",
+                    "pi=3366fc7c-eaf7-4724-b38e-8edf29eb95d6"
+                ]
+            }
+        },
+        "mac_address": "1C:57:DC:57:0B:B2",
+        "vendor": null,
+        "hostname": "panziweis-Air.freedom.local"
+    },
+    "172.16.7.47": {
+        "ports": {
+            "49152": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49154": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "62078": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "tcpwrapped",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
                 "extra_info": null
             }
         },
-        "mac_address": "C8:34:8E:19:84:8C",
-        "vendor": "Intel Corporate",
-        "hostname": "FDS-TerryCheng.freedom.local"
+        "mac_address": "46:5E:3B:14:B2:61",
+        "vendor": null,
+        "hostname": null
     },
     "172.16.7.5": {
         "ports": {
@@ -2102,47 +2605,27 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "192": {
+            "53": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "osu-nms",
+                "service": "domain",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "434": {
+            "389": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "mobileip-agent",
+                "service": "ldap",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "1026": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "win-rpc",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "3389": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "ms-wbt-server",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "16948": {
+            "789": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2152,7 +2635,27 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "17236": {
+            "1036": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "nsstp",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "9000": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "cslistener",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2162,7 +2665,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "18980": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2172,7 +2685,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19600": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2182,7 +2695,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20389": {
+            "20445": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2192,7 +2705,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "21131": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2202,7 +2715,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "21625": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2212,7 +2725,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42056": {
+            "32769": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "filenet-rpc",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "33744": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2222,7 +2745,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "43514": {
+            "40019": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2232,7 +2755,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "48489": {
+            "43370": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2242,7 +2765,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "48761": {
+            "43967": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2252,7 +2775,47 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "49165": {
+            "44160": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "44508": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58002": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2266,11 +2829,9 @@
         "mac_address": "00:15:65:E1:61:B2",
         "vendor": "Xiamen Yealink Network Technology",
         "hostname": "SIP-T21P_E2.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
-    "172.16.7.52": {
+    "172.16.7.50": {
         "ports": {
             "135": {
                 "protocol": "tcp",
@@ -2283,48 +2844,12 @@
                 "extra_info": null
             }
         },
-        "mac_address": "64:79:F0:B7:B0:D8",
-        "vendor": null,
-        "hostname": "FDS-E1159230130.freedom.local"
+        "mac_address": "58:82:A8:96:91:9F",
+        "vendor": "Microsoft",
+        "hostname": "FDS-E1159230130.freedom.local",
+        "snmp_info": null
     },
-    "172.16.7.53": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "139": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "netbios-ssn",
-                "product": "Microsoft Windows netbios-ssn",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "445": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "microsoft-ds",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            }
-        },
-        "mac_address": "18:FF:0F:32:93:F2",
-        "vendor": "Intel Corporate",
-        "hostname": "FDS-Yi-Chia.freedom.local"
-    },
-    "172.16.7.54": {
+    "172.16.7.51": {
         "ports": {
             "135": {
                 "protocol": "tcp",
@@ -2337,11 +2862,9 @@
                 "extra_info": null
             }
         },
-        "mac_address": "98:FC:84:EC:5F:05",
-        "vendor": "Ieee Registration Authority",
-        "hostname": "FDS-Ria.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
+        "mac_address": "58:82:A8:9B:7E:85",
+        "vendor": "Microsoft",
+        "hostname": "FDS-E1201221205.freedom.local",
         "snmp_info": null
     },
     "172.16.7.55": {
@@ -2430,8 +2953,6 @@
         "mac_address": "38:14:28:C0:4C:3A",
         "vendor": null,
         "hostname": "FDS-AlfredL.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.58": {
@@ -2445,20 +2966,6 @@
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
-            },
-            "57794": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "rdlink",
-                "extra_info": null
-            },
-            "58041": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "companion-link",
-                "extra_info": [
-                    "rpMac=0"
-                ]
             }
         },
         "mac_address": "7A:9D:25:16:8D:6C",
@@ -2511,9 +3018,34 @@
         "mac_address": "38:14:28:C7:0D:DA",
         "vendor": null,
         "hostname": "FDS-Gary.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
+    },
+    "172.16.7.6": {
+        "ports": {
+            "49152": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "62078": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "tcpwrapped",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            }
+        },
+        "mac_address": "02:70:FE:05:7C:B2",
+        "vendor": null,
+        "hostname": null
     },
     "172.16.7.60": {
         "ports": {
@@ -2537,57 +3069,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42": {
+            "22": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "nameserver",
+                "service": "ssh",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "434": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "mobileip-agent",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "1046": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "wfremotertm",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "3130": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "squid-ipc",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "3389": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "ms-wbt-server",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "18980": {
+            "1027": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2597,7 +3089,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19130": {
+            "9200": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "wap-wsp",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "16938": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2607,7 +3109,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19663": {
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2617,7 +3119,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20389": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2627,7 +3139,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20464": {
+            "19605": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2637,7 +3149,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2647,7 +3159,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "25931": {
+            "20120": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2657,7 +3169,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "20366": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2667,7 +3179,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42056": {
+            "20423": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2677,7 +3189,87 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "52503": {
+            "31189": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "33744": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "46532": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49213": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "56141": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58002": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "64513": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2701,8 +3293,24 @@
         "mac_address": "04:18:D6:A1:A7:04",
         "vendor": "Ubiquiti Networks",
         "hostname": "uvp-0418d6a1a704.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
+        "snmp_info": null
+    },
+    "172.16.7.63": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            }
+        },
+        "mac_address": "38:14:28:C0:8A:0D",
+        "vendor": null,
+        "hostname": "FDS-E1216230703.freedom.local",
         "snmp_info": null
     },
     "172.16.7.64": {
@@ -2721,28 +3329,6 @@
         "mac_address": "58:82:A8:97:2F:D9",
         "vendor": "Microsoft",
         "hostname": "FDS-E1212230413.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
-        "snmp_info": null
-    },
-    "172.16.7.69": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            }
-        },
-        "mac_address": "94:9A:A9:25:FD:75",
-        "vendor": "Microsoft",
-        "hostname": "FDS-E1206230201.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.7": {
@@ -2777,19 +3363,37 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "49215": {
+            "49519": {
                 "protocol": "tcp",
                 "state": "open",
                 "service": "companion-link",
                 "extra_info": [
                     "rpMac=0",
-                    "rpHN=d2eb3ebebc13"
+                    "rpHN=37b810cfa68b"
                 ]
             }
         },
         "mac_address": "7A:79:44:62:DF:57",
         "vendor": null,
         "hostname": null
+    },
+    "172.16.7.70": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            }
+        },
+        "mac_address": "58:82:A8:94:B6:B2",
+        "vendor": "Microsoft",
+        "hostname": "FDS-P1061230201.freedom.local",
+        "snmp_info": null
     },
     "172.16.7.71": {
         "ports": {
@@ -2894,8 +3498,6 @@
         "mac_address": "58:82:A8:97:13:39",
         "vendor": "Microsoft",
         "hostname": "FDS-JaneHu.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.73": {
@@ -2930,47 +3532,27 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42": {
+            "22": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "nameserver",
+                "service": "ssh",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "69": {
+            "158": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "tftp",
+                "service": "pcmail-srv",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "434": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "mobileip-agent",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "2049": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "nfs",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "18980": {
+            "814": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2980,7 +3562,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19022": {
+            "1020": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -2990,7 +3572,37 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19130": {
+            "1065": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "syscomlan",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "5351": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "nat-pmp",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "5355": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "llmnr",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "16938": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3000,7 +3612,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19140": {
+            "17468": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3010,7 +3622,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20129": {
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3020,7 +3632,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20389": {
+            "19075": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3030,7 +3642,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21186": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3040,7 +3662,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3050,7 +3672,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "20120": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3060,7 +3682,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42056": {
+            "33744": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3070,7 +3692,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "45722": {
+            "34578": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3080,7 +3702,47 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "49172": {
+            "45247": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "51972": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "64080": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3094,36 +3756,24 @@
         "mac_address": "80:5E:C0:4B:1F:50",
         "vendor": "Yealink(xiamen) Network Technology",
         "hostname": "SIP-T21P_E2.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
-    "172.16.7.77": {
+    "172.16.7.74": {
         "ports": {
-            "135": {
+            "49152": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
+                "service": "unknown",
+                "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
+                "os_type": null,
                 "extra_info": null
             },
-            "139": {
+            "49155": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "netbios-ssn",
-                "product": "Microsoft Windows netbios-ssn",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "445": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "microsoft-ds",
+                "service": "unknown",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
@@ -3131,26 +3781,48 @@
                 "extra_info": null
             }
         },
-        "mac_address": "60:A5:E2:59:98:B8",
+        "mac_address": "B0:E5:F9:A8:31:F0",
         "vendor": null,
-        "hostname": "FDS-E1130221214.freedom.local"
+        "hostname": "IpadPro2021.freedom.local"
     },
-    "172.16.7.8": {
+    "172.16.7.78": {
         "ports": {
-            "135": {
+            "49152": {
                 "protocol": "tcp",
                 "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
+                "service": "unknown",
+                "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
+                "os_type": null,
+                "extra_info": null
+            },
+            "62078": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "tcpwrapped",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49201": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "rdlink",
                 "extra_info": null
             }
         },
-        "mac_address": "C8:34:8E:49:1C:AA",
-        "vendor": "Intel Corporate",
-        "hostname": "FDS-JudyHou.freedom.local"
+        "mac_address": "8E:AF:0C:76:76:F8",
+        "vendor": null,
+        "hostname": null
+    },
+    "172.16.7.81": {
+        "ports": null,
+        "mac_address": null,
+        "vendor": null,
+        "hostname": "FDS-EddyLin.freedom.local"
     },
     "172.16.7.82": {
         "ports": {
@@ -3168,8 +3840,6 @@
         "mac_address": "58:82:A8:95:AD:69",
         "vendor": "Microsoft",
         "hostname": "FDS-E1035221213.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.83": {
@@ -3209,44 +3879,7 @@
         "vendor": null,
         "hostname": "FDS-P1040230201.freedom.local"
     },
-    "172.16.7.84": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "139": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "netbios-ssn",
-                "product": "Microsoft Windows netbios-ssn",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "445": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "microsoft-ds",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            }
-        },
-        "mac_address": "C8:34:8E:4F:51:F9",
-        "vendor": "Intel Corporate",
-        "hostname": "FDS-GloriaYang.freedom.local"
-    },
-    "172.16.7.85": {
+    "172.16.7.89": {
         "ports": {
             "135": {
                 "protocol": "tcp",
@@ -3259,69 +3892,10 @@
                 "extra_info": null
             }
         },
-        "mac_address": "94:9A:A9:20:EB:E1",
+        "mac_address": "58:82:A8:9A:C7:1E",
         "vendor": "Microsoft",
-        "hostname": "FDS-TerryCheng.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
+        "hostname": "FDS-E1213230424.freedom.local",
         "snmp_info": null
-    },
-    "172.16.7.87": {
-        "ports": {
-            "22": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "ssh",
-                "product": "OpenSSH",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Linux",
-                "extra_info": "Ubuntu Linux; protocol 2.0"
-            },
-            "631": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "ipp",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "5353": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "zeroconf",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            }
-        },
-        "mac_address": null,
-        "vendor": null,
-        "hostname": "fdsa.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
-        "snmp_info": null
-    },
-    "172.16.7.9": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            }
-        },
-        "mac_address": "D0:3C:1F:1A:82:22",
-        "vendor": null,
-        "hostname": "FDS-E1212230413.freedom.local"
     },
     "172.16.7.90": {
         "ports": {
@@ -3359,38 +3933,16 @@
                 "protocol": "udp",
                 "state": "open",
                 "service": "netbios-ns",
-                "product": "Samba nmbd netbios-ns",
+                "product": "Microsoft Windows netbios-ssn",
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": "workgroup: D"
+                "os_type": "Windows",
+                "extra_info": "workgroup: FREEDOM"
             }
         },
         "mac_address": "B0:4F:13:1E:95:0E",
         "vendor": null,
         "hostname": "FDS-Yi-Chia.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
-        "snmp_info": null
-    },
-    "172.16.7.91": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            }
-        },
-        "mac_address": "BC:83:85:F7:E7:EA",
-        "vendor": "Microsoft",
-        "hostname": "FDS-E12041207.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
     "172.16.7.92": {
@@ -3409,46 +3961,7 @@
         "mac_address": "C4:9D:ED:EB:5B:77",
         "vendor": "Microsoft",
         "hostname": "FDS-E1211230327.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
-    },
-    "172.16.7.93": {
-        "ports": {
-            "135": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "msrpc",
-                "product": "Microsoft Windows RPC",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "139": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "netbios-ssn",
-                "product": "Microsoft Windows netbios-ssn",
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": null
-            },
-            "445": {
-                "protocol": "tcp",
-                "state": "open",
-                "service": "microsoft-ds",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            }
-        },
-        "mac_address": "28:11:A8:C9:6A:71",
-        "vendor": null,
-        "hostname": "FDS-Gary.freedom.local"
     },
     "172.16.7.94": {
         "ports": {
@@ -3496,9 +4009,24 @@
         "mac_address": "B0:4F:13:E0:27:8C",
         "vendor": null,
         "hostname": "FDS-GloriaYang.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
+    },
+    "172.16.7.95": {
+        "ports": {
+            "135": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "msrpc",
+                "product": "Microsoft Windows RPC",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": "Windows",
+                "extra_info": null
+            }
+        },
+        "mac_address": "5C:87:9C:76:9D:BE",
+        "vendor": "Intel Corporate",
+        "hostname": "FDS-P1061230201.freedom.local"
     },
     "172.16.7.96": {
         "ports": {
@@ -3546,19 +4074,110 @@
                 "protocol": "udp",
                 "state": "open",
                 "service": "netbios-ns",
-                "product": "Microsoft Windows netbios-ns",
+                "product": "Microsoft Windows or Samba netbios-ns",
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
+                "os_type": null,
                 "extra_info": "workgroup: FREEDOM"
             }
         },
         "mac_address": "58:82:A8:9B:25:87",
         "vendor": "Microsoft",
         "hostname": "FDS-ChenWendy.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
+    },
+    "172.16.7.97": {
+        "ports": {
+            "79": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "finger",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "1096": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "cnrprotocol",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "1111": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "lmsocialserver",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "2042": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "isis",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "2049": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "nfs",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "9091": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "xmltec-xmlmail",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "9101": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "jetdirect",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "55555": {
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "53348": {
+                "protocol": "tcp",
+                "state": "open",
+                "service": "companion-link",
+                "extra_info": null
+            }
+        },
+        "mac_address": "BC:D0:74:1B:66:EC",
+        "vendor": null,
+        "hostname": "Edwards-MBP.freedom.local"
     },
     "172.16.7.98": {
         "ports": {
@@ -3599,47 +4218,37 @@
                 "os_type": null,
                 "extra_info": "(Ubuntu)"
             },
-            "434": {
+            "192": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "mobileip-agent",
+                "service": "osu-nms",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "1024": {
+            "1346": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "unknown",
+                "service": "alta-ana-lm",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "1719": {
+            "6002": {
                 "protocol": "udp",
                 "state": "closed",
-                "service": "h323gatestat",
+                "service": "X11:2",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "17359": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "18980": {
+            "9877": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3649,7 +4258,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19687": {
+            "16573": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3659,7 +4268,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20389": {
+            "16816": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3669,7 +4278,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "17939": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3679,17 +4288,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "32769": {
-                "protocol": "udp",
-                "state": "closed",
-                "service": "filenet-rpc",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "34422": {
+            "18987": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3699,7 +4298,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "36669": {
+            "19315": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "keyshadow",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "19489": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3709,7 +4318,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "40805": {
+            "19695": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3719,7 +4328,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "41967": {
+            "19707": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3729,7 +4338,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "42056": {
+            "19719": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3739,7 +4348,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "43514": {
+            "20817": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3749,7 +4358,17 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "47772": {
+            "21800": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "tvpm",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "28122": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3759,7 +4378,57 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "49193": {
+            "33744": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "48455": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "49171": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50497": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "50919": {
+                "protocol": "udp",
+                "state": "closed",
+                "service": "unknown",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            },
+            "58797": {
                 "protocol": "udp",
                 "state": "closed",
                 "service": "unknown",
@@ -3773,20 +4442,18 @@
         "mac_address": "54:B2:03:0A:09:0D",
         "vendor": "Pegatron",
         "hostname": "danchao-NUC8i7HVK.freedom.local",
-        "dhcp_server": null,
-        "router_ip": null,
         "snmp_info": null
     },
+    "dhcp_server": "172.16.6.16",
+    "router_ip": "172.16.7.1",
     "dns_cache": {
         "172.16.6.16": [
-            "163.com",
             "2ksports.com",
             "2miners.com",
             "360safe.com",
             "abtasty.com",
             "accountkit.com",
             "accuweather.com",
-            "acrobat.com",
             "acronis.com",
             "acsechocaptiveportal.com",
             "activision.com",
@@ -3795,19 +4462,16 @@
             "addthis.com",
             "addtoany.com",
             "adguard.com",
-            "adjust.com",
             "adlightning.com",
             "admanmedia.com",
             "adobelogin.com",
             "adotmob.com",
-            "adroll.com",
-            "adrta.com",
             "adskeeper.com",
-            "adsmoloco.com",
             "adswizz.com",
             "adtelligent.com",
             "adthrive.com",
             "adtilt.com",
+            "advertising.com",
             "affirm.com",
             "ahcdn.com",
             "aimtell.com",
@@ -3815,6 +4479,7 @@
             "akamai.com",
             "alibaba.com",
             "alibabausercontent.com",
+            "alicdn.com",
             "aliexpress.com",
             "alipay.com",
             "aliyun.com",
@@ -3827,15 +4492,16 @@
             "americanexpress.com",
             "amplitude.com",
             "android.com",
+            "aniview.com",
             "anker-in.com",
             "anyclip.com",
+            "aol.com",
             "app-measurement.com",
             "appboy.com",
             "apple-cloudkit.com",
-            "applovin.com",
+            "apple.com",
             "applvn.com",
             "appnext.com",
-            "appspot.com",
             "apptentive.com",
             "aptrinsic.com",
             "arkoselabs.com",
@@ -3853,10 +4519,9 @@
             "bbc.com",
             "belkin.com",
             "bestbuy.com",
-            "betweendigital.com",
+            "betrad.com",
             "bfmio.com",
             "bidtheatre.com",
-            "bilibili.com",
             "binance.com",
             "bitdefender.com",
             "bitmoji.com",
@@ -3878,9 +4543,6 @@
             "braze.com",
             "brightcloud.com",
             "brightcove.com",
-            "browser-intake-datadoghq.com",
-            "bstatic.com",
-            "bttrack.com",
             "bugsnag.com",
             "buzzoola.com",
             "bytedance.com",
@@ -3889,16 +4551,15 @@
             "capitalone.com",
             "capitaloneshopping.com",
             "carriersignal.info",
-            "cdngslb.com",
             "cdnwidget.com",
             "cedexis-test.com",
-            "cedexis.com",
             "celtra.com",
             "chartbeat.com",
             "chartboost.com",
             "chase.com",
             "chaturbate.com",
             "checkpoint.com",
+            "cisco.com",
             "citi.com",
             "citrix.com",
             "clashofclans.com",
@@ -3908,8 +4569,8 @@
             "clickagy.com",
             "clickup.com",
             "cloud.com",
-            "cloudflare-dns.com",
             "cloudflareclient.com",
+            "cloudflareinsights.com",
             "cloudinary.com",
             "cnbc.com",
             "cnn.com",
@@ -3918,6 +4579,7 @@
             "coloros.com",
             "colossusssp.com",
             "comcast.com",
+            "connatix.com",
             "constantcontact.com",
             "control4.com",
             "conviva.com",
@@ -3928,12 +4590,12 @@
             "cpmstar.com",
             "cquotient.com",
             "crashlytics.com",
+            "crazyegg.com",
             "createjs.com",
             "creativecdn.com",
             "crunchyroll.com",
             "ctmail.com",
             "cxense.com",
-            "dailymotion.com",
             "dashlane.com",
             "datadoghq.com",
             "deepl.com",
@@ -3942,14 +4604,12 @@
             "demandbase.com",
             "desync.com",
             "didiglobal.com",
+            "digitaloceanspaces.com",
             "discord.com",
             "disneyplus.com",
-            "disqus.com",
-            "dns.google",
             "docker.com",
             "doordash.com",
             "dotomi.com",
-            "doubleverify.com",
             "drift.com",
             "dropboxstatic.com",
             "dtscout.com",
@@ -3963,7 +4623,6 @@
             "ebay.com",
             "ecobee.com",
             "ekatox.com",
-            "elasticbeanstalk.com",
             "emxdgt.com",
             "ensighten.com",
             "epicgames.com",
@@ -3975,20 +4634,20 @@
             "etahub.com",
             "etoote.com",
             "etsy.com",
-            "eu-1-id5-sync.com",
             "eufylife.com",
             "evergage.com",
             "evidon.com",
             "example.com",
             "example.org",
+            "exelator.com",
             "exoclick.com",
             "expedia.com",
             "ezvizlife.com",
             "facebook-hardware.com",
             "facebook.com",
             "fandom.com",
+            "fast.com",
             "fastly-insights.com",
-            "fb.com",
             "fedex.com",
             "feednews.com",
             "fidelity.com",
@@ -4003,10 +4662,10 @@
             "flipboard.com",
             "flixcdn.com",
             "flurry.com",
+            "fontawesome.com",
             "foresee.com",
             "forgeofempires.com",
             "forter.com",
-            "forticloud.com",
             "foxnews.com",
             "freefiremobile.com",
             "freshchat.com",
@@ -4023,10 +4682,11 @@
             "gifshow.com",
             "gigya.com",
             "giphy.com",
+            "github.io",
             "gitlab.com",
             "glance-cdn.com",
             "glip.com",
-            "gmail.com",
+            "globo.com",
             "go.com",
             "gog.com",
             "google.com",
@@ -4034,6 +4694,7 @@
             "googleoptimize.com",
             "gotinder.com",
             "grafana.com",
+            "gravatar.com",
             "grindr.com",
             "hbo.com",
             "hcaptcha.com",
@@ -4053,11 +4714,18 @@
             "homedepot.com",
             "honeywell.com",
             "hotels.com",
+            "hoyoverse.com",
+            "hpeprint.com",
             "huawei.com",
+            "hubapi.com",
+            "hubspot.com",
             "hulu.com",
             "hungryroot.com",
             "hzmklvdieo.com",
             "icanhazip.com",
+            "icloud.com",
+            "id5-sync.com",
+            "identrust.com",
             "iesnare.com",
             "iheart.com",
             "imdb.com",
@@ -4072,8 +4740,8 @@
             "instructure.com",
             "insurads.com",
             "int08h.com",
+            "intel.com",
             "intentiq.com",
-            "intercomcdn.com",
             "intuit.com",
             "iotcplatform.com",
             "ip-api.com",
@@ -4092,15 +4760,14 @@
             "joinhoney.com",
             "js7k.com",
             "juicyads.com",
-            "justpremium.com",
             "jwplatform.com",
             "jwplayer.com",
             "jwpltx.com",
+            "jwpsrv.com",
             "kakao.com",
-            "kampyle.com",
-            "kargo.com",
             "kaspersky-labs.com",
             "kaspersky.com",
+            "kgslb.com",
             "king.com",
             "klaviyo.com",
             "kochava.com",
@@ -4109,6 +4776,7 @@
             "kueezrtb.com",
             "kwai.com",
             "kwimgs.com",
+            "kxcdn.com",
             "lalapush.com",
             "larkplayerapp.com",
             "lastline.com",
@@ -4116,6 +4784,7 @@
             "launchdarkly.com",
             "leiniao.com",
             "lenovo.com",
+            "lenovomm.com",
             "lgappstv.com",
             "lge.com",
             "lgsmartad.com",
@@ -4123,7 +4792,6 @@
             "life360.com",
             "lightboxcdn.com",
             "list-manage.com",
-            "live.com",
             "livechatinc.com",
             "liveintent.com",
             "lngtd.com",
@@ -4135,19 +4803,14 @@
             "ltwebstatic.com",
             "lync.com",
             "macys.com",
-            "mailchimp.com",
             "malwarebytes.com",
             "mapbox.com",
             "market-trk.com",
-            "mathtag.com",
             "max.com",
             "mcusercontent.com",
             "medallia.com",
-            "media6degrees.com",
             "mediarithmics.com",
             "mediatek.com",
-            "mediavine.com",
-            "medium.com",
             "meethue.com",
             "meituan.com",
             "meraki.com",
@@ -4155,18 +4818,16 @@
             "mercadopago.com",
             "messenger.com",
             "mfadsrvr.com",
-            "mgid.com",
-            "mi.com",
             "micpn.com",
             "mikrotik.com",
             "mintegral.com",
             "miro.com",
             "miui.com",
             "miwifi.com",
-            "mixpanel.com",
             "ml314.com",
             "mlb.com",
             "mmcdn.com",
+            "mmechocaptiveportal.com",
             "mob.com",
             "moengage.com",
             "mojang.com",
@@ -4185,7 +4846,6 @@
             "nba.com",
             "nbcnews.com",
             "nest.com",
-            "netease.com",
             "netgear.com",
             "newyorker.com",
             "nexon.com",
@@ -4203,12 +4863,12 @@
             "nwsvr1.com",
             "nyt.com",
             "nytimes.com",
+            "oath.com",
             "oculus.com",
             "ojsbdjn.com",
             "okta.com",
             "olo.com",
             "omnatuor.com",
-            "onaudience.com",
             "onedrive.com",
             "onefootball.com",
             "onesignal.com",
@@ -4228,16 +4888,19 @@
             "origin.com",
             "overwolf.com",
             "palmplaystore.com",
+            "paloaltonetworks.com",
             "pandasecurity.com",
             "pandora.com",
             "paramountplus.com",
             "parastorage.com",
+            "pardot.com",
             "parsely.com",
             "particlenews.com",
             "paypal.com",
             "paypalobjects.com",
             "peacocktv.com",
             "permutive.com",
+            "pghub.io",
             "philips.com",
             "picsart.com",
             "pinimg.com",
@@ -4245,16 +4908,14 @@
             "playstation.com",
             "playtika.com",
             "pndsn.com",
+            "polyfill.io",
             "pornhub.com",
             "primevideo.com",
             "publpush.com",
-            "pubmatic.com",
             "pubnub.com",
-            "pusher.com",
             "pushimg.com",
             "pushnami.com",
             "qcloud.com",
-            "qnap.com",
             "quantcast.com",
             "quantummetric.com",
             "qvdt3feo.com",
@@ -4262,7 +4923,6 @@
             "rainbird.com",
             "rakuten.com",
             "rapid7.com",
-            "rayjump.com",
             "razersynapse.com",
             "rbx.com",
             "reasonsecurity.com",
@@ -4294,6 +4954,7 @@
             "runescape.com",
             "s-onetag.com",
             "saasexch.com",
+            "salesforce.com",
             "salesforceliveagent.com",
             "samsclub.com",
             "samsungads.com",
@@ -4314,11 +4975,8 @@
             "service-now.com",
             "sgmbocast.com",
             "shalltry.com",
-            "sharepoint.com",
-            "sharethrough.com",
             "shein.com",
-            "shopee.com",
-            "shopeemobile.com",
+            "shopify.com",
             "shopifycloud.com",
             "shutterfly.com",
             "siftscience.com",
@@ -4337,49 +4995,44 @@
             "sndcdn.com",
             "snigelweb.com",
             "snssdk.com",
-            "sohu.com",
             "sonos.com",
             "sophos.com",
             "soundcloud.com",
             "spankbang.com",
             "spectrum.com",
-            "splunkcloud.com",
             "sportradar.com",
             "sportradarserving.com",
-            "spotxchange.com",
             "springserve.com",
             "sprinklr.com",
             "squarespace.com",
             "squareup.com",
+            "stackadapt.com",
             "starbucks.com",
             "starfieldtech.com",
             "starlink.com",
             "starmakerstudios.com",
             "steamcommunity.com",
             "steampowered.com",
-            "streamtheworld.com",
             "stripchat.com",
             "stripe.com",
             "stripst.com",
             "supercell.com",
-            "supersonicads.com",
             "surfshark.com",
             "surfsharkstatus.com",
             "swiftkey.com",
             "swrve.com",
             "symantec.com",
-            "synology.com",
             "system-monitor.com",
             "t-mobile.com",
             "tabletcaptiveportal.com",
             "tailscale.com",
             "tailtarget.com",
             "taobao.com",
-            "tapad.com",
             "tapjoy.com",
             "tapjoyads.com",
             "target.com",
             "tealiumiq.com",
+            "teamviewer.com",
             "temu.com",
             "tenable.com",
             "tencent.com",
@@ -4393,6 +5046,7 @@
             "ticketmaster.com",
             "tidal.com",
             "tidaltv.com",
+            "tiktok.com",
             "tiktokv.com",
             "time.com",
             "tinypass.com",
@@ -4404,11 +5058,10 @@
             "trafficjunky.com",
             "trello.com",
             "tremorhub.com",
-            "tribalfusion.com",
+            "trendmicro.com",
             "tripadvisor.com",
             "truecaller.com",
             "trustarc.com",
-            "truste.com",
             "trustpilot.com",
             "tsyndicate.com",
             "ttproxy.com",
@@ -4425,9 +5078,7 @@
             "uisp.com",
             "umeng.com",
             "unifi-ai.com",
-            "unity3d.com",
             "unpkg.com",
-            "unrulymedia.com",
             "unsplash.com",
             "uplynk.com",
             "urban-vpn.com",
@@ -4448,10 +5099,10 @@
             "videoplayerhub.com",
             "vidoomy.com",
             "viglink.com",
+            "vimeo.com",
             "vimeocdn.com",
             "vivoglobal.com",
             "vk.com",
-            "vungle.com",
             "vzmessages.com",
             "walkme.com",
             "walmart.com",
@@ -4464,20 +5115,20 @@
             "weather.com",
             "weathercn.com",
             "webengage.com",
-            "webex.com",
             "webpkgcache.com",
             "webrootanywhere.com",
             "websense.com",
             "wellsfargo.com",
             "wetransfer.com",
             "wistia.com",
+            "withgoogle.com",
             "wix.com",
             "woolypooly.com",
             "worldtimeserver.com",
             "wps.com",
             "wshareit.com",
-            "wunderground.com",
             "wyzecam.com",
+            "wzrkt.com",
             "xboxlive.com",
             "xfinity.com",
             "xg4ken.com",
@@ -4485,7 +5136,7 @@
             "xhamsterlive.com",
             "xhcdn.com",
             "xhscdn.com",
-            "xiaomi.com",
+            "xiaohongshu.com",
             "xiaoyi.com",
             "xiti.com",
             "xnxx-cdn.com",
@@ -4497,11 +5148,11 @@
             "yandex.com",
             "yelp.com",
             "yieldmo.com",
-            "yimg.com",
             "yotpo.com",
             "youku.com",
             "youngjoygame.com",
             "youtube-nocookie.com",
+            "youtube.com",
             "youversionapi.com",
             "ys7.com",
             "yximgs.com",
@@ -4516,19 +5167,18 @@
             "zynga.com"
         ],
         "172.16.6.18": [
-            "app-measurement.com",
+            "apple.com",
             "carriersignal.info",
-            "dailymotion.com",
-            "discord.com",
-            "dns.google",
+            "example.com",
             "example.org",
             "facebook.com",
-            "google.com",
+            "github.io",
             "imgur.com",
             "ipv4only.arpa",
-            "live.com",
-            "sharepoint.com",
-            "twitter.com"
+            "pghub.io",
+            "polyfill.io",
+            "twitter.com",
+            "webpkgcache.com"
         ]
     }
 }

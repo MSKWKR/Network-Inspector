@@ -4,10 +4,38 @@
 mkdir log &> /dev/null
 mkdir lists &> /dev/null
 
+
+# Check which network interface is up
+echo "Status: Checking for network interfaces..."
+interface=$(ip a | grep "state UP" | awk {'print $2'} | cut -d ':' -f 1)
+if [ $interface ] 
+then
+	echo "Status: Interface: $interface is up."
+	# Check for dhcp server in network, if true then lease an ip
+	echo "Status: Leasing for IP..."
+	dhcp=$(dhclient -v $interface |& grep DHCPOFFER | awk {'print $5'})
+	if [ $dhcp ]
+	then
+		echo "Status: IP acquired from DHCP server."
+	else
+		dhcp=$(dhclient -v $interface |& grep DHCPACK | awk {'print $5'})
+		if [ $dhcp ]
+		then
+			echo "Status: IP acknowledged by DHCP server."
+		else
+			echo "Warning: Unable to lease ip, DHCP server might be down."
+			exit 1
+		fi
+	fi
+else
+	echo "Warning: No network interface connected."
+	exit 1
+fi
+
 # IP and mask of local machine
-ip=$(ip a | grep -v "NO-CARRIER" | grep -A 4 "BROADCAST" | grep "inet " | awk {'print $2'} | cut -d '/' -f 1)	## grab ip that is connected to internet
+ip=$(ip a | grep $interface | grep "inet " | awk {'print $2'} | cut -d '/' -f 1)	## grab ip that is connected to internet
 mask=$(ip r | grep $ip | awk '{print $1}')	## grab network mask
-#mask="172.16.6.0/24"
+
 # Responsive IPs and MAC Addresses
 echo "Status: Initiating ARP scan..."
 arp-scan -q -x $mask | awk '{print $1}' | sort -u > ./lists/ip_list.txt	## arp-scan to pull ipv4 and mac from cache and store it in ip_list
@@ -29,7 +57,7 @@ snmp_scan(){
 # DHCP
 dhcp_scan(){
 	echo "Status: Performing DHCP scan..."
-	nmap -Pn -sU -p67 -n --script=dhcp-discover -iL ./lists/udp_list.txt --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
+	nmap -Pn -sU -p67 -n --script=dhcp-discover $dhcp --min-parallelism 10000 -T5 --disable-arp-ping -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
 	echo "Status: DHCP scan done."
 	dns_scan &
 }

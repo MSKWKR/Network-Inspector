@@ -2,6 +2,7 @@
 
 from bs4 import BeautifulSoup
 import json
+from datetime import datetime
 
 # Check if file exists
 def file_checker(file_name: str, file_type:str) -> None:
@@ -190,8 +191,6 @@ class Parser:
                     # Grab the installation date of the software
                     software_dict[software.find('elem', {'key': 'name'}).string.split(',')[1]].update({'install_date': software.find('elem', {'key': 'install_date'}).string})
                 return software_dict
-
-
         else:
             return None
 
@@ -345,40 +344,46 @@ class InvManager:
             dns_dict = parse.find_dns(parse.data, "service")
             for ip in dns_dict:
                 if ip in self.net_inv:
-                    for port in dns_dict[ip]:
-                        if port in self.net_inv[ip]['ports']:
-                            state = self.net_inv[ip]['ports'][port]['state']
-                            # If port is found in dns services, then the port is open
-                            if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
-                                 self.net_inv[ip]['ports'][port]['state'] = "open"
-                            # If service name is found in dns services then update net_inv
-                            if self.net_inv[ip]['ports'][port]['service'] == None:
-                                self.net_inv[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
-                            if self.net_inv[ip]['ports'][port]['extra_info'] == None:
-                                if dns_dict[ip][port]["extra_info"]:
-                                    self.net_inv[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
-                        # If the port is not found in net_inv, then create a dictionary for the port and format it to have basic information
-                        else:
-                            self.net_inv[ip]['ports'].update({port: dns_dict[ip][port]})
+                        for port in dns_dict[ip]:
+                            if self.net_inv[ip]['ports']:
+                                if port in self.net_inv[ip]['ports']:
+                                    state = self.net_inv[ip]['ports'][port]['state']
+                                    # If port is found in dns services, then the port is open
+                                    if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
+                                         self.net_inv[ip]['ports'][port]['state'] = "open"
+                                    # If service name is found in dns services then update net_inv
+                                    if self.net_inv[ip]['ports'][port]['service'] == None:
+                                        self.net_inv[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
+                                    if self.net_inv[ip]['ports'][port]['extra_info'] == None:
+                                        if dns_dict[ip][port]["extra_info"]:
+                                            self.net_inv[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
+                                # If the port is not found in net_inv, then create a dictionary for the port and format it to have basic information
+                                else:
+                                    self.net_inv[ip]['ports'].update({port: dns_dict[ip][port]})
+                            else:
+                                self.net_inv[ip]['ports']= {port: dns_dict[ip][port]}
 
     # Run entire script then export the dictionary into a json file
-    def export(self, file_path: str) -> None:
+    def export(self, file_path: str, folder="") -> None:
         self.basic_parser()
         self.port_parser()
         self.dhcp_parser()
         self.snmp_parser()
         self.dns_parser()
-        with open(file_path, "w") as file:
-            json.dump(self.net_inv, file, indent=4)
-        print("JSON file created successfully.")
-
-        
-        
+        if folder:
+            with open(folder+"/"+file_path+".json", "w") as file:
+                json.dump(self.net_inv, file, indent=4)
+        else:
+            with open(file_path+".json", "w") as file:
+                json.dump(self.net_inv, file, indent=4)
+        print("Status: JSON file created successfully.")
 
 
 def main():
     run = InvManager()
-    run.export("sample.json")
+    now = datetime.now()
+    time_of_creation = now.strftime("%Y_%b_%d_%H_%M")
+    run.export(time_of_creation)
     
 
 if __name__ == "__main__":

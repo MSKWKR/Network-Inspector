@@ -361,23 +361,25 @@ class InvManager:
                         else:
                             self.net_inv[ip]['ports'].update({port: dns_dict[ip][port]})
 
-    # Export the dictionary
-    def export(self) -> dict:
-        return self.net_inv
-
-    # Run entire script then export
-    def packaged_export(self) -> dict:
+    # Run entire script then export the dictionary into a json file
+    def export(self, file_path: str) -> None:
         self.basic_parser()
         self.port_parser()
         self.dhcp_parser()
         self.snmp_parser()
         self.dns_parser()
-        return self.export()
+        with open(file_path, "w") as file:
+            json.dump(self.net_inv, file, indent=4)
+        print("JSON file created successfully.")
+
+        
+        
+
 
 def main():
     run = InvManager()
-    output = run.packaged_export()
-    print(json.dumps(output, indent = 4))
+    run.export("sample.json")
+    
 
 if __name__ == "__main__":
     main()

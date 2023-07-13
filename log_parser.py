@@ -1,41 +1,24 @@
 #!usr/bin/env python
 
-"""log_parser.py parses the log files that scanner.sh produced into a JSON file.
+'''log_parser.py parses the log files that scanner.sh produced into a JSON file.'''
 
-Files Needed:
-
-    lists/ip_list.txt
-    log/tcp_log.xml
-    log/udp_log.xml
-    log/snmp_log.xml
-    log/dhcp_log.xml
-    log/dns_log.xml
-
-How To Use: 
-
-    from log_parser.py import InvManager
-    InvManager.export(/PATH/TO/FILE) 
-"""
-
-"""BeautifulSoup is the main tool for parsing the xml files, datetime is used for naming and identifying the JSON files."""
+'''BeautifulSoup is the main tool for parsing the xml files, datetime is used for naming and identifying the JSON files.'''
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 
-"""This class regulates all operations regarding unproccessed files."""
+
 class FileChecker:
-    """Checks whether the file exists or contains information for the script to run."""
+    """
+        Regulates all operations regarding unproccessed files, mainly log files.
+    """
     def __init__(self, file_name: str, file_type: str):
         """
-        if a FileNotFoundError pops up during process then print error message and exit:
-            if the file type is "log":
-                open and read data from the file
-                check data for the word "nmaprun" to ensure file contains info
-                if not then print error message and exit the script
-
-            else if the file type is "list":
-                open and list data from the file
-                if the list is empty then print error message and exit the script
+            Checks whether the file exists or contains information for the script to run.
+            
+            :param file_name: Name of file
+            :param file_type: Log or list
+            :type: str 
         """
         try:
             if file_type == "log":
@@ -59,40 +42,72 @@ class FileChecker:
             print("Error: Missing "+file_name+file_type+" file.")
             exit()
 
-    """This function returns a list of hosts from data."""
     def get_host(self) -> list:
+        """
+            Returns a list of hosts from data.
+
+            :return: A list of string with the host tag
+            :rtype: list
+        """
         return self.data.find_all("host")
 
 
-"""This class recieves data directly from InvManager then process it into the desired format."""
 class Parser:
-    """This function finds address from data based on address type and returns the string."""
+    """
+        Recieves data directly from InvManager then process it into the desired format.
+    """
     def find_address(self, host: str, type: str) -> str | None:
+        """
+            Find address from host based on type and returns the string.
+
+            :param host: The entire host tag string from the xml file
+            :param type: Mac address or ipv4
+            :type: str
+
+            :return: Parsed out address
+            :rtype: str | None
+        """
         if host.find('address', {'addrtype': type}):
             return host.find('address', {'addrtype': type}).get('addr')
         return None
 
-    """This function finds the vendor from data based on mac address and returns the string."""
     def find_vendor(self, host: str) -> str | None:
+        """
+            Finds the vendor from host based on mac address and returns the string.
+
+            :param host: The entire host tag string from the xml file
+            :type: str
+
+            :return: Parsed out vendor
+            :rtype: str | None
+        """
         if host.find('address', {'addrtype': 'mac'}):
             return host.find('address', {'addrtype': 'mac'}).get('vendor')
         return None
 
-    """This function finds the hostname from data and returns the string."""
     def find_host_name(self, host: str) -> str | None:
+        """
+            Finds the hostname from host and returns the string.
+
+            :param host: The entire host tag string from the xml file
+            :type: str
+
+            :return: Parsed out hostname
+            :rtype: str | None
+        """
         if host.find('hostname'):
             return host.find('hostname').get('name')
         return None
-
-    """This function finds ports with discriptions, formats it then returns a list"""
+ 
     def find_ports(self, host: str) -> list | None:
         """
-        if there are information about ports in data:
-            create a list containing all port data: "port_list"
-            create a list of dictionaries which stores properties of each port: "port_info_list"
-            for every port in port_list create a dictionary for each port property and store it in "port_dict"
-                append port_dict into port_info_list
-            return port_info_list
+            Find ports from host, form dictionaries based on important info, return a list of dictionaries.
+        
+            :param host: The entire host tag string from the xml file
+            :type: str
+
+            :return: List of dictionaries whose name are their port number
+            :rtype: list | None
         """
         if host.find_all('port'):
             port_list = host.find_all('port')
@@ -121,41 +136,36 @@ class Parser:
             return port_info_list
         return None
 
-    """This function finds dhcp server ip and router ip from data, then retuns the string."""  
     def find_dhcp(self, host: str, type: str) -> str | None:
+        """
+            Finds dhcp server ip and router ip from host, then retuns the string.
+        
+            :param host: The entire host tag string from the xml file
+            :param type: Dhcp or router
+            :type: str
+
+            :return: Parsed out address
+            :rtype: str | None
+        """ 
         if host.find('script'):
             if type == "dhcp":
                 return host.find('script').find('elem', {'key': 'Server Identifier'}).string
             elif type == "router":
                 return host.find('script').find('elem', {'key': 'Router'}).string
         return None
-
-    """This function finds information on snmp ports based on type, then returns a dictionary.""" 
+    
     def find_snmp(self, host: str, type: str) -> dict | None:
-        """if the nmap script ran properly then proceed"""
+        """
+            Finds information on snmp ports based on type, then returns a dictionary.
+
+            :param host: The entire host tag string from the xml file
+            :param type: snmp-sysdescr, snmp-info, snmp-interfaces, snmp-processes or snmp-win32-software
+            :type: str
+
+            :return: Dictionary of details respective to their type
+            :rtype: dict | None
+        """ 
         if host.find('script', {'id': type}):
-            """
-            if type is snmp-sysdescr:
-                split string for system name and system uptime
-                insert into snmp_dict and return the dictionary
-
-            else if type is snmp-info then find boot cycle and return dictionary
-
-            else if type is snmp-interfaces:
-                create a dictionary to store all interfaces: "interface_dict"
-                store interface details as dictionaries in interface_dict
-                return interface_dict
-
-            else if type is snmp-processes:
-                create dictionary to store all processes: "process_dict"
-                store all properties of the process in process_dict
-                return process_dict 
-
-            else if type is snmp-win32-software:
-                create dictionary to store all software: "software_dict"
-                store all properties of the software in software_dict
-                return software_dict 
-            """
             if type == "snmp-sysdescr":
                 system_name = host.find('script', {'id': 'snmp-sysdescr'}).get('output').split('\n')[0]
                 system_uptime = host.find('script', {'id': 'snmp-sysdescr'}).get('output').split('\n')[1].split('System uptime:')[1].strip()
@@ -169,97 +179,84 @@ class Parser:
                 boot_cycle = host.find('script', {'id': 'snmp-info'}).find('elem', {'key': 'snmpEngineBoots'}).string
                 return {'boot_cycle': boot_cycle}
             
-            # Info from --script=snmp-interfaces
             elif type == "snmp-interfaces":
                 interface_list = list(host.find('script', {'id': 'snmp-interfaces'}).get('output').split("\n"))
-                interface_list = [x for x in interface_list if x]   # Remove empty strings from list
-                device_list = [(interface_list[0].lstrip())]    # Device list stores name of devices/interfaces
-                ''' 
-                Create dictionary for each device/interface.
-                The parameter "len(device_list)-1" indicates the position of the device in device_list is one position lower than the length of device_list.
-                '''
+                interface_list = [x for x in interface_list if x]   
+                device_list = [(interface_list[0].lstrip())]  
+                # The parameter "len(device_list)-1" indicates the position of the device in device_list is one position lower than the length of device_list.
                 interface_dict = {device_list[len(device_list)-1]: {}}
                 for interface in interface_list:
-                    # Ignore the first entry, as it is the name of the device
                     if device_list[len(device_list)-1] in interface:
                         pass
-                    # Grab ipv4 address and network mask of the device
                     elif "IP address" in interface:
                         interface_dict[device_list[len(device_list)-1]].update({'ip': interface.split("IP address:")[1].split("Netmask")[0].strip()})
                         interface_dict[device_list[len(device_list)-1]].update({'mask': interface.split("Netmask:")[1].strip()})
-                    # Grab mac address and vendor of the device
                     elif "MAC address" in interface:
                         interface_dict[device_list[len(device_list)-1]].update({'mac': interface.split("MAC address:")[1].strip().split()[0]})
                         interface_dict[device_list[len(device_list)-1]].update({'vendor': interface.split("MAC address:")[1].strip().split()[1].strip("()")})
-                    # Grab device type and transmission speed of the device    
                     elif "Type" in interface:
                         interface_dict[device_list[len(device_list)-1]].update({'device_type': interface.split("Type:")[1].split("Speed:")[0].strip()})
                         interface_dict[device_list[len(device_list)-1]].update({'device_speed': interface.split("Type:")[1].split("Speed:")[1].lstrip()})
-                    # Grab the status of the device    
                     elif "Status" in interface:
-                        interface_dict[device_list[len(device_list)-1]].update({'device_status': interface.split("Status:")[1].strip()})
-                    # Grab amount of data sent and received by device    
+                        interface_dict[device_list[len(device_list)-1]].update({'device_status': interface.split("Status:")[1].strip()})   
                     elif "Traffic stats" in interface:
                         interface_dict[device_list[len(device_list)-1]].update({'sent': interface.split("Traffic stats:")[1].split("sent")[0].strip()})
                         interface_dict[device_list[len(device_list)-1]].update({'received': interface.split("sent,")[1].split("received")[0].strip()})
                     else:
-                        # If the data type is unrecognized then it might be a new device, add the new device name to device_list
+                        # If the data type is unrecognized then it might be a new device, add the new device name to device_list.
                         device_list.append(interface.lstrip())
                         interface_dict.update({device_list[len(device_list)-1]: {}})
                 return interface_dict
         
-            # Info from --script=snmp-processes
             elif type == "snmp-processes":
                 process_list = host.find('script', {'id': 'snmp-processes'}).find_all('table')
                 process_dict = {}
-                # Create dictionary for every process key/id
                 for process in process_list:
                     process_dict.update({process.get('key'): {}})
-                    # Grab name of the process
                     if process.find('elem', {'key': 'Name'}):
                         process_dict[process.get('key')].update({'name': process.find('elem', {'key': 'Name'}).string})
-                    # Grab path of the process
                     if process.find('elem', {'key': 'Path'}):
                         process_dict[process.get('key')].update({'path': process.find('elem', {'key': 'Path'}).string})
-                    # Grab parameters for the process
                     if process.find('elem', {'key': 'Params'}):
                         process_dict[process.get('key')].update({'parameters': process.find('elem', {'key': 'Params'}).string})
                 return process_dict
             
-            # Info from --script=snmp-win32-software
             elif type == "snmp-win32-software":
                 software_list = host.find('script', {'id': 'snmp-win32-software'}).find_all('table')
                 software_dict = {}
-                # Create dictionary for every software
                 for software in software_list:
-                    # Grab name of software
                     software_dict.update({software.find('elem', {'key': 'name'}).string.split(',')[1]: {}})
-                    # Grab the vendor of the software
                     software_dict[software.find('elem', {'key': 'name'}).string.split(',')[1]].update({'vendor': software.find('elem', {'key': 'name'}).string.split(',')[0]})
-                    # Grab the version of the software
                     software_dict[software.find('elem', {'key': 'name'}).string.split(',')[1]].update({'version': software.find('elem', {'key': 'name'}).string.split(',')[2]})
-                    # Grab the installation date of the software
                     software_dict[software.find('elem', {'key': 'name'}).string.split(',')[1]].update({'install_date': software.find('elem', {'key': 'install_date'}).string})
                 return software_dict
         return None
-
-    """This function finds dns caches and details of services from data then returns a dictionary."""
+    
     def find_dns(self, data: str, type: str) -> dict | None:
-        # Pull cache from -script=dns-cache-snoop.nse
+        """
+            Find dns caches and details of services from data then returns a dictionary.
+
+            :param data: The entire data tag string from the xml file
+            :param type: Service or cache
+            :type: str
+
+            :return: Dictionary of details respective to their type
+            :rtype: dict | None
+        """
         if type == "cache":
             if data.find('script', {'id': 'dns-cache-snoop'}):
                 cache = data.find('script', {'id': 'dns-cache-snoop'}).get('output').split("\n")
-                del cache[0]    # Remove header
+                # Remove header.
+                del cache[0]    
                 return {self.find_address(data, "ipv4"): cache}
 
-        # Using dns service discovery to pull information about services that are usually hidden
         elif type == "service":
             if data.find('prescript'):
                 service_dict = {}
                 extra_info = []
                 service_list = data.find('script', {'id': 'broadcast-dns-service-discovery'}).get('output').strip().split("\n")
-                del service_list[0] # First entry of the output is mdns ip
-                # Parse out port id, protocol and service type
+                # First entry of the output is mdns ip.
+                del service_list[0] 
                 for text in service_list:
                     if "tcp" in text or "udp" in text:
                         port = text.split("/")[0].strip()
@@ -271,14 +268,12 @@ class Parser:
                             pass
                         else:
                             extra_info = None
-                        # Create dictionary for every port with the format similar to find_port()
                         port_dict = {
                             'protocol': protocol,
                             'state': "open",
                             'service': service,
                             'extra_info': extra_info
                         }
-                        # Create dictionary for every ip in service list
                         ip_dict = {port: port_dict}
                         if ip in service_dict:
                             service_dict[ip].update(ip_dict)
@@ -290,15 +285,14 @@ class Parser:
                 return service_dict
         return None
 
-"""This class receives data from FileChecker, sends it to Parser, receives parsed data from Parser, then appends the data to inventory."""
+
 class InvManager:
-    """Create net_inv which is the inventory for all processed data"""
+    """
+        Receives data from FileChecker, sends it to Parser, receives parsed data back from Parser, then appends the parsed data to inventory.
+    """
     def __init__(self):
         """
-        check for the existence of ip_list:
-            create a dictionary for every ip address in ip_list
-            create a dictionary called "ports" in every ip dictionary
-        create an instance for the Parser class
+            Create net_inv which is the inventory for all processed data, create an instance for the Parser class
         """
         check = FileChecker("ip", "list")
         net_inv = {}
@@ -308,13 +302,10 @@ class InvManager:
         self.net_inv = net_inv
         parse = Parser()
         self.parse = parse
-
-    """This function adds hostname, mac address and vendor to inventory."""
+    
     def basic_parser(self) -> None:
         """
-        get a list of hosts from FileChecker
-        for every host check if ip address exists in inventory:
-            if ip exists then search for hostname, mac address, vendor and add them to inventory
+            Adds hostname, mac address and vendor to inventory.
         """
         check = FileChecker("tcp", "log")
         for host in check.get_host():
@@ -323,14 +314,10 @@ class InvManager:
                 self.net_inv[ip_address].update({'mac_address': self.parse.find_address(host, "mac")})
                 self.net_inv[ip_address].update({'vendor': self.parse.find_vendor(host)})
                 self.net_inv[ip_address].update({'hostname': self.parse.find_host_name(host)})
-
-    """This function adds detailed information for every tcp port in inventory."""
+    
     def tcp_parser(self) -> None:
         """
-        get a list of hosts from FileChecker
-        for every host check if ip address exists in inventory:
-            for every ip check if there are information about ports
-                if port exists then create a dictionary for every port and add information
+            Adds detailed information for every tcp port in inventory.
         """
         check = FileChecker("tcp", "log")
         for host in check.get_host():
@@ -339,14 +326,10 @@ class InvManager:
                 if self.parse.find_ports(host):
                     for port_dict in self.parse.find_ports(host):
                         self.net_inv[ip_address]['ports'].update(port_dict)
-
-    """This function adds detailed information for every udp port in inventory."""
+    
     def udp_parser(self) -> None:
         """
-        get a list of hosts from FileChecker
-        for every host check if ip address exists in inventory:
-            for every ip check if there are information about ports
-                if port exists then create a dictionary for every port and add information
+            Adds detailed information for every udp port in inventory.
         """
         check = FileChecker("udp", "log")
         for host in check.get_host():
@@ -355,14 +338,10 @@ class InvManager:
                 if self.parse.find_ports(host):
                     for port_dict in self.parse.find_ports(host):
                         self.net_inv[ip_address]['ports'].update(port_dict)
-
-    """This function runs tcp and udp parser then checks for empty "ports" dictionary in inventory."""
+    
     def port_parser(self) -> None:
         """
-        run tcp_parser and udp_parser
-        for every ip in inventory:
-            check if "ports" dictionary is empty:
-                if empty then change "ports" value to None
+            Runs tcp and udp parser then checks for empty "ports" dictionary in inventory.
         """
         self.tcp_parser()
         self.udp_parser()
@@ -371,28 +350,20 @@ class InvManager:
                     pass
             else:
                 self.net_inv[ip].update({'ports': None})
-
-    """This function adds dhcp server ip and router ip to inventory."""
+   
     def dhcp_parser(self) -> None:
         """
-        get a list of hosts from FileChecker
-        if host data contains dhcp server ip and router ip
-            add the information to inventory
+            Adds dhcp server ip and router ip to inventory.
         """
         check = FileChecker("dhcp", "log")
         for host in check.get_host():
             self.net_inv.update({'dhcp_server': self.parse.find_dhcp(host, "dhcp")})
             self.net_inv.update({'router_ip': self.parse.find_dhcp(host, "router")})
-
-    """This function adds detailed snmp info to hosts that enable the snmp port."""  
+     
     def snmp_parser(self) -> None:
         """
-        get a list of hosts from FileChecker
-        for every host check if ip address exists in inventory:
-            for every ip create dictionary called "snmp_info":
-                check if the type of info exists:
-                    if exist then add details to "snmp_info"
-        """
+            Adds detailed snmp info to hosts that enable the snmp port.
+        """ 
         check = FileChecker("snmp", "log")
         for host in check.get_host():
             ip_address = self.parse.find_address(host, "ipv4")
@@ -413,29 +384,16 @@ class InvManager:
                 else:
                     self.net_inv[ip_address].update({'snmp_info': None})
 
-    """This function uses info from dns_log to update inventory infos that are empty, and add results of dns cache snoop to inventory."""
     def dns_parser(self) -> None:
         check = FileChecker("dns", "log")
         """
-        create a dictionary in inventory for "dns_cache"
-        for every dns host create a dictionary:
-            add the cache into the dictionary
+            Use info from dns_log to update inventory infos that are empty, and add results of dns cache snoop to inventory.
         """
         self.net_inv.update({'dns_cache': {}})
         for host in check.get_host():
             if self.parse.find_dns(host, "cache"):
                 self.net_inv['dns_cache'].update(self.parse.find_dns(host, "cache"))
 
-        """
-        check if there is data in broadcast-dns-service-discovery:
-            if there is data and ip exists in inventory:
-                check if port exists in inventory:
-                    if exist then update the "state" to "up"
-                    if there is info about the service of the port then add it in
-                    if there are other infos then add it to extra info
-                else if port doesn't exist in inventory:
-                    create a dictionary for the port and add "state", "service" and "extra_info"
-        """
         if self.parse.find_dns(check.data, "service"):
             dns_dict = self.parse.find_dns(check.data, "service")
             for ip in dns_dict:
@@ -455,15 +413,22 @@ class InvManager:
                                     self.net_inv[ip]['ports'].update({port: dns_dict[ip][port]})
                             else:
                                 self.net_inv[ip]['ports']= {port: dns_dict[ip][port]}
+    
+    def export(self, file_path: str, folder: str | None = "") -> None:
+        """
+            Runs the entire script then exports a JSON of the inventory.
 
-    """This function runs the entire script then exports a JSON of the inventory."""
-    def export(self, file_path: str, folder: str = "") -> None:
+            :param file_path: Destination for the JSON file
+            :type: str
+
+            :param folder: Folder name
+            :type: str | None
+        """
         self.basic_parser()
         self.port_parser()
         self.dhcp_parser()
         self.snmp_parser()
         self.dns_parser()
-        """if folder is specified then export into the folder"""
         if folder:
             with open(folder+"/"+file_path+".json", "w") as file:
                 json.dump(self.net_inv, file, indent=4)
@@ -476,7 +441,7 @@ class InvManager:
 def main():
     run = InvManager()
     now = datetime.now()
-    """JSON file is named after time, so there will be no duplicates"""
+    # JSON file is named after time, so there will be no duplicates.
     time_of_creation = now.strftime("%Y_%b_%d_%H_%M")
     run.export(time_of_creation)
     

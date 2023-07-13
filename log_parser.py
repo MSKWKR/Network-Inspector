@@ -1,68 +1,100 @@
 #!usr/bin/env python
 
+"""log_parser.py parses the log files that scanner.sh produced into a JSON file.
+
+Files Needed:
+
+    lists/ip_list.txt
+    log/tcp_log.xml
+    log/udp_log.xml
+    log/snmp_log.xml
+    log/dhcp_log.xml
+    log/dns_log.xml
+
+How To Use: 
+
+    from log_parser.py import InvManager
+    InvManager.export(/PATH/TO/FILE) 
+"""
+
+"""BeautifulSoup is the main tool for parsing the xml files, datetime is used for naming and identifying the JSON files."""
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 
-# Check if file exists
-def file_checker(file_name: str, file_type:str) -> None:
-    try:
-        if file_type == "log":
-            with open('./log/'+file_name+'_log.xml', 'r') as f:
-                file = f.read()
-            data = BeautifulSoup(file, "xml")
-            host_list = list(data.find_all('host'))
-            # Check if log is empty
-            if len(host_list) == 0:
-                print("Error: Empty log file.")
-                exit()
-        elif file_type == "list":
-            with open('./lists/'+file_name+'_list.txt', 'r') as f:
-                file_list = f.readlines()
-            # Check if list is empty
-            if len(file_list) == 0:
-                print("Error: Empty list file.")
-                exit()
-    except FileNotFoundError:
-        print("Error: Missing "+file_name+file_type+" file.")
-        exit()
+"""This class regulates all operations regarding unproccessed files."""
+class FileChecker:
+    """Checks whether the file exists or contains information for the script to run."""
+    def __init__(self, file_name: str, file_type: str):
+        """
+        if a FileNotFoundError pops up during process then print error message and exit:
+            if the file type is "log":
+                open and read data from the file
+                check data for the word "nmaprun" to ensure file contains info
+                if not then print error message and exit the script
 
+            else if the file type is "list":
+                open and list data from the file
+                if the list is empty then print error message and exit the script
+        """
+        try:
+            if file_type == "log":
+                with open('./log/'+file_name+'_log.xml', 'r') as f:
+                    file = f.read()
+                data = BeautifulSoup(file, "xml")
+                if len(data.find("nmaprun")) == 0:
+                    print("Error: Empty log file.")
+                    exit()
+                self.data = data
+
+            elif file_type == "list":
+                with open('./lists/'+file_name+'_list.txt', 'r') as f:
+                    ip_list = f.readlines()
+                if len(ip_list) == 0:
+                    print("Error: Empty list file.")
+                    exit()
+                self.ip_list = ip_list
+                
+        except FileNotFoundError:
+            print("Error: Missing "+file_name+file_type+" file.")
+            exit()
+
+    """This function returns a list of hosts from data."""
+    def get_host(self) -> list:
+        return self.data.find_all("host")
+
+
+"""This class recieves data directly from InvManager then process it into the desired format."""
 class Parser:
-    # File check and pull host tag from log file
-    def __init__(self, log_type: str) -> None:
-        self.log_type = log_type
-        file_checker(log_type, "log")
-        with open('./log/'+log_type+'_log.xml', 'r') as f:
-            file = f.read()
-        data = BeautifulSoup(file, "xml")
-        self.host_list = data.find_all('host')
-        self.data = data
-
-    # Find ip and mac from host tag
-    def find_address(self, host: str, type: str) -> str:
+    """This function finds address from data based on address type and returns the string."""
+    def find_address(self, host: str, type: str) -> str | None:
         if host.find('address', {'addrtype': type}):
             return host.find('address', {'addrtype': type}).get('addr')
-        else:
-            return None
+        return None
 
-    # Find vendor from mac address
-    def find_vendor(self, host: str) -> str:
+    """This function finds the vendor from data based on mac address and returns the string."""
+    def find_vendor(self, host: str) -> str | None:
         if host.find('address', {'addrtype': 'mac'}):
             return host.find('address', {'addrtype': 'mac'}).get('vendor')
-        else:
-            return None
+        return None
 
-    # Find hostname of the host
-    def find_host_name(self, host: str) -> str:
+    """This function finds the hostname from data and returns the string."""
+    def find_host_name(self, host: str) -> str | None:
         if host.find('hostname'):
             return host.find('hostname').get('name')
-        else:
-            return None
+        return None
 
-    # Find port information in host tag, return dictionary list
-    def find_ports(self, host: str) -> list:
+    """This function finds ports with discriptions, formats it then returns a list"""
+    def find_ports(self, host: str) -> list | None:
+        """
+        if there are information about ports in data:
+            create a list containing all port data: "port_list"
+            create a list of dictionaries which stores properties of each port: "port_info_list"
+            for every port in port_list create a dictionary for each port property and store it in "port_dict"
+                append port_dict into port_info_list
+            return port_info_list
+        """
         if host.find_all('port'):
-            # Create dictionary for each port id
             port_list = host.find_all('port')
             port_info_list = []
             for port in port_list:
@@ -87,24 +119,43 @@ class Parser:
                     }
                 port_info_list.append({port_id: port_dict})
             return port_info_list
-        else:
-            return None
+        return None
 
-    # Find dhcp server and router ip   
-    def find_dhcp(self, host: str, type: str) -> str:
+    """This function finds dhcp server ip and router ip from data, then retuns the string."""  
+    def find_dhcp(self, host: str, type: str) -> str | None:
         if host.find('script'):
             if type == "dhcp":
                 return host.find('script').find('elem', {'key': 'Server Identifier'}).string
             elif type == "router":
                 return host.find('script').find('elem', {'key': 'Router'}).string
-        else:
-            return None
+        return None
 
-    # Pull all snmp information, return dictionary for every major type of query  
-    def find_snmp(self, host: str, type: str) -> dict:
-        # Check for script tag
+    """This function finds information on snmp ports based on type, then returns a dictionary.""" 
+    def find_snmp(self, host: str, type: str) -> dict | None:
+        """if the nmap script ran properly then proceed"""
         if host.find('script', {'id': type}):
-            # Info from --script=snmp-sysdescr
+            """
+            if type is snmp-sysdescr:
+                split string for system name and system uptime
+                insert into snmp_dict and return the dictionary
+
+            else if type is snmp-info then find boot cycle and return dictionary
+
+            else if type is snmp-interfaces:
+                create a dictionary to store all interfaces: "interface_dict"
+                store interface details as dictionaries in interface_dict
+                return interface_dict
+
+            else if type is snmp-processes:
+                create dictionary to store all processes: "process_dict"
+                store all properties of the process in process_dict
+                return process_dict 
+
+            else if type is snmp-win32-software:
+                create dictionary to store all software: "software_dict"
+                store all properties of the software in software_dict
+                return software_dict 
+            """
             if type == "snmp-sysdescr":
                 system_name = host.find('script', {'id': 'snmp-sysdescr'}).get('output').split('\n')[0]
                 system_uptime = host.find('script', {'id': 'snmp-sysdescr'}).get('output').split('\n')[1].split('System uptime:')[1].strip()
@@ -114,7 +165,6 @@ class Parser:
                 }
                 return snmp_dict
             
-            # Info from --script=snmp-info
             elif type == "snmp-info":
                 boot_cycle = host.find('script', {'id': 'snmp-info'}).find('elem', {'key': 'snmpEngineBoots'}).string
                 return {'boot_cycle': boot_cycle}
@@ -126,7 +176,7 @@ class Parser:
                 device_list = [(interface_list[0].lstrip())]    # Device list stores name of devices/interfaces
                 ''' 
                 Create dictionary for each device/interface.
-                The parameter "len(device_list)-1" indicates the position of the device in device_list is one position lower than the length of device_list 
+                The parameter "len(device_list)-1" indicates the position of the device in device_list is one position lower than the length of device_list.
                 '''
                 interface_dict = {device_list[len(device_list)-1]: {}}
                 for interface in interface_list:
@@ -191,11 +241,10 @@ class Parser:
                     # Grab the installation date of the software
                     software_dict[software.find('elem', {'key': 'name'}).string.split(',')[1]].update({'install_date': software.find('elem', {'key': 'install_date'}).string})
                 return software_dict
-        else:
-            return None
+        return None
 
-    # Pull dns cache and services
-    def find_dns(self, data: str, type: str) -> dict:
+    """This function finds dns caches and details of services from data then returns a dictionary."""
+    def find_dns(self, data: str, type: str) -> dict | None:
         # Pull cache from -script=dns-cache-snoop.nse
         if type == "cache":
             if data.find('script', {'id': 'dns-cache-snoop'}):
@@ -239,137 +288,182 @@ class Parser:
                     else:
                         extra_info.append(text.strip())
                 return service_dict
+        return None
 
+"""This class receives data from FileChecker, sends it to Parser, receives parsed data from Parser, then appends the data to inventory."""
 class InvManager:
-    def __init__(self) -> None:
-        # Create dictionary template
-        file_checker("ip", "list")
+    """Create net_inv which is the inventory for all processed data"""
+    def __init__(self):
+        """
+        check for the existence of ip_list:
+            create a dictionary for every ip address in ip_list
+            create a dictionary called "ports" in every ip dictionary
+        create an instance for the Parser class
+        """
+        check = FileChecker("ip", "list")
         net_inv = {}
-        with open('./lists/ip_list.txt', 'r') as f:
-            ip_list = f.readlines()
-        # Every ip address is a dictionary
-        for ip in ip_list:
+        for ip in check.ip_list:
             net_inv.update({ip.strip(): {}})
             net_inv[ip.strip()].update({'ports': {}})
         self.net_inv = net_inv
+        parse = Parser()
+        self.parse = parse
 
-    # Add mac address, vendor and hostname to dictionary
+    """This function adds hostname, mac address and vendor to inventory."""
     def basic_parser(self) -> None:
-        parse = Parser("tcp")
-        for host in parse.host_list:
-            ip_address = parse.find_address(host, "ipv4")
+        """
+        get a list of hosts from FileChecker
+        for every host check if ip address exists in inventory:
+            if ip exists then search for hostname, mac address, vendor and add them to inventory
+        """
+        check = FileChecker("tcp", "log")
+        for host in check.get_host():
+            ip_address = self.parse.find_address(host, "ipv4")
             if ip_address in self.net_inv:
-                self.net_inv[ip_address].update({'mac_address': parse.find_address(host, "mac")})
-                self.net_inv[ip_address].update({'vendor': parse.find_vendor(host)})
-                self.net_inv[ip_address].update({'hostname': parse.find_host_name(host)})
+                self.net_inv[ip_address].update({'mac_address': self.parse.find_address(host, "mac")})
+                self.net_inv[ip_address].update({'vendor': self.parse.find_vendor(host)})
+                self.net_inv[ip_address].update({'hostname': self.parse.find_host_name(host)})
 
-    # Add tcp port information
+    """This function adds detailed information for every tcp port in inventory."""
     def tcp_parser(self) -> None:
-        parse = Parser("tcp")
-        for host in parse.host_list:
-            ip_address = parse.find_address(host, "ipv4")
+        """
+        get a list of hosts from FileChecker
+        for every host check if ip address exists in inventory:
+            for every ip check if there are information about ports
+                if port exists then create a dictionary for every port and add information
+        """
+        check = FileChecker("tcp", "log")
+        for host in check.get_host():
+            ip_address = self.parse.find_address(host, "ipv4")
             if ip_address in self.net_inv:
-                if parse.find_ports(host):
-                    for port_dict in parse.find_ports(host):
+                if self.parse.find_ports(host):
+                    for port_dict in self.parse.find_ports(host):
                         self.net_inv[ip_address]['ports'].update(port_dict)
 
-    # Add udp port information
+    """This function adds detailed information for every udp port in inventory."""
     def udp_parser(self) -> None:
-        parse = Parser("udp")
-        for host in parse.host_list:
-            ip_address = parse.find_address(host, "ipv4")
+        """
+        get a list of hosts from FileChecker
+        for every host check if ip address exists in inventory:
+            for every ip check if there are information about ports
+                if port exists then create a dictionary for every port and add information
+        """
+        check = FileChecker("udp", "log")
+        for host in check.get_host():
+            ip_address = self.parse.find_address(host, "ipv4")
             if ip_address in self.net_inv:
-                if parse.find_ports(host):
-                    for port_dict in parse.find_ports(host):
+                if self.parse.find_ports(host):
+                    for port_dict in self.parse.find_ports(host):
                         self.net_inv[ip_address]['ports'].update(port_dict)
 
-    # Check results of tcp_parser and udp_parser
+    """This function runs tcp and udp parser then checks for empty "ports" dictionary in inventory."""
     def port_parser(self) -> None:
+        """
+        run tcp_parser and udp_parser
+        for every ip in inventory:
+            check if "ports" dictionary is empty:
+                if empty then change "ports" value to None
+        """
         self.tcp_parser()
         self.udp_parser()
-        parse = Parser("tcp")
-        for host in parse.host_list:
-            ip_address = parse.find_address(host, "ipv4")
-            if ip_address in self.net_inv:
-                if self.net_inv[ip_address]['ports']:
+        for ip in self.net_inv:
+            if self.net_inv[ip]['ports']:
                     pass
-                else:
-                    self.net_inv[ip_address].update({'ports': None})
-
-    # Add dhcp server ip and router ip
-    def dhcp_parser(self) -> None:
-        parse = Parser("dhcp")
-        for host in parse.host_list:
-            ip_address = parse.find_address(host, "ipv4")
-            if ip_address in self.net_inv:
-                self.net_inv[ip_address].update({'dhcp_server': parse.find_dhcp(host, "dhcp")})
-                self.net_inv[ip_address].update({'router_ip': parse.find_dhcp(host, "router")})
             else:
-                self.net_inv.update({'dhcp_server': parse.find_dhcp(host, "dhcp")})
-                self.net_inv.update({'router_ip': parse.find_dhcp(host, "router")})
+                self.net_inv[ip].update({'ports': None})
 
-    # Add snmp information to dictionary   
+    """This function adds dhcp server ip and router ip to inventory."""
+    def dhcp_parser(self) -> None:
+        """
+        get a list of hosts from FileChecker
+        if host data contains dhcp server ip and router ip
+            add the information to inventory
+        """
+        check = FileChecker("dhcp", "log")
+        for host in check.get_host():
+            self.net_inv.update({'dhcp_server': self.parse.find_dhcp(host, "dhcp")})
+            self.net_inv.update({'router_ip': self.parse.find_dhcp(host, "router")})
+
+    """This function adds detailed snmp info to hosts that enable the snmp port."""  
     def snmp_parser(self) -> None:
-        parse = Parser("snmp")
-        for host in parse.host_list:
-            ip_address = parse.find_address(host, "ipv4")
+        """
+        get a list of hosts from FileChecker
+        for every host check if ip address exists in inventory:
+            for every ip create dictionary called "snmp_info":
+                check if the type of info exists:
+                    if exist then add details to "snmp_info"
+        """
+        check = FileChecker("snmp", "log")
+        for host in check.get_host():
+            ip_address = self.parse.find_address(host, "ipv4")
             if ip_address in self.net_inv:
                 self.net_inv[ip_address].update({'snmp_info': {}})
-                if parse.find_snmp(host, "snmp-sysdescr"):
-                    self.net_inv[ip_address]['snmp_info'].update(parse.find_snmp(host, "snmp-sysdescr"))
-                if parse.find_snmp(host, "snmp-info"):
-                    self.net_inv[ip_address]['snmp_info'].update(parse.find_snmp(host, "snmp-info"))
-                if parse.find_snmp(host, "snmp-interfaces"):
-                    self.net_inv[ip_address]['snmp_info'].update({'interfaces': parse.find_snmp(host, "snmp-interfaces")})
-                if parse.find_snmp(host, "snmp-processes"):
-                    self.net_inv[ip_address]['snmp_info'].update({'processes': parse.find_snmp(host, "snmp-processes")})
-                if parse.find_snmp(host, "snmp-win32-software"):
-                    self.net_inv[ip_address]['snmp_info'].update({'softwares': parse.find_snmp(host, "snmp-win32-software")})
+                if self.parse.find_snmp(host, "snmp-sysdescr"):
+                    self.net_inv[ip_address]['snmp_info'].update(self.parse.find_snmp(host, "snmp-sysdescr"))
+                if self.parse.find_snmp(host, "snmp-info"):
+                    self.net_inv[ip_address]['snmp_info'].update(self.parse.find_snmp(host, "snmp-info"))
+                if self.parse.find_snmp(host, "snmp-interfaces"):
+                    self.net_inv[ip_address]['snmp_info'].update({'interfaces': self.parse.find_snmp(host, "snmp-interfaces")})
+                if self.parse.find_snmp(host, "snmp-processes"):
+                    self.net_inv[ip_address]['snmp_info'].update({'processes': self.parse.find_snmp(host, "snmp-processes")})
+                if self.parse.find_snmp(host, "snmp-win32-software"):
+                    self.net_inv[ip_address]['snmp_info'].update({'softwares': self.parse.find_snmp(host, "snmp-win32-software")})
                 if self.net_inv[ip_address]['snmp_info']:
                     pass
                 else:
                     self.net_inv[ip_address].update({'snmp_info': None})
 
-    # Add dns cache to dictionary and update port information based on service discovery
+    """This function uses info from dns_log to update inventory infos that are empty, and add results of dns cache snoop to inventory."""
     def dns_parser(self) -> None:
-        parse = Parser("dns")
-        # Add a dictionary for dns cache domains
+        check = FileChecker("dns", "log")
+        """
+        create a dictionary in inventory for "dns_cache"
+        for every dns host create a dictionary:
+            add the cache into the dictionary
+        """
         self.net_inv.update({'dns_cache': {}})
-        for host in parse.host_list:
-            if parse.find_dns(host, "cache"):
-                # Create dictionary for each dns server
-                self.net_inv['dns_cache'].update(parse.find_dns(host, "cache"))
-        # Update the port dictionary
-        if parse.find_dns(parse.data, "service"):
-            dns_dict = parse.find_dns(parse.data, "service")
+        for host in check.get_host():
+            if self.parse.find_dns(host, "cache"):
+                self.net_inv['dns_cache'].update(self.parse.find_dns(host, "cache"))
+
+        """
+        check if there is data in broadcast-dns-service-discovery:
+            if there is data and ip exists in inventory:
+                check if port exists in inventory:
+                    if exist then update the "state" to "up"
+                    if there is info about the service of the port then add it in
+                    if there are other infos then add it to extra info
+                else if port doesn't exist in inventory:
+                    create a dictionary for the port and add "state", "service" and "extra_info"
+        """
+        if self.parse.find_dns(check.data, "service"):
+            dns_dict = self.parse.find_dns(check.data, "service")
             for ip in dns_dict:
                 if ip in self.net_inv:
                         for port in dns_dict[ip]:
                             if self.net_inv[ip]['ports']:
                                 if port in self.net_inv[ip]['ports']:
                                     state = self.net_inv[ip]['ports'][port]['state']
-                                    # If port is found in dns services, then the port is open
                                     if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
                                          self.net_inv[ip]['ports'][port]['state'] = "open"
-                                    # If service name is found in dns services then update net_inv
                                     if self.net_inv[ip]['ports'][port]['service'] == None:
                                         self.net_inv[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
                                     if self.net_inv[ip]['ports'][port]['extra_info'] == None:
                                         if dns_dict[ip][port]["extra_info"]:
                                             self.net_inv[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
-                                # If the port is not found in net_inv, then create a dictionary for the port and format it to have basic information
                                 else:
                                     self.net_inv[ip]['ports'].update({port: dns_dict[ip][port]})
                             else:
                                 self.net_inv[ip]['ports']= {port: dns_dict[ip][port]}
 
-    # Run entire script then export the dictionary into a json file
-    def export(self, file_path: str, folder="") -> None:
+    """This function runs the entire script then exports a JSON of the inventory."""
+    def export(self, file_path: str, folder: str = "") -> None:
         self.basic_parser()
         self.port_parser()
         self.dhcp_parser()
         self.snmp_parser()
         self.dns_parser()
+        """if folder is specified then export into the folder"""
         if folder:
             with open(folder+"/"+file_path+".json", "w") as file:
                 json.dump(self.net_inv, file, indent=4)
@@ -382,6 +476,7 @@ class InvManager:
 def main():
     run = InvManager()
     now = datetime.now()
+    """JSON file is named after time, so there will be no duplicates"""
     time_of_creation = now.strftime("%Y_%b_%d_%H_%M")
     run.export(time_of_creation)
     

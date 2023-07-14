@@ -1,128 +1,203 @@
-#!usr/bin/env bash
-
-# Create log and lists folder
-mkdir log &> /dev/null
-mkdir lists &> /dev/null
+#!/bin/sh
 
 
-# Check which network interface is up
-echo "Status: Checking for network interfaces..."
-interface=$(ip a | grep "state UP" | awk {'print $2'} | cut -d ':' -f 1)
-if [ $interface ] 
-then
-	echo "Status: Interface: $interface is up."
-	# Check for dhcp server in network, if true then lease an ip
-	echo "Status: Leasing for IP..."
-	dhcp=$(dhclient -v $interface |& grep DHCPOFFER | awk {'print $5'})
-	if [ $dhcp ]
-	then
-		echo "Status: IP acquired from DHCP server."
-	else
-		dhcp=$(dhclient -v $interface |& grep DHCPACK | awk {'print $5'})
-		if [ $dhcp ]
-		then
-			echo "Status: IP acknowledged by DHCP server."
-		else
-			echo "Warning: Unable to lease ip, DHCP server might be down."
-			exit 1
-		fi
-	fi
-else
-	echo "Warning: No network interface connected."
-	exit 1
-fi
-
-# IP and mask of local machine
-ip=$(ip a | grep $interface | grep "inet " | awk {'print $2'} | cut -d '/' -f 1)	## grab ip that is connected to internet
-mask=$(ip r | grep $ip | awk '{print $1}')	## grab network mask
-
-# Responsive IPs and MAC Addresses
-ping(){
-	echo "Status: Initiating ARP scan..."
-	arp-scan -q -x $mask | awk '{print $1}' | sort -u > ./lists/ip_list.txt	## arp-scan to pull ipv4 and mac from cache and store it in ip_list
-	echo "Status: ARP scan done."
-	echo "Status: Initiating ping scan..."
-	nmap -sn -PR -PE -PS443 -PA80 -PP $mask -T3 -oX ./log/ping_log.xml &> /dev/null	## ping scan the network for working ipv4 and mac, results stored in xml
-	echo "Status: Ping scan finished."
-	xmllint --xpath '//host/address[@addrtype="ipv4"]/@addr' ./log/ping_log.xml | cut -d '"' -f 2 >> ./lists/ip_list.txt	## parse xml file for ip and store it in ip_list.txt
-	sort -o ./lists/ip_list.txt -u ./lists/ip_list.txt	## sort out duplicate ip	
+main() {
+	set_env
+	lease_ip
+	dhcp_scan "./log/dhcp_log.xml" 
+	arp_scan "./lists/ip_list.txt"
+	ping_scan "./lists/ip_list.txt" "./log/ping_log.xml"
+	dns_scan "./lists/domain_list.txt" "./log/dhcp_log.xml" "./log/dns_log.xml" &
+	tcp_scan "./lists/ip_list.txt" "./log/tcp_log.xml" &
+	udp_dependent &
+	wait
 }
 
-# SMNP
-snmp_scan(){
+# Function: set_env
+# Description: Download necessary packages and make directories.
+set_env() {
+		echo "Status: Checking for packages..."
+		if [ "$(dpkg -s arp-scan | grep "Version:" | awk '{print $2}')" != "1.9.7-2" ]; then
+			echo "Status: Installing arp-scan..."
+			apt install arp-scan=1.9.7-2 -y #> /dev/null 2>&1
+		fi
+
+		if [ "$(dpkg -s nmap | grep -i "Version:" | awk '{print $2}')" != "7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1" ]; then
+			echo "Status: Installing nmap..."
+			apt install nmap=7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1 -y #> /dev/null 2>&1
+		fi
+
+		if [ "$(dpkg -s libxml2-utils | grep "Version:" | awk '{print $2}')" != "2.9.13+dfsg-1ubuntu0.3" ]; then
+			echo "Status: Installing xmllint..."
+			apt install libxml2-utils=2.9.13+dfsg-1ubuntu0.3 -y #> /dev/null 2>&1
+		fi
+
+		if [ "$(dpkg -s python3-pip | grep "Version:" | awk '{print $2}')" != "22.0.2+dfsg-1ubuntu0.3" ]; then
+			echo "Status: Installing pip..."
+			apt install python3-pip=22.0.2+dfsg-1ubuntu0.3 -y #> /dev/null 2>&1
+		fi
+
+		if [ "$(pip show lxml | grep "Version:" | awk '{print $2}')" != "4.9.2" ]; then
+			pip install lxml=="4.9.2" #> /dev/null 2>&1
+		fi
+
+		if [ "$(pip show beautifulsoup4 | grep "Version:" | awk '{print $2}')" != "4.12.2" ]; then
+			echo "Status: Installing beautifulspoup..."
+			pip install beautifulsoup4=="4.12.2" #> /dev/null 2>&1
+		fi
+		echo "Status: Packages present."
+
+		mkdir log > /dev/null 2>&1
+		mkdir lists > /dev/null 2>&1
+}
+
+# Function: lease_ip
+# Description: Lease ip from dhcp server and check for dhcp server ip at the same time.
+lease_ip() {
+		echo "Status: Checking for network interfaces..."
+		# Check which network interface is up
+		interface="$(ip a | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
+		if [ "$interface" ]; then
+			echo "Status: Interface: $interface is up."
+			# Check for dhcp server in network, if true then lease an ip
+			echo "Status: Leasing for IP..."
+			dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPOFFER | awk '{print $5}')"
+			if [ "$dhcp" ]; then
+				echo "Status: IP acquired from DHCP server."
+			else
+				dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPACK | awk '{print $5}')"
+				if [ "$dhcp" ]; then
+					echo "Status: IP acknowledged by DHCP server."
+				else
+					echo "Warning: Unable to lease ip, DHCP server might be down."
+					exit 1
+				fi
+			fi
+			# Get local machine ip and network mask
+			ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
+			mask="$(ip r | grep "$ip" | awk '{print $1}')"
+		else
+			echo "Warning: No network interface connected."
+			exit 1
+		fi
+}
+
+# Function: arp_scan
+# Description: Find ip from arp-scan and output into a list.
+# Parameters: 
+#	$1 - Path to output ip list. 
+arp_scan() {
+	_output_list=$1
+	echo "Status: Initiating ARP scan..."
+	# arp-scan to pull ipv4 and store it in ip_list
+	arp-scan -q -x "$mask" | awk '{print $1}' | sort -u > "$_output_list"
+	echo "Status: ARP scan done."
+}
+
+# Function: ping_scan
+# Description: Find responsive addresses using nmap ping scan and output into a list.
+# Parameters:
+#	$1 - Path to output ip list.
+#	$2 - Path to output ping_scan log.
+ping_scan() {
+	_output_list=$1
+	_output_log=$2
+	echo "Status: Initiating ping scan..."
+	# Ping scan the network using multiple methods for working ips, results stored in xml
+	nmap -sn -PR -PE -PS443 -PA80 -PP "$mask" -T3 -oX "$2" > /dev/null 2>&1
+	# Parse xml file for ip and store it in ip_list
+	xmllint --xpath '//host/address[@addrtype="ipv4"]/@addr' "$2" | cut -d '"' -f 2 >> "$1"
+	# Sort out duplicates
+	sort -o "$1" -u "$1"
+	echo "Status: Ping scan finished."
+}
+
+# Function: snmp_scan
+# Description: Run multiple nmap scripts to find snmp info, time consuming.
+# Parameters:
+#	$1 - Path to input ip list.
+#	$2 - Path to output snmp_scan log.
+snmp_scan() {
 	echo "Status: Performing SNMP scan..."
-	## scanning for every snmp information possible, this will take a long time
-	nmap -Pn -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL ./lists/udp_list.txt -T3 --disable-arp-ping -oX ./log/snmp_log.xml &> /dev/null	## scan port 161(snmp) using script, results stored in xml
+	# Scan for every snmp information possible, this will take a long time
+	nmap -Pn -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T3 --disable-arp-ping -oX "$2" > /dev/null 2>&1
 	echo "Status: SNMP scan done."
 }
 
-# DHCP
-dhcp_scan(){
+# Function: dhcp_scan
+# Description: Run nmap dhcp discovery script to find out more info from dhcp server.
+# Parameters:
+#	$1 - Path to output dhcp_scan log.
+dhcp_scan() {
 	echo "Status: Performing DHCP scan..."
-	nmap -Pn -sU -p67 -n --script=dhcp-discover $dhcp -T3 --disable-arp-ping -oX ./log/dhcp_log.xml &> /dev/null	## scan port 67(dhcp) using script, results stored in xml
+ 	# Scan port 67(dhcp) using script, results stored in xml
+	nmap -Pn -sU -p67 -n --script=dhcp-discover "$dhcp" -T3 --disable-arp-ping -oX "$1" > /dev/null 2>&1
 	echo "Status: DHCP scan done."
-	dns_scan &
 }
 
-# DNS
-dns_scan(){
+# Function: dns_scan
+# Description: Run nmap dns service discovery script to get service info hidden in dns, and pull dns cache domains.
+# Parameters: 
+#	$1 - Path to input domain list.
+#	$2 - Path to input dhcp_scan log.
+#	$3 - Path to output dns_scan log.
+dns_scan() {
 	echo "Status: Scanning for DNS services..."
-	ns=$(xmllint --xpath '//table[@key="Domain Name Server"]/elem/text()' ./log/dhcp_log.xml | sort -u)	## parse out dns server ip from dhcp_log
-	## read top 1000 domains from domain_list
-	filename='./lists/domain_list.txt'
+	# Parse out dns server ip from dhcp_log
+	ns="$(xmllint --xpath '//table[@key="Domain Name Server"]/elem/text()' "$2" | sort -u)"
+	# Read domains from domain_list
+	filename="$1"
 	domain='domain'
-	while read line; do
-		domain+=,$line
-	done < $filename
-	## get dns services and dns cache domains
-	nmap --script=broadcast-dns-service-discovery -sU -p53 --script dns-cache-snoop.nse --script-args dns-cache-snoop.domains={$domain} $ns -oX ./log/dns_log.xml &> /dev/null
+	while read -r line; do
+		domain="${domain},$line"
+	done < "$filename"
+	nmap --script=broadcast-dns-service-discovery -sU -p53 --script dns-cache-snoop.nse --script-args dns-cache-snoop.domains="{$domain}" $ns -oX "$3" > /dev/null 2>&1
 	echo "Status: DNS scan done."
 }
 
-# TCP
-tcp_scan(){
+# Function: tcp_scan
+# Description: Scan for service info about tcp ports, time consuming. 
+# Parameters:
+#	$1 - Path to input ip list.
+#	$2 - Path to output tcp_scan log.
+tcp_scan() {
 	echo "Status: Scanning TCP ports..."
-	nmap -Pn -sS -sV --version-intensity 2 -iL ./lists/ip_list.txt -T4 --defeat-rst-ratelimit --disable-arp-ping -oX ./log/tcp_log.xml &> /dev/null	## tcp port scan ip_list, results stored in xml
+	nmap -Pn -sS -sV --version-intensity 2 -iL "$1" -T4 --min-parallelism 100 --defeat-rst-ratelimit --disable-arp-ping -oX "$2" > /dev/null 2>&1
 	echo "Status: Finished TCP scanning."
 }
 
-# Port Protocol
-pp_scan(){
-	### check what port protocols ip use
-	nmap -Pn -sO -p17 -n -iL ./lists/ip_list.txt -T3 -oX ./log/pp_log.xml &> /dev/null	## port protocol scan ip_list to see if ip uses udp, results stored in xml
-	xmllint --xpath '//address[@addrtype="ipv4"] | //port' ./log/pp_log.xml | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > ./lists/udp_list.txt 
-		## line above parses pp_log to search for IPs that uses UDP and stores it in udp_list	
-}
-
-# UDP
-udp_scan(){
+# Function: udp_scan
+# Description: Scan for service info about udp ports, time consuming. 
+# Parameters:
+#	$1 - Path to input udp list.
+#	$2 - Path to output udp_scan log.
+udp_scan() {
 	echo "Status: Scanning UDP ports..."
-	nmap -Pn -sU -n -sV --version-intensity 2 -iL ./lists/udp_list.txt -T3 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX ./log/udp_log.xml &> /dev/null 	## udp port scan udp_list, results stored in xml
+	nmap -Pn -sU -n -sV --version-intensity 2 -iL "$1" -T3 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
 	echo "Status: Finished UDP scanning."
 }
 
-# Ports and Services
-port_scan(){
-	echo "Status: Probing for open ports..."
-	tcp_scan &
-	pp_scan
-	snmp_scan &
-	dhcp_scan &	## run snmp and dhcp scan once udp_list is formed
-	udp_scan
-	wait
-	echo "Status: Ports and services acquired."
+# Function: pp_scan
+# Description: Scan for addresses that uses udp protocol.
+# Parameters:
+#	$1 - Path to input ip list.
+#	$2 - Path to output port protocol log.
+#	$3 - Path to output udp list.
+pp_scan() {
+	nmap -Pn -sO -p17 -n -iL "$1" -T3 -oX "$2" > /dev/null 2>&1
+	# Parse pp_log to search for IPs that uses UDP and stores it in udp_list
+	xmllint --xpath '//address[@addrtype="ipv4"] | //port' ./log/pp_log.xml | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > "$3" 	
 }
 
-# OS
-os_scan(){
-	echo "Status: Scanning for Operating systems..."
-	nmap -Pn -O -iL ./lists/ip_list.txt -T3 -oX ./log/os_log.xml &> /dev/null	## os scan ip_list.txt, results stored in xml
-	echo "Status: OS scan done."
+# Function: udp_dependent
+# Description: Run pp_scan first then udp_scan and snmp_scan in parallel.
+udp_dependent() {
+	pp_scan "./lists/ip_list.txt" "./log/pp_log.xml" "./lists/udp_list.txt"
+	udp_scan "./lists/udp_list.txt" "./log/udp_log.xml" &
+	snmp_scan "./lists/udp_list.txt" "./log/snmp_log.xml" &
 }
 
-ping
-port_scan &
-os_scan &
-wait
+
+main
 echo "Status: Running Parser..."
 python3 log_parser.py

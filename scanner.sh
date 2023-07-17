@@ -14,39 +14,8 @@ main() {
 }
 
 # Function: set_env
-# Description: Download necessary packages and make directories.
+# Description: Make directories.
 set_env() {
-		echo "Status: Checking for packages..."
-		if [ "$(dpkg -s arp-scan | grep "Version:" | awk '{print $2}')" != "1.9.7-2" ]; then
-			echo "Status: Installing arp-scan..."
-			apt install arp-scan=1.9.7-2 -y #> /dev/null 2>&1
-		fi
-
-		if [ "$(dpkg -s nmap | grep -i "Version:" | awk '{print $2}')" != "7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1" ]; then
-			echo "Status: Installing nmap..."
-			apt install nmap=7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1 -y #> /dev/null 2>&1
-		fi
-
-		if [ "$(dpkg -s libxml2-utils | grep "Version:" | awk '{print $2}')" != "2.9.13+dfsg-1ubuntu0.3" ]; then
-			echo "Status: Installing xmllint..."
-			apt install libxml2-utils=2.9.13+dfsg-1ubuntu0.3 -y #> /dev/null 2>&1
-		fi
-
-		if [ "$(dpkg -s python3-pip | grep "Version:" | awk '{print $2}')" != "22.0.2+dfsg-1ubuntu0.3" ]; then
-			echo "Status: Installing pip..."
-			apt install python3-pip=22.0.2+dfsg-1ubuntu0.3 -y #> /dev/null 2>&1
-		fi
-
-		if [ "$(pip show lxml | grep "Version:" | awk '{print $2}')" != "4.9.2" ]; then
-			pip install lxml=="4.9.2" #> /dev/null 2>&1
-		fi
-
-		if [ "$(pip show beautifulsoup4 | grep "Version:" | awk '{print $2}')" != "4.12.2" ]; then
-			echo "Status: Installing beautifulspoup..."
-			pip install beautifulsoup4=="4.12.2" #> /dev/null 2>&1
-		fi
-		echo "Status: Packages present."
-
 		mkdir log > /dev/null 2>&1
 		mkdir lists > /dev/null 2>&1
 }
@@ -195,6 +164,19 @@ udp_dependent() {
 	pp_scan "./lists/ip_list.txt" "./log/pp_log.xml" "./lists/udp_list.txt"
 	udp_scan "./lists/udp_list.txt" "./log/udp_log.xml" &
 	snmp_scan "./lists/udp_list.txt" "./log/snmp_log.xml" &
+}
+
+# Function: wlan_scan
+# Description: Monitor all wireless connections around local machine.
+# Parameters:
+#	$1 - Path to output wlan_scan log.
+wlan_scan() {
+	wlan="$(lshw -C network | grep -B 3 -i "wireless" | grep -i "logical name" | awk '{print $3}')"
+	airmon-ng check kill > /dev/null 2>&1
+	wlan="$(airmon-ng start "$wlan" | grep enabled | awk '{print $7}' | cut -d ']' -f 2)"
+	timeout --foreground 60 airodump-ng "$wlan" --output-format netxml -w ./log/wlan_log > /dev/null 2>&1
+	airmon-ng stop "$wlan" > /dev/null 2>&1
+	echo "Done"
 }
 
 

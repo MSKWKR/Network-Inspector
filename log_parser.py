@@ -2,7 +2,7 @@
 
 '''log_parser.py parses the log files that scanner.sh produced into a JSON file.'''
 
-'''BeautifulSoup is the main tool for parsing the xml files, datetime is used for naming and identifying the JSON files.'''
+'''BeautifulSoup is the main tool for parsing the XML files, datetime is used for naming and identifying the JSON files.'''
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime
@@ -25,9 +25,10 @@ class FileChecker:
                 with open('./log/'+file_name+'_log.xml', 'r') as f:
                     file = f.read()
                 data = BeautifulSoup(file, "xml")
-                if len(data.find("nmaprun")) == 0:
-                    print("Error: Empty log file.")
-                    exit()
+                if data.find("nmaprun"):
+                    if data.find("wireless-network"):
+                        print("Error: Empty log file.")
+                        exit()
                 self.data = data
 
             elif file_type == "list":
@@ -50,6 +51,15 @@ class FileChecker:
             :rtype: list
         """
         return self.data.find_all("host")
+    
+    def get_wlan(self) -> list:
+        """
+            Returns a list of wireless-networks from data.
+
+            :return: A list of string with the wireless-network tag
+            :rtype: list
+        """
+        return self.data.find_all("wireless-network", {'type': 'infrastructure'})
 
 
 class Parser:
@@ -60,7 +70,7 @@ class Parser:
         """
             Find address from host based on type and returns the string.
 
-            :param host: The entire host tag string from the xml file
+            :param host: The entire host tag string from the XML file
             :param type: Mac address or ipv4
             :type: str
 
@@ -75,7 +85,7 @@ class Parser:
         """
             Finds the vendor from host based on mac address and returns the string.
 
-            :param host: The entire host tag string from the xml file
+            :param host: The entire host tag string from the XML file
             :type: str
 
             :return: Parsed out vendor
@@ -89,7 +99,7 @@ class Parser:
         """
             Finds the hostname from host and returns the string.
 
-            :param host: The entire host tag string from the xml file
+            :param host: The entire host tag string from the XML file
             :type: str
 
             :return: Parsed out hostname
@@ -103,7 +113,7 @@ class Parser:
         """
             Find ports from host, form dictionaries based on important info, return a list of dictionaries.
         
-            :param host: The entire host tag string from the xml file
+            :param host: The entire host tag string from the XML file
             :type: str
 
             :return: List of dictionaries whose name are their port number
@@ -140,7 +150,7 @@ class Parser:
         """
             Finds dhcp server ip and router ip from host, then retuns the string.
         
-            :param host: The entire host tag string from the xml file
+            :param host: The entire host tag string from the XML file
             :param type: Dhcp or router
             :type: str
 
@@ -158,7 +168,7 @@ class Parser:
         """
             Finds information on snmp ports based on type, then returns a dictionary.
 
-            :param host: The entire host tag string from the xml file
+            :param host: The entire host tag string from the XML file
             :param type: snmp-sysdescr, snmp-info, snmp-interfaces, snmp-processes or snmp-win32-software
             :type: str
 
@@ -236,7 +246,7 @@ class Parser:
         """
             Find dns caches and details of services from data then returns a dictionary.
 
-            :param data: The entire data tag string from the xml file
+            :param data: The entire data tag string from the XML file
             :param type: Service or cache
             :type: str
 
@@ -284,6 +294,78 @@ class Parser:
                         extra_info.append(text.strip())
                 return service_dict
         return None
+    
+    def find_wlan(self, network: str) -> tuple[bool, dict] | None:
+        """
+            Find basic info of all wireless networks near local machine and return a dictionary.
+
+            :param network: The entire wireless-network tag string from the XML file
+            :type: str
+
+            :return: Tuple containing a boolean indicating if it's a hidden network and a dictionary of wireless network info
+            :rtype: tuple[bool, dict] | None
+        """
+        if network.find('essid', {"cloaked": "false"}):
+            essid = network.find('essid').string
+        elif network.find('essid', {"cloaked": "true"}):
+            essid = "hidden_network"
+        bssid = network.find('BSSID').string
+        manufacturer = network.find('manuf').string
+        channel = network.find('channel').string
+        frequency = network.find('freqmhz').string.split()[0]
+
+        if network.find('encryption'):
+            encrypt_list = network.find_all('encryption')
+            encryption = []
+            for data in encrypt_list:
+                encryption.append(data.string)
+        else:
+            encryption = None
+
+        if network.find('snr-info'):
+            signal_dbm = network.find('snr-info').find('max_signal_dbm').string
+        else:
+            signal_dbm = None
+
+        if float(network.find('SSID').find('max-rate').string) > 0:
+            max_speed = int(float(network.find('SSID').find('max-rate').string))
+            seen_speed = int(int(network.find('maxseenrate').string)/1000)
+        else:
+            max_speed = None
+
+        if essid == "hidden_network":
+            wlan_dict = {
+                'manufacturer': manufacturer,
+                'channel': channel,
+                'frequency': frequency
+            }
+            if encryption:
+                wlan_dict.update({'encryption': encryption})
+            if signal_dbm:
+                wlan_dict.update({'signal_dbm': signal_dbm})
+            if max_speed:
+                wlan_dict.update({'max_speed': max_speed})
+                wlan_dict.update({'seen_speed': seen_speed})
+
+            return True, {bssid: wlan_dict}
+        elif essid:
+            wlan_dict = {
+                'bssid': bssid,
+                'manufacturer': manufacturer,
+                'channel': channel,
+                'frequency': frequency
+            }
+            if encryption:
+                wlan_dict.update({'encryption': encryption})
+            if signal_dbm:
+                wlan_dict.update({'signal_dbm': signal_dbm})
+            if max_speed:
+                wlan_dict.update({'max_speed': max_speed})
+                wlan_dict.update({'seen_speed': seen_speed})
+
+            return False, {essid: wlan_dict}
+
+            
 
 
 class InvManager:
@@ -385,10 +467,10 @@ class InvManager:
                     self.net_inv[ip_address].update({'snmp_info': None})
 
     def dns_parser(self) -> None:
-        check = FileChecker("dns", "log")
         """
             Use info from dns_log to update inventory infos that are empty, and add results of dns cache snoop to inventory.
         """
+        check = FileChecker("dns", "log")
         self.net_inv.update({'dns_cache': {}})
         for host in check.get_host():
             if self.parse.find_dns(host, "cache"):
@@ -414,6 +496,22 @@ class InvManager:
                             else:
                                 self.net_inv[ip]['ports']= {port: dns_dict[ip][port]}
     
+    def wlan_parser(self) -> None:
+        """
+            Add wireless information near local machine to inventory.
+        """
+        check =FileChecker("wlan", "log")
+        self.net_inv.update({'wireless_info': {}})
+        for network in check.get_wlan():
+            is_hidden, wlan_dict = self.parse.find_wlan(network)
+            if is_hidden:
+                if 'hidden_network' in self.net_inv['wireless_info']:
+                    self.net_inv['wireless_info']['hidden_network'].update(wlan_dict)
+                else:
+                    self.net_inv['wireless_info'].update({'hidden_network': wlan_dict})
+            else:
+                self.net_inv['wireless_info'].update(wlan_dict)
+
     def export(self, file_path: str, folder: str | None = "") -> None:
         """
             Runs the entire script then exports a JSON of the inventory.
@@ -429,6 +527,7 @@ class InvManager:
         self.dhcp_parser()
         self.snmp_parser()
         self.dns_parser()
+        self.wlan_parser()
         if folder:
             with open(folder+"/"+file_path+".json", "w") as file:
                 json.dump(self.net_inv, file, indent=4)
@@ -444,7 +543,6 @@ def main():
     # JSON file is named after time, so there will be no duplicates.
     time_of_creation = now.strftime("%Y_%b_%d_%H_%M")
     run.export(time_of_creation)
-    
 
 if __name__ == "__main__":
     main()

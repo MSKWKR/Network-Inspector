@@ -4,12 +4,13 @@
 main() {
 	set_env
 	lease_ip
+	wlan_scan "./log/wlan_log.xml" &
 	dhcp_scan "./log/dhcp_log.xml" 
 	arp_scan "./lists/ip_list.txt"
 	ping_scan "./lists/ip_list.txt" "./log/ping_log.xml"
 	dns_scan "./lists/domain_list.txt" "./log/dhcp_log.xml" "./log/dns_log.xml" &
 	tcp_scan "./lists/ip_list.txt" "./log/tcp_log.xml" &
-	udp_dependent &
+	udp_dependent 
 	wait
 }
 
@@ -171,12 +172,14 @@ udp_dependent() {
 # Parameters:
 #	$1 - Path to output wlan_scan log.
 wlan_scan() {
+	echo "Status: Monitoring wireless network..."
 	wlan="$(lshw -C network | grep -B 3 -i "wireless" | grep -i "logical name" | awk '{print $3}')"
 	airmon-ng check kill > /dev/null 2>&1
 	wlan="$(airmon-ng start "$wlan" | grep enabled | awk '{print $7}' | cut -d ']' -f 2)"
-	timeout --foreground 60 airodump-ng "$wlan" --output-format netxml -w ./log/wlan_log > /dev/null 2>&1
+	timeout --foreground 180 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
 	airmon-ng stop "$wlan" > /dev/null 2>&1
-	echo "Done"
+	mv "$1-01.kismet.netxml" "$1"
+	echo "Status: Finished monitoring wireless network."
 }
 
 

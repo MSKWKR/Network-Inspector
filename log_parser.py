@@ -333,6 +333,24 @@ class Parser:
         else:
             max_speed = None
 
+        if network.find('wireless-client', {'type': 'established'}):
+            client_dict = {}
+            for client in network.find_all('wireless-client', {'type': 'established'}):
+                client_mac = client.find('client-mac').string
+                client_manuf = client.find('client-manuf').string
+                client_channel = client.find('channel').string
+                client_speed = int(float(client.find('maxseenrate').string))
+                client_signal_dbm = client.find('snr-info').find('max_signal_dbm').string
+                established_client = {
+                    'manufacturer': client_manuf,
+                    'channel': client_channel,
+                    'seen_speed': client_speed,
+                    'signal_dbm': client_signal_dbm
+                }
+                client_dict.update({client_mac: established_client}) 
+        else:
+            client_dict = None
+
         if essid == "hidden_network":
             wlan_dict = {
                 'manufacturer': manufacturer,
@@ -346,11 +364,12 @@ class Parser:
             if max_speed:
                 wlan_dict.update({'max_speed': max_speed})
                 wlan_dict.update({'seen_speed': seen_speed})
+            if client_dict:
+                wlan_dict.update({'client': client_dict})
 
             return True, {bssid: wlan_dict}
         elif essid:
             wlan_dict = {
-                'bssid': bssid,
                 'manufacturer': manufacturer,
                 'channel': channel,
                 'frequency': frequency
@@ -362,8 +381,10 @@ class Parser:
             if max_speed:
                 wlan_dict.update({'max_speed': max_speed})
                 wlan_dict.update({'seen_speed': seen_speed})
+            if client_dict:
+                wlan_dict.update({'client': client_dict})
 
-            return False, {essid: wlan_dict}
+            return False, {essid: {bssid: wlan_dict}}
 
             
 
@@ -509,6 +530,9 @@ class InvManager:
                     self.net_inv['wireless_info']['hidden_network'].update(wlan_dict)
                 else:
                     self.net_inv['wireless_info'].update({'hidden_network': wlan_dict})
+            elif next(iter(wlan_dict)) in self.net_inv['wireless_info']:
+                print(next(iter(wlan_dict)))
+                self.net_inv['wireless_info'][next(iter(wlan_dict))].update(wlan_dict.get(next(iter(wlan_dict))))
             else:
                 self.net_inv['wireless_info'].update(wlan_dict)
 

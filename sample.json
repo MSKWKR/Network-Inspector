@@ -1019,6 +1019,16 @@
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
+            },
+            "5353": {
+                "protocol": "udp",
+                "state": "open",
+                "service": "mdns",
+                "product": "DNS-based service discovery",
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
             }
         },
         "mac_address": "46:5E:3B:14:B2:61",
@@ -1562,47 +1572,37 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "497": {
+            "786": {
                 "protocol": "udp",
                 "state": "closed|filtered",
-                "service": "retrospect",
+                "service": "concert",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "1813": {
+            "1701": {
                 "protocol": "udp",
                 "state": "closed|filtered",
-                "service": "radacct",
+                "service": "L2TP",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "5353": {
+            "2000": {
                 "protocol": "udp",
                 "state": "closed|filtered",
-                "service": "zeroconf",
+                "service": "cisco-sccp",
                 "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
             },
-            "17487": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "18250": {
+            "17580": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1612,7 +1612,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "18258": {
+            "17663": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1622,7 +1622,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "18830": {
+            "18980": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1632,7 +1632,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "19722": {
+            "19998": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1642,7 +1642,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "20279": {
+            "21016": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1652,7 +1652,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "21476": {
+            "34862": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1662,7 +1662,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "25709": {
+            "41524": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1672,7 +1672,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "31731": {
+            "49159": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1682,7 +1682,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "33281": {
+            "53589": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1692,7 +1692,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "34578": {
+            "54711": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1702,7 +1702,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "34758": {
+            "60381": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1712,47 +1712,7 @@
                 "os_type": null,
                 "extra_info": null
             },
-            "34855": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "40732": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "48078": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "49165": {
-                "protocol": "udp",
-                "state": "closed|filtered",
-                "service": "unknown",
-                "product": null,
-                "service_type": null,
-                "service_fingerprint": null,
-                "os_type": null,
-                "extra_info": null
-            },
-            "49220": {
+            "62699": {
                 "protocol": "udp",
                 "state": "closed|filtered",
                 "service": "unknown",
@@ -1834,11 +1794,11 @@
                 "protocol": "udp",
                 "state": "open",
                 "service": "netbios-ns",
-                "product": "Microsoft Windows netbios-ns",
+                "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
-                "os_type": "Windows",
-                "extra_info": "workgroup: FREEDOM"
+                "os_type": null,
+                "extra_info": null
             }
         },
         "mac_address": "58:82:A8:9B:25:87",
@@ -2131,6 +2091,16 @@
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
+            },
+            "5353": {
+                "protocol": "udp",
+                "state": "open",
+                "service": "zeroconf",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
             }
         },
         "mac_address": "12:3B:79:90:17:27",
@@ -2194,6 +2164,16 @@
                 "service_fingerprint": null,
                 "os_type": null,
                 "extra_info": null
+            },
+            "5353": {
+                "protocol": "udp",
+                "state": "open",
+                "service": "zeroconf",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
             }
         },
         "mac_address": "9A:E9:D4:4F:E8:EA",
@@ -2238,7 +2218,18 @@
         "hostname": null
     },
     "172.16.7.44": {
-        "ports": null,
+        "ports": {
+            "137": {
+                "protocol": "udp",
+                "state": "open",
+                "service": "netbios-ns",
+                "product": null,
+                "service_type": null,
+                "service_fingerprint": null,
+                "os_type": null,
+                "extra_info": null
+            }
+        },
         "mac_address": null,
         "vendor": null,
         "hostname": "FDS-Vida.freedom.local",
@@ -2269,8 +2260,8 @@
             "5353": {
                 "protocol": "udp",
                 "state": "open",
-                "service": "mdns",
-                "product": "DNS-based service discovery",
+                "service": "zeroconf",
+                "product": null,
                 "service_type": null,
                 "service_fingerprint": null,
                 "os_type": null,
@@ -3923,16 +3914,28 @@
     },
     "wireless_info": {
         "BG_2.4G": {
-            "bssid": "04:18:D6:C2:59:04",
-            "manufacturer": "Ubiquiti Networks Inc.",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "None"
-            ],
-            "signal_dbm": "-83",
-            "max_speed": 195,
-            "seen_speed": 195
+            "F0:9F:C2:D7:13:2D": {
+                "manufacturer": "Ubiquiti Networks Inc.",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-82",
+                "max_speed": 195,
+                "seen_speed": 195
+            },
+            "04:18:D6:C2:59:04": {
+                "manufacturer": "Ubiquiti Networks Inc.",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-83",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "hidden_network": {
             "26:18:D6:C2:59:04": {
@@ -4082,301 +4085,497 @@
             }
         },
         "Lumosa_AD_Auth": {
-            "bssid": "F0:9F:C2:2A:E0:BD",
-            "manufacturer": "Ubiquiti Networks Inc.",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "WPA+MGT",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-78",
-            "max_speed": 195,
-            "seen_speed": 195
+            "80:2A:A8:D4:84:A2": {
+                "manufacturer": "Ubiquiti Networks Inc.",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-93",
+                "max_speed": 195,
+                "seen_speed": 195
+            },
+            "F0:9F:C2:2A:E0:BD": {
+                "manufacturer": "Ubiquiti Networks Inc.",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-78",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "HL_Guest": {
-            "bssid": "AE:15:A2:CA:C5:1B",
-            "manufacturer": "Unknown",
-            "channel": "4",
-            "frequency": "2427",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-90",
-            "max_speed": 270,
-            "seen_speed": 270
+            "AE:15:A2:CA:C5:1B": {
+                "manufacturer": "Unknown",
+                "channel": "4",
+                "frequency": "2427",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-90",
+                "max_speed": 270,
+                "seen_speed": 270
+            }
         },
         "DIRECT-": {
-            "bssid": "9A:5F:D3:BC:21:CA",
-            "manufacturer": "Unknown",
-            "channel": "11",
-            "frequency": "2462",
-            "encryption": [
-                "WEP"
-            ],
-            "signal_dbm": "-64",
-            "max_speed": 54,
-            "seen_speed": 54
+            "86:C0:EF:5A:7E:71": {
+                "manufacturer": "Unknown",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "WEP"
+                ],
+                "signal_dbm": "-64",
+                "max_speed": 54,
+                "seen_speed": 54
+            },
+            "9A:5F:D3:BE:C6:88": {
+                "manufacturer": "Unknown",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "WEP"
+                ],
+                "signal_dbm": "-72",
+                "max_speed": 54,
+                "seen_speed": 54
+            },
+            "9A:5F:D3:BC:21:CA": {
+                "manufacturer": "Unknown",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "WEP"
+                ],
+                "signal_dbm": "-64",
+                "max_speed": 54,
+                "seen_speed": 54
+            }
         },
         "Lumosa_Guest": {
-            "bssid": "F6:9F:C2:2A:E0:BD",
-            "manufacturer": "Unknown",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "None"
-            ],
-            "signal_dbm": "-79",
-            "max_speed": 195,
-            "seen_speed": 195
+            "86:2A:A8:D4:84:A2": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-88",
+                "max_speed": 195,
+                "seen_speed": 195
+            },
+            "F6:9F:C2:2A:E0:BD": {
+                "manufacturer": "Unknown",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-79",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "771": {
-            "bssid": "0C:9D:92:59:F9:9C",
-            "manufacturer": "ASUSTek COMPUTER INC.",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-76",
-            "max_speed": 195,
-            "seen_speed": 195
+            "0C:9D:92:59:F9:9C": {
+                "manufacturer": "ASUSTek COMPUTER INC.",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-76",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "BG-guest_2.4G": {
-            "bssid": "F6:9F:C2:D7:13:2D",
-            "manufacturer": "Unknown",
-            "channel": "11",
-            "frequency": "2462",
-            "encryption": [
-                "None"
-            ],
-            "signal_dbm": "-83",
-            "max_speed": 195,
-            "seen_speed": 195
+            "06:18:D6:C2:59:04": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-84",
+                "max_speed": 195,
+                "seen_speed": 195
+            },
+            "F6:9F:C2:D7:13:2D": {
+                "manufacturer": "Unknown",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-83",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "TW Demo Use": {
-            "bssid": "B0:A7:B9:CC:E1:DC",
-            "manufacturer": "TP-Link Corporation Limited",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-85",
-            "max_speed": 270,
-            "seen_speed": 270
+            "B0:A7:B9:CC:E1:DC": {
+                "manufacturer": "TP-Link Corporation Limited",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-85",
+                "max_speed": 270,
+                "seen_speed": 270
+            }
         },
         "HL": {
-            "bssid": "AE:15:A2:CA:C5:1A",
-            "manufacturer": "Unknown",
-            "channel": "4",
-            "frequency": "2427",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-84",
-            "max_speed": 270,
-            "seen_speed": 270
+            "AE:15:A2:CA:C5:1A": {
+                "manufacturer": "Unknown",
+                "channel": "4",
+                "frequency": "2427",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-84",
+                "max_speed": 270,
+                "seen_speed": 270
+            }
         },
         "ZT-CORP-NEW": {
-            "bssid": "10:B3:D6:4D:FB:C1",
-            "manufacturer": "Cisco Systems, Inc",
-            "channel": "11",
-            "frequency": "2462",
-            "encryption": [
-                "WPA+MGT",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-83",
-            "max_speed": 195,
-            "seen_speed": 195
+            "10:B3:D6:4D:FB:C1": {
+                "manufacturer": "Cisco Systems, Inc",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-83",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "ZT-BYOD": {
-            "bssid": "10:B3:D6:4D:FB:C0",
-            "manufacturer": "Cisco Systems, Inc",
-            "channel": "11",
-            "frequency": "2462",
-            "encryption": [
-                "WPA+MGT",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-83",
-            "max_speed": 195,
-            "seen_speed": 195
+            "10:B3:D6:4D:FB:C0": {
+                "manufacturer": "Cisco Systems, Inc",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-83",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "iPhone": {
-            "bssid": "D2:1F:CF:37:72:B6",
-            "manufacturer": "Unknown",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-82",
-            "max_speed": 130,
-            "seen_speed": 130
+            "D2:1F:CF:37:72:B6": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-82",
+                "max_speed": 130,
+                "seen_speed": 130
+            }
         },
         "ZT-GUEST-NEW": {
-            "bssid": "10:B3:D6:4D:FB:C2",
-            "manufacturer": "Cisco Systems, Inc",
-            "channel": "11",
-            "frequency": "2462",
-            "encryption": [
-                "None"
-            ],
-            "signal_dbm": "-78",
-            "max_speed": 195,
-            "seen_speed": 195
+            "10:B3:D6:4D:FB:C2": {
+                "manufacturer": "Cisco Systems, Inc",
+                "channel": "11",
+                "frequency": "2462",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-78",
+                "max_speed": 195,
+                "seen_speed": 195
+            }
         },
         "ANYA_WiFi": {
-            "bssid": "00:11:32:4D:42:5B",
-            "manufacturer": "Synology Incorporated",
-            "channel": "5",
-            "frequency": "2432",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-80",
-            "max_speed": 405,
-            "seen_speed": 405
+            "00:11:32:4D:42:5B": {
+                "manufacturer": "Synology Incorporated",
+                "channel": "5",
+                "frequency": "2432",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-80",
+                "max_speed": 405,
+                "seen_speed": 405
+            }
         },
         "HTK_TP_AP1": {
-            "bssid": "1C:B7:2C:7A:AA:10",
-            "manufacturer": "ASUSTek COMPUTER INC.",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-74",
-            "max_speed": 130,
-            "seen_speed": 130
+            "1C:B7:2C:7A:AA:10": {
+                "manufacturer": "ASUSTek COMPUTER INC.",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-74",
+                "max_speed": 130,
+                "seen_speed": 130,
+                "client": {
+                    "80:32:53:CB:38:C9": {
+                        "manufacturer": "Intel Corporate",
+                        "channel": "1",
+                        "seen_speed": 6,
+                        "signal_dbm": "-74"
+                    },
+                    "00:E1:8C:54:CE:19": {
+                        "manufacturer": "Intel Corporate",
+                        "channel": "1",
+                        "seen_speed": 6,
+                        "signal_dbm": "-84"
+                    }
+                }
+            }
         },
         "BestComm": {
-            "bssid": "04:8D:38:0A:63:FF",
-            "manufacturer": "Netcore Technology Inc.",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "WPA+TKIP",
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-75",
-            "max_speed": 270,
-            "seen_speed": 270
+            "04:8D:38:0A:63:FF": {
+                "manufacturer": "Netcore Technology Inc.",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+TKIP",
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-75",
+                "max_speed": 270,
+                "seen_speed": 270
+            }
         },
         "CEE20180800929": {
-            "bssid": "A0:2E:F3:00:64:F6",
-            "manufacturer": "United Integrated Services Co., Led.",
-            "channel": "10",
-            "frequency": "2457",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-71",
-            "max_speed": 135,
-            "seen_speed": 135
+            "A0:2E:F3:00:64:F6": {
+                "manufacturer": "United Integrated Services Co., Led.",
+                "channel": "10",
+                "frequency": "2457",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-71",
+                "max_speed": 135,
+                "seen_speed": 135
+            }
         },
         "FREEDOM-X": {
-            "bssid": "7A:45:58:1B:1F:D1",
-            "manufacturer": "Unknown",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "WPA+MGT",
-                "WPA+AES-CCM",
-                "None"
-            ],
-            "signal_dbm": "-94",
-            "max_speed": 130,
-            "seen_speed": 130
+            "7E:45:58:83:A7:69": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-54",
+                "max_speed": 360,
+                "seen_speed": 360
+            },
+            "7A:45:58:1B:1F:D1": {
+                "manufacturer": "Unknown",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM",
+                    "None"
+                ],
+                "signal_dbm": "-94",
+                "max_speed": 130,
+                "seen_speed": 130,
+                "client": {
+                    "82:29:F7:A1:C7:73": {
+                        "manufacturer": "Unknown",
+                        "channel": "1",
+                        "seen_speed": 1,
+                        "signal_dbm": "-94"
+                    },
+                    "9A:E9:D4:4F:E8:EA": {
+                        "manufacturer": "Unknown",
+                        "channel": "2",
+                        "seen_speed": 1,
+                        "signal_dbm": "-90"
+                    }
+                }
+            }
         },
         "FREEDOM": {
-            "bssid": "78:45:58:4B:1F:D1",
-            "manufacturer": "Ubiquiti Networks Inc.",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-40",
-            "max_speed": 130,
-            "seen_speed": 130
+            "78:45:58:83:A7:69": {
+                "manufacturer": "Ubiquiti Networks Inc.",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-54",
+                "max_speed": 360,
+                "seen_speed": 360
+            },
+            "78:45:58:4B:1F:D1": {
+                "manufacturer": "Ubiquiti Networks Inc.",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-40",
+                "max_speed": 130,
+                "seen_speed": 130
+            }
         },
         "FDS-Guest": {
-            "bssid": "7A:45:58:2B:1F:D1",
-            "manufacturer": "Unknown",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "None"
-            ],
-            "signal_dbm": "-64",
-            "max_speed": 130,
-            "seen_speed": 130
+            "82:45:58:83:A7:69": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-54",
+                "max_speed": 360,
+                "seen_speed": 360
+            },
+            "7A:45:58:2B:1F:D1": {
+                "manufacturer": "Unknown",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "None"
+                ],
+                "signal_dbm": "-64",
+                "max_speed": 130,
+                "seen_speed": 130,
+                "client": {
+                    "D8:E7:43:05:79:E6": {
+                        "manufacturer": "Wush, Inc",
+                        "channel": "1",
+                        "seen_speed": 6,
+                        "signal_dbm": "-64"
+                    }
+                }
+            }
         },
         "DIRECT-D0-HP M479fdw Color LJ": {
-            "bssid": "4A:9E:BD:08:3F:D0",
-            "manufacturer": "Unknown",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-55",
-            "max_speed": 65,
-            "seen_speed": 65
+            "4A:9E:BD:08:3F:D0": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-55",
+                "max_speed": 65,
+                "seen_speed": 65
+            }
         },
         "BS_2.4GHz": {
-            "bssid": "00:1A:EF:5C:63:0D",
-            "manufacturer": "Loopcomm Technology, Inc.",
-            "channel": "6",
-            "frequency": "2437",
-            "encryption": [
-                "WPA+TKIP",
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-49",
-            "max_speed": 405,
-            "seen_speed": 405
+            "00:1A:EF:5C:63:0D": {
+                "manufacturer": "Loopcomm Technology, Inc.",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+TKIP",
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-49",
+                "max_speed": 405,
+                "seen_speed": 405
+            }
         },
         "FREEDOM-X2": {
-            "bssid": "C0:EA:E4:B4:D0:6C",
-            "manufacturer": "Sonicwall",
-            "channel": "2",
-            "frequency": "2417",
-            "encryption": [
-                "WPA+MGT",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-66",
-            "max_speed": 195,
-            "seen_speed": 195
+            "C0:EA:E4:B4:D0:6C": {
+                "manufacturer": "Sonicwall",
+                "channel": "2",
+                "frequency": "2417",
+                "encryption": [
+                    "WPA+MGT",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-66",
+                "max_speed": 195,
+                "seen_speed": 195,
+                "client": {
+                    "C4:9D:ED:0C:30:8A": {
+                        "manufacturer": "Microsoft Corporation",
+                        "channel": "8",
+                        "seen_speed": 12,
+                        "signal_dbm": "-66"
+                    }
+                }
+            }
         },
         "FDSLAB-01": {
-            "bssid": "7A:45:58:3B:1F:D1",
-            "manufacturer": "Unknown",
-            "channel": "1",
-            "frequency": "2412",
-            "encryption": [
-                "WPA+PSK",
-                "WPA+AES-CCM"
-            ],
-            "signal_dbm": "-66",
-            "max_speed": 130,
-            "seen_speed": 130
+            "86:45:58:83:A7:69": {
+                "manufacturer": "Unknown",
+                "channel": "6",
+                "frequency": "2437",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-54",
+                "max_speed": 360,
+                "seen_speed": 360
+            },
+            "7A:45:58:3B:1F:D1": {
+                "manufacturer": "Unknown",
+                "channel": "1",
+                "frequency": "2412",
+                "encryption": [
+                    "WPA+PSK",
+                    "WPA+AES-CCM"
+                ],
+                "signal_dbm": "-66",
+                "max_speed": 130,
+                "seen_speed": 130,
+                "client": {
+                    "84:C0:EF:5A:7E:71": {
+                        "manufacturer": "Samsung Electronics Co.,Ltd",
+                        "channel": "1",
+                        "seen_speed": 11,
+                        "signal_dbm": "-66"
+                    },
+                    "5C:96:66:AD:0F:21": {
+                        "manufacturer": "Unknown",
+                        "channel": "1",
+                        "seen_speed": 1,
+                        "signal_dbm": "-64"
+                    },
+                    "00:0B:82:C7:6A:AB": {
+                        "manufacturer": "Grandstream Networks, Inc.",
+                        "channel": "1",
+                        "seen_speed": 12,
+                        "signal_dbm": "-62"
+                    },
+                    "04:CF:8C:E6:8A:7D": {
+                        "manufacturer": "XIAOMI Electronics,CO.,LTD",
+                        "channel": "1",
+                        "seen_speed": 24,
+                        "signal_dbm": "-46"
+                    }
+                }
+            }
         }
     }
 }

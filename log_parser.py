@@ -398,11 +398,13 @@ class InvManager:
             Create net_inv which is the inventory for all processed data, create an instance for the Parser class
         """
         check = FileChecker("ip", "list")
-        net_inv = {}
+        lan_inv = {}
+        wlan_inv = {}
         for ip in check.ip_list:
-            net_inv.update({ip.strip(): {}})
-            net_inv[ip.strip()].update({'ports': {}})
-        self.net_inv = net_inv
+            lan_inv.update({ip.strip(): {}})
+            lan_inv[ip.strip()].update({'ports': {}})
+        self.lan_inv = lan_inv
+        self.wlan_inv = wlan_inv
         parse = Parser()
         self.parse = parse
     
@@ -413,10 +415,10 @@ class InvManager:
         check = FileChecker("tcp", "log")
         for host in check.get_host():
             ip_address = self.parse.find_address(host, "ipv4")
-            if ip_address in self.net_inv:
-                self.net_inv[ip_address].update({'mac_address': self.parse.find_address(host, "mac")})
-                self.net_inv[ip_address].update({'vendor': self.parse.find_vendor(host)})
-                self.net_inv[ip_address].update({'hostname': self.parse.find_host_name(host)})
+            if ip_address in self.lan_inv:
+                self.lan_inv[ip_address].update({'mac_address': self.parse.find_address(host, "mac")})
+                self.lan_inv[ip_address].update({'vendor': self.parse.find_vendor(host)})
+                self.lan_inv[ip_address].update({'hostname': self.parse.find_host_name(host)})
     
     def tcp_parser(self) -> None:
         """
@@ -425,10 +427,10 @@ class InvManager:
         check = FileChecker("tcp", "log")
         for host in check.get_host():
             ip_address = self.parse.find_address(host, "ipv4")
-            if ip_address in self.net_inv:
+            if ip_address in self.lan_inv:
                 if self.parse.find_ports(host):
                     for port_dict in self.parse.find_ports(host):
-                        self.net_inv[ip_address]['ports'].update(port_dict)
+                        self.lan_inv[ip_address]['ports'].update(port_dict)
     
     def udp_parser(self) -> None:
         """
@@ -437,10 +439,10 @@ class InvManager:
         check = FileChecker("udp", "log")
         for host in check.get_host():
             ip_address = self.parse.find_address(host, "ipv4")
-            if ip_address in self.net_inv:
+            if ip_address in self.lan_inv:
                 if self.parse.find_ports(host):
                     for port_dict in self.parse.find_ports(host):
-                        self.net_inv[ip_address]['ports'].update(port_dict)
+                        self.lan_inv[ip_address]['ports'].update(port_dict)
     
     def port_parser(self) -> None:
         """
@@ -448,11 +450,11 @@ class InvManager:
         """
         self.tcp_parser()
         self.udp_parser()
-        for ip in self.net_inv:
-            if self.net_inv[ip]['ports']:
+        for ip in self.lan_inv:
+            if self.lan_inv[ip]['ports']:
                     pass
             else:
-                self.net_inv[ip].update({'ports': None})
+                self.lan_inv[ip].update({'ports': None})
    
     def dhcp_parser(self) -> None:
         """
@@ -460,8 +462,8 @@ class InvManager:
         """
         check = FileChecker("dhcp", "log")
         for host in check.get_host():
-            self.net_inv.update({'dhcp_server': self.parse.find_dhcp(host, "dhcp")})
-            self.net_inv.update({'router_ip': self.parse.find_dhcp(host, "router")})
+            self.lan_inv.update({'dhcp_server': self.parse.find_dhcp(host, "dhcp")})
+            self.lan_inv.update({'router_ip': self.parse.find_dhcp(host, "router")})
      
     def snmp_parser(self) -> None:
         """
@@ -470,71 +472,71 @@ class InvManager:
         check = FileChecker("snmp", "log")
         for host in check.get_host():
             ip_address = self.parse.find_address(host, "ipv4")
-            if ip_address in self.net_inv:
-                self.net_inv[ip_address].update({'snmp_info': {}})
+            if ip_address in self.lan_inv:
+                self.lan_inv[ip_address].update({'snmp_info': {}})
                 if self.parse.find_snmp(host, "snmp-sysdescr"):
-                    self.net_inv[ip_address]['snmp_info'].update(self.parse.find_snmp(host, "snmp-sysdescr"))
+                    self.lan_inv[ip_address]['snmp_info'].update(self.parse.find_snmp(host, "snmp-sysdescr"))
                 if self.parse.find_snmp(host, "snmp-info"):
-                    self.net_inv[ip_address]['snmp_info'].update(self.parse.find_snmp(host, "snmp-info"))
+                    self.lan_inv[ip_address]['snmp_info'].update(self.parse.find_snmp(host, "snmp-info"))
                 if self.parse.find_snmp(host, "snmp-interfaces"):
-                    self.net_inv[ip_address]['snmp_info'].update({'interfaces': self.parse.find_snmp(host, "snmp-interfaces")})
+                    self.lan_inv[ip_address]['snmp_info'].update({'interfaces': self.parse.find_snmp(host, "snmp-interfaces")})
                 if self.parse.find_snmp(host, "snmp-processes"):
-                    self.net_inv[ip_address]['snmp_info'].update({'processes': self.parse.find_snmp(host, "snmp-processes")})
+                    self.lan_inv[ip_address]['snmp_info'].update({'processes': self.parse.find_snmp(host, "snmp-processes")})
                 if self.parse.find_snmp(host, "snmp-win32-software"):
-                    self.net_inv[ip_address]['snmp_info'].update({'softwares': self.parse.find_snmp(host, "snmp-win32-software")})
-                if self.net_inv[ip_address]['snmp_info']:
+                    self.lan_inv[ip_address]['snmp_info'].update({'softwares': self.parse.find_snmp(host, "snmp-win32-software")})
+                if self.an_inv[ip_address]['snmp_info']:
                     pass
                 else:
-                    self.net_inv[ip_address].update({'snmp_info': None})
+                    self.lan_inv[ip_address].update({'snmp_info': None})
 
     def dns_parser(self) -> None:
         """
             Use info from dns_log to update inventory infos that are empty, and add results of dns cache snoop to inventory.
         """
         check = FileChecker("dns", "log")
-        self.net_inv.update({'dns_cache': {}})
+        self.lan_inv.update({'dns_cache': {}})
         for host in check.get_host():
             if self.parse.find_dns(host, "cache"):
-                self.net_inv['dns_cache'].update(self.parse.find_dns(host, "cache"))
+                self.lan_inv['dns_cache'].update(self.parse.find_dns(host, "cache"))
 
         if self.parse.find_dns(check.data, "service"):
             dns_dict = self.parse.find_dns(check.data, "service")
             for ip in dns_dict:
-                if ip in self.net_inv:
+                if ip in self.lan_inv:
                         for port in dns_dict[ip]:
-                            if self.net_inv[ip]['ports']:
-                                if port in self.net_inv[ip]['ports']:
-                                    state = self.net_inv[ip]['ports'][port]['state']
+                            if self.lan_inv[ip]['ports']:
+                                if port in self.lan_inv[ip]['ports']:
+                                    state = self.lan_inv[ip]['ports'][port]['state']
                                     if state == "closed" or state == "closed|filtered" or state == "open|filtered" or state == "filtered":
-                                         self.net_inv[ip]['ports'][port]['state'] = "open"
-                                    if self.net_inv[ip]['ports'][port]['service'] == None:
-                                        self.net_inv[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
-                                    if self.net_inv[ip]['ports'][port]['extra_info'] == None:
+                                         self.lan_inv[ip]['ports'][port]['state'] = "open"
+                                    if self.lan_inv[ip]['ports'][port]['service'] == None:
+                                        self.lan_inv[ip]['ports'][port]['service'] = dns_dict[ip][port]["service"]
+                                    if self.lan_inv[ip]['ports'][port]['extra_info'] == None:
                                         if dns_dict[ip][port]["extra_info"]:
-                                            self.net_inv[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
+                                            self.lan_inv[ip]['ports'][port]['extra_info'] = dns_dict[ip][port]["extra_info"]
                                 else:
-                                    self.net_inv[ip]['ports'].update({port: dns_dict[ip][port]})
+                                    self.lan_inv[ip]['ports'].update({port: dns_dict[ip][port]})
                             else:
-                                self.net_inv[ip]['ports']= {port: dns_dict[ip][port]}
+                                self.lan_inv[ip]['ports']= {port: dns_dict[ip][port]}
     
     def wlan_parser(self) -> None:
         """
             Add wireless information near local machine to inventory.
         """
         check =FileChecker("wlan", "log")
-        self.net_inv.update({'wireless_info': {}})
+        self.wlan_inv.update({'wireless_info': {}})
         for network in check.get_wlan():
             is_hidden, wlan_dict = self.parse.find_wlan(network)
             if is_hidden:
-                if 'hidden_network' in self.net_inv['wireless_info']:
-                    self.net_inv['wireless_info']['hidden_network'].update(wlan_dict)
+                if 'hidden_network' in self.wlan_inv['wireless_info']:
+                    self.wlan_inv['wireless_info']['hidden_network'].update(wlan_dict)
                 else:
-                    self.net_inv['wireless_info'].update({'hidden_network': wlan_dict})
-            elif next(iter(wlan_dict)) in self.net_inv['wireless_info']:
+                    self.wlan_inv['wireless_info'].update({'hidden_network': wlan_dict})
+            elif next(iter(wlan_dict)) in self.wlan_inv['wireless_info']:
                 print(next(iter(wlan_dict)))
-                self.net_inv['wireless_info'][next(iter(wlan_dict))].update(wlan_dict.get(next(iter(wlan_dict))))
+                self.wlan_inv['wireless_info'][next(iter(wlan_dict))].update(wlan_dict.get(next(iter(wlan_dict))))
             else:
-                self.net_inv['wireless_info'].update(wlan_dict)
+                self.wlan_inv['wireless_info'].update(wlan_dict)
 
     def export(self, file_path: str, folder: str | None = "") -> None:
         """
@@ -552,12 +554,16 @@ class InvManager:
         self.snmp_parser()
         self.dns_parser()
         self.wlan_parser()
+        net_inv = {
+            'LAN': self.lan_inv,
+            'WLAN': self.wlan_inv
+        }
         if folder:
             with open(folder+"/"+file_path+".json", "w") as file:
-                json.dump(self.net_inv, file, indent=4)
+                json.dump(net_inv, file, indent=4)
         else:
             with open(file_path+".json", "w") as file:
-                json.dump(self.net_inv, file, indent=4)
+                json.dump(net_inv, file, indent=4)
         print("Status: JSON file created successfully.")
 
 

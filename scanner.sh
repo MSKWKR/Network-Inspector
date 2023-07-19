@@ -143,7 +143,7 @@ tcp_scan() {
 #	$2 - Path to output udp_scan log.
 udp_scan() {
 	echo "Status: Scanning UDP ports..."
-	nmap -Pn -sU -n -sV --version-intensity 2 -iL "$1" -T3 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
+	nmap -Pn -sU -n -sV --version-intensity 2 -iL "$1" -T3 --min-parallelism 100 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
 	echo "Status: Finished UDP scanning."
 }
 
@@ -176,7 +176,7 @@ wlan_scan() {
 	wlan="$(lshw -C network | grep -B 3 -i "wireless" | grep -i "logical name" | awk '{print $3}')"
 	airmon-ng check kill > /dev/null 2>&1
 	wlan="$(airmon-ng start "$wlan" | grep enabled | awk '{print $7}' | cut -d ']' -f 2)"
-	timeout --foreground 180 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
+	timeout --foreground 240 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
 	airmon-ng stop "$wlan" > /dev/null 2>&1
 	mv "$1-01.kismet.netxml" "$1"
 	echo "Status: Finished monitoring wireless network."

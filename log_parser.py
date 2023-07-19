@@ -484,7 +484,7 @@ class InvManager:
                     self.lan_inv[ip_address]['snmp_info'].update({'processes': self.parse.find_snmp(host, "snmp-processes")})
                 if self.parse.find_snmp(host, "snmp-win32-software"):
                     self.lan_inv[ip_address]['snmp_info'].update({'softwares': self.parse.find_snmp(host, "snmp-win32-software")})
-                if self.an_inv[ip_address]['snmp_info']:
+                if self.lan_inv[ip_address]['snmp_info']:
                     pass
                 else:
                     self.lan_inv[ip_address].update({'snmp_info': None})
@@ -533,7 +533,6 @@ class InvManager:
                 else:
                     self.wlan_inv['wireless_info'].update({'hidden_network': wlan_dict})
             elif next(iter(wlan_dict)) in self.wlan_inv['wireless_info']:
-                print(next(iter(wlan_dict)))
                 self.wlan_inv['wireless_info'][next(iter(wlan_dict))].update(wlan_dict.get(next(iter(wlan_dict))))
             else:
                 self.wlan_inv['wireless_info'].update(wlan_dict)

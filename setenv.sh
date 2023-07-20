@@ -10,12 +10,12 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
 sudo apt-get install nodejs -y
 sudo apt install npm -y #> /dev/null 2>&1
 
-npm install typescript
-npm install ts-node
+npm install express typescript ts-node
+npm i @types/node @types/express
 npm init -y
 
 pip install lxml=="4.9.2" #> /dev/null 2>&1
 pip install beautifulsoup4=="4.12.2" #> /dev/null 2>&1
 
-npx tsc index.ts
-sudo node index.js
+##npx tsc app.ts
+##sudo node app.js

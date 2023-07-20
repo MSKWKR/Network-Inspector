@@ -1,68 +1,49 @@
-import * as http from 'http';
+import express from 'express';
 import * as path from 'path';
-import { spawn } from 'child_process';
+import { ChildProcess, spawn } from 'child_process';
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/trigger' && req.method === 'GET') {
-    const scriptPath = path.resolve(__dirname, 'scanner.sh');
-    const scriptProcess = spawn('sudo', ['bash', scriptPath]);
+const app: express.Application = express();
+
+const port: number = 80;
+const hostname: string = "172.16.7.121";
+
+
+app.get('/trigger', (_, res) => {
+    const scriptPath: string = path.resolve(__dirname, 'scanner.sh');
+    const scriptProcess: ChildProcess = spawn('sudo', ['bash', scriptPath]);
 
     res.writeHead(200, {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive'
-      });
-  
-    // Send initial SSE message to notify the client that the process has started
+    });
     res.write('Scanner script has started\n\n');
+    console.log('Script started');
 
-    scriptProcess.on('error', (error) => {
-      console.error(`Error executing script: ${error}`);
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
-      res.end('Internal Server Error');
+    scriptProcess.on('error', (error: string) => {
+        console.error(`Error executing script: ${error}`);
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Internal Server Error');
     });
 
-    scriptProcess.stdout.on('data', (data) => {
+    scriptProcess.stdout?.on('data', (data: string) => {
         const outputLines = data.toString().split('\n');
         for(const line of outputLines) {
             res.write(`${line}\n`)
         }
     });
 
-    scriptProcess.stderr.on('data', (data) => {
-      console.error(`${data}`);
+    scriptProcess.stderr?.on('data', (data: string) => {
+        console.error(`${data}`);
     });
 
-    scriptProcess.on('close', (code) => {
-      res.write(`Scanner script has finished (Exit code: ${code})`)
-    })
+    scriptProcess.on('close', () => {
+        console.log("Scanner script has finished");
+        res.end("Scanner script has finished");
+    });
 
-  } 
-  else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not Found');
-  }
 });
 
-const port = 80;
-const hostname = '172.16.7.121'
-
-server.listen(port, hostname, () => {
-  console.log(`Server listening on port ${port}`);
+app.listen(port, hostname, () => {
+    console.log("server status: up");
 });
-
-// Handle termination signals
-process.on('SIGINT', () => {
-  shutdownServer();
-});
-
-process.on('SIGTERM', () => {
-  shutdownServer();
-});
-
-function shutdownServer() {
-  server.close(() => {
-    console.log('Server closed gracefully');
-    process.exit(0);
-  });
-}

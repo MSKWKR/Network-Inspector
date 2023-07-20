@@ -5,7 +5,7 @@ main() {
 	set_env
 	lease_ip
 	wlan_scan "./log/wlan_log.xml" &
-	dhcp_scan "./log/dhcp_log.xml" 
+	dhcp_scan "./log/dhcp_log.xml" &
 	arp_scan "./lists/ip_list.txt"
 	ping_scan "./lists/ip_list.txt" "./log/ping_log.xml"
 	dns_scan "./lists/domain_list.txt" "./log/dhcp_log.xml" "./log/dns_log.xml" &
@@ -17,39 +17,41 @@ main() {
 # Function: set_env
 # Description: Make directories.
 set_env() {
-		mkdir log > /dev/null 2>&1
-		mkdir lists > /dev/null 2>&1
+	wlan="$(lshw -C network | grep -B 3 -i "wireless" | grep -i "logical name" | awk '{print $3}')"
+	airmon-ng stop "$wlan" > /dev/null 2>&1
+	mkdir log > /dev/null 2>&1
+	mkdir lists > /dev/null 2>&1
 }
 
 # Function: lease_ip
 # Description: Lease ip from dhcp server and check for dhcp server ip at the same time.
 lease_ip() {
-		echo "Status: Checking for network interfaces..."
-		# Check which network interface is up
-		interface="$(ip a | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
-		if [ "$interface" ]; then
-			echo "Status: Interface: $interface is up."
-			# Check for dhcp server in network, if true then lease an ip
-			echo "Status: Leasing for IP..."
-			dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPOFFER | awk '{print $5}')"
-			if [ "$dhcp" ]; then
-				echo "Status: IP acquired from DHCP server."
-			else
-				dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPACK | awk '{print $5}')"
-				if [ "$dhcp" ]; then
-					echo "Status: IP acknowledged by DHCP server."
-				else
-					echo "Warning: Unable to lease ip, DHCP server might be down."
-					exit 1
-				fi
-			fi
-			# Get local machine ip and network mask
-			ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
-			mask="$(ip r | grep "$ip" | awk '{print $1}')"
+	echo "Status: Checking for network interfaces..."
+	# Check which network interface is up
+	interface="$(ip a | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
+	if [ "$interface" ]; then
+		echo "Status: Interface: $interface is up."
+		# Check for dhcp server in network, if true then lease an ip
+		echo "Status: Leasing for IP..."
+		dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPOFFER | awk '{print $5}')"
+		if [ "$dhcp" ]; then
+			echo "Status: IP acquired from DHCP server."
 		else
-			echo "Warning: No network interface connected."
-			exit 1
+			dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPACK | awk '{print $5}')"
+			if [ "$dhcp" ]; then
+				echo "Status: IP acknowledged by DHCP server."
+			else
+				echo "Warning: Unable to lease ip, DHCP server might be down."
+				exit 1
+			fi
 		fi
+		# Get local machine ip and network mask
+		ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
+		mask="$(ip r | grep "$ip" | awk '{print $1}')"
+	else
+		echo "Warning: No network interface connected."
+		exit 1
+	fi
 }
 
 # Function: arp_scan
@@ -57,10 +59,9 @@ lease_ip() {
 # Parameters: 
 #	$1 - Path to output ip list. 
 arp_scan() {
-	_output_list=$1
 	echo "Status: Initiating ARP scan..."
 	# arp-scan to pull ipv4 and store it in ip_list
-	arp-scan -q -x "$mask" | awk '{print $1}' | sort -u > "$_output_list"
+	arp-scan -q -x "$mask" | awk '{print $1}' | sort -u > "$1"
 	echo "Status: ARP scan done."
 }
 
@@ -70,8 +71,6 @@ arp_scan() {
 #	$1 - Path to output ip list.
 #	$2 - Path to output ping_scan log.
 ping_scan() {
-	_output_list=$1
-	_output_log=$2
 	echo "Status: Initiating ping scan..."
 	# Ping scan the network using multiple methods for working ips, results stored in xml
 	nmap -sn -PR -PE -PS443 -PA80 -PP "$mask" -T3 -oX "$2" > /dev/null 2>&1
@@ -173,10 +172,9 @@ udp_dependent() {
 #	$1 - Path to output wlan_scan log.
 wlan_scan() {
 	echo "Status: Monitoring wireless network..."
-	wlan="$(lshw -C network | grep -B 3 -i "wireless" | grep -i "logical name" | awk '{print $3}')"
 	airmon-ng check kill > /dev/null 2>&1
 	wlan="$(airmon-ng start "$wlan" | grep enabled | awk '{print $7}' | cut -d ']' -f 2)"
-	timeout --foreground 240 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
+	timeout --foreground 180 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
 	airmon-ng stop "$wlan" > /dev/null 2>&1
 	mv "$1-01.kismet.netxml" "$1"
 	echo "Status: Finished monitoring wireless network."
@@ -186,3 +184,4 @@ wlan_scan() {
 main
 echo "Status: Running Parser..."
 python3 log_parser.py
+exit 1

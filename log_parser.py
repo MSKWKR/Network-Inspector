@@ -571,7 +571,7 @@ def main():
     now = datetime.now()
     # JSON file is named after time, so there will be no duplicates.
     time_of_creation = now.strftime("%Y_%b_%d_%H_%M")
-    run.export(time_of_creation)
+    run.export(time_of_creation, "json")
 
 if __name__ == "__main__":
     main()

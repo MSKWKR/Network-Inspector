@@ -1,12 +1,14 @@
 import * as express from 'express';
 import * as path from 'path';
 import { ChildProcess, spawn } from 'child_process';
+import * as fs from 'fs';
+import * as cors from 'cors';
 
 const app: express.Application = express();
-
-const port: number = 3000;
+const port: number = 5000;
 const hostname: string = "172.16.7.121";
 
+app.use(cors());
 
 app.get('/trigger', (_, res) => {
     const scriptPath: string = path.resolve(__dirname, '../../utils/scanner.sh');
@@ -43,6 +45,42 @@ app.get('/trigger', (_, res) => {
     });
 
 });
+
+app.get('/api/files', (req, res) => {
+    const directoryPath: string = path.resolve(__dirname, '../../json');
+
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            console.error('Error reading directory:', err);
+            return res.status(500).json({error: 'Internal Server Error'});
+        }
+
+        const fileData = files.map((file) => {
+            return {
+                name: file,
+                url: `/api/files/${file}`
+            };
+        });
+
+        res.json(fileData);
+    })
+
+})
+
+app.get('/api/files/:filename', (req, res) => {
+    const fileName: string = req.params.filename;
+    const filePath: string = path.resolve(__dirname, `../../json/${fileName}`)
+
+    fs.readFile(filePath, 'utf-8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return res.status(500).json({error: 'Internal Server Error'});
+        }
+
+        res.send(data);
+    });
+});
+
 
 app.listen(port, hostname, () => {
     console.log("server status: up");

@@ -3,9 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var path = require("path");
 var child_process_1 = require("child_process");
+var fs = require("fs");
+var cors = require("cors");
 var app = express();
-var port = 3000;
+var port = 5000;
 var hostname = "172.16.7.121";
+app.use(cors());
 app.get('/trigger', function (_, res) {
     var _a, _b;
     var scriptPath = path.resolve(__dirname, '../../utils/scanner.sh');
@@ -35,6 +38,33 @@ app.get('/trigger', function (_, res) {
     scriptProcess.on('close', function () {
         console.log("Scanner script has finished");
         res.end("Scanner script has finished");
+    });
+});
+app.get('/api/files', function (req, res) {
+    var directoryPath = path.resolve(__dirname, '../../json');
+    fs.readdir(directoryPath, function (err, files) {
+        if (err) {
+            console.error('Error reading directory:', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        var fileData = files.map(function (file) {
+            return {
+                name: file,
+                url: "/api/files/".concat(file)
+            };
+        });
+        res.json(fileData);
+    });
+});
+app.get('/api/files/:filename', function (req, res) {
+    var fileName = req.params.filename;
+    var filePath = path.resolve(__dirname, "../../json/".concat(fileName));
+    fs.readFile(filePath, 'utf-8', function (err, data) {
+        if (err) {
+            console.error('Error reading file:', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.send(data);
     });
 });
 app.listen(port, hostname, function () {

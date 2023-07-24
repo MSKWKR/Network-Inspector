@@ -6,7 +6,7 @@ const FileDisplay = () => {
 
   useEffect(() => {
     // Make an API call to fetch the list of files from Node.js server
-    fetch('http://172.16.7.121:5000/api/files')
+    fetch('http://127.0.0.1:5000/api/files')
       .then((response) => response.json())
       .then((data) => {
         setFiles(data);
@@ -37,7 +37,7 @@ const FileDetails = () => {
 
   useEffect(() => {
     // Make an API call to fetch the file content
-    fetch(`http://172.16.7.121:5000/api/files/${filename}`)
+    fetch(`http://127.0.0.1:5000/api/files/${filename}`)
       .then((response) => response.json())
       .then((data) => {
         // Pretty print the JSON content with indentation of 2 spaces

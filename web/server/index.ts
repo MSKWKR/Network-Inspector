@@ -6,32 +6,23 @@ import * as cors from 'cors';
 
 const app: express.Application = express();
 const port: number = 5000;
-const hostname: string = "172.16.7.121";
+const hostnames: string[] = ["127.0.0.1", "172.16.7.121"];
 
 app.use(cors());
 
 app.get('/trigger', (_, res) => {
     const scriptPath: string = path.resolve(__dirname, '../../utils/scanner.sh');
     const scriptProcess: ChildProcess = spawn('sudo', ['bash', scriptPath]);
-
-    res.writeHead(200, {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
-    });
-    res.write('Scanner script has started\n\n');
-    console.log('Script started');
+    console.log('Status: Script started');
 
     scriptProcess.on('error', (error: string) => {
         console.error(`Error executing script: ${error}`);
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
     });
 
     scriptProcess.stdout?.on('data', (data: string) => {
         const outputLines = data.toString().split('\n');
         for(const line of outputLines) {
-            res.write(`${line}\n`)
+            console.log(`${line}\n`);
         }
     });
 
@@ -41,7 +32,6 @@ app.get('/trigger', (_, res) => {
 
     scriptProcess.on('close', () => {
         console.log("Scanner script has finished");
-        res.end("Scanner script has finished");
     });
 
 });
@@ -81,7 +71,8 @@ app.get('/api/files/:filename', (req, res) => {
     });
 });
 
-
-app.listen(port, hostname, () => {
-    console.log("server status: up");
+hostnames.forEach((hostname) => {
+    app.listen(port, hostname, () => {
+    console.log(`Server status: up, listening on http://${hostname}:${port}`);
+});
 });

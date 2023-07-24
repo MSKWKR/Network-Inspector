@@ -7,7 +7,7 @@ var fs = require("fs");
 var cors = require("cors");
 var app = express();
 var port = 5000;
-var hostname = "172.16.7.121";
+var hostnames = ["127.0.0.1", "172.16.7.121"];
 app.use(cors());
 app.get('/trigger', function (_, res) {
     var _a, _b;
@@ -67,6 +67,8 @@ app.get('/api/files/:filename', function (req, res) {
         res.send(data);
     });
 });
-app.listen(port, hostname, function () {
-    console.log("server status: up");
+hostnames.forEach(function (hostname) {
+    app.listen(port, hostname, function () {
+        console.log("Server status: up, listening on http://".concat(hostname, ":").concat(port));
+    });
 });

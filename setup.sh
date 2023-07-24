@@ -13,5 +13,10 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
 sudo apt-get install nodejs -y
 sudo apt install npm -y #> /dev/null 2>&1
 
-npm install express typescript ts-node child_process path core
-npm i @types/node @types/express
+cd web/server
+npm install npm
+node index.js &
+
+cd ../app
+npm install npm
+npm start

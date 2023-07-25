@@ -6,7 +6,7 @@ var child_process_1 = require("child_process");
 var fs = require("fs");
 var cors = require("cors");
 var app = express();
-var port = 5000;
+var port = 80;
 var hostnames = ["127.0.0.1", "172.16.7.121"];
 app.use(cors());
 app.get('/trigger', function (_, res) {

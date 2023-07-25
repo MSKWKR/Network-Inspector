@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as cors from 'cors';
 
 const app: express.Application = express();
-const port: number = 5000;
+const port: number = 80;
 const hostnames: string[] = ["127.0.0.1", "172.16.7.121"];
 
 app.use(cors());
@@ -13,16 +13,25 @@ app.use(cors());
 app.get('/trigger', (_, res) => {
     const scriptPath: string = path.resolve(__dirname, '../../utils/scanner.sh');
     const scriptProcess: ChildProcess = spawn('sudo', ['bash', scriptPath]);
-    console.log('Status: Script started');
+
+    res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+    });
+    res.write('Scanner script has started\n\n');
+    console.log('Script started');
 
     scriptProcess.on('error', (error: string) => {
         console.error(`Error executing script: ${error}`);
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Internal Server Error');
     });
 
     scriptProcess.stdout?.on('data', (data: string) => {
         const outputLines = data.toString().split('\n');
         for(const line of outputLines) {
-            console.log(`${line}\n`);
+            res.write(`${line}\n`)
         }
     });
 
@@ -32,6 +41,7 @@ app.get('/trigger', (_, res) => {
 
     scriptProcess.on('close', () => {
         console.log("Scanner script has finished");
+        res.end("Scanner script has finished");
     });
 
 });

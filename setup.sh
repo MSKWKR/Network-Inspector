@@ -1,22 +1,29 @@
 #!/bin/sh
 
-sudo apt install arp-scan -y #> /dev/null 2>&1
-sudo apt install nmap -y #> /dev/null 2>&1
-sudo apt install libxml2-utils -y #> /dev/null 2>&1
-sudo apt install python3-pip -y #> /dev/null 2>&1
-sudo apt install aircrack-ng -y #> /dev/null 2>&1
-pip install lxml=="4.9.2" #> /dev/null 2>&1
-pip install beautifulsoup4=="4.12.2" #> /dev/null 2>&1
+run_script=false
 
+check_connection() {
+	interface="$(ip a show enp1s0 | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
+	if [ "$interface" ]; then
+		# Check for dhcp server in network, if true then lease an ip
+		dhcp="$(sudo dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
+        [ -z "$dhcp" ] && exit 1
+	else
+		exit 1
+	fi
+}
 
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
-sudo apt-get install nodejs -y
-sudo apt install npm -y #> /dev/null 2>&1
+while true; do
+    if ip link show enp1s0 | grep "state UP"; then
+        if ! $run_script; then
+            check_connection
+            cd web/server
+            sudo node index.js &
+            cd ../app
+            sudo npm start
+            # python3 -m webbrowser http://172.16.7.121:80/trigger
+        fi
+    fi
+    sleep 1
+done
 
-cd web/server
-npm install npm
-node index.js &
-
-cd ../app
-npm install npm
-npm start

@@ -26,32 +26,11 @@ set_env() {
 # Function: lease_ip
 # Description: Lease ip from dhcp server and check for dhcp server ip at the same time.
 lease_ip() {
-	echo "Status: Checking for network interfaces..."
-	# Check which network interface is up
-	interface="$(ip a | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
-	if [ "$interface" ]; then
-		echo "Status: Interface: $interface is up."
-		# Check for dhcp server in network, if true then lease an ip
-		echo "Status: Leasing for IP..."
-		dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPOFFER | awk '{print $5}')"
-		if [ "$dhcp" ]; then
-			echo "Status: IP acquired from DHCP server."
-		else
-			dhcp="$(dhclient -v "$interface" 2>&1 | grep DHCPACK | awk '{print $5}')"
-			if [ "$dhcp" ]; then
-				echo "Status: IP acknowledged by DHCP server."
-			else
-				echo "Warning: Unable to lease ip, DHCP server might be down."
-				exit 1
-			fi
-		fi
-		# Get local machine ip and network mask
-		ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
-		mask="$(ip r | grep "$ip" | awk '{print $1}')"
-	else
-		echo "Warning: No network interface connected."
-		exit 1
-	fi
+	interface="$(ip a show enp1s0 | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
+	dhcp="$(sudo dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
+	# Get local machine ip and network mask
+	ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
+	mask="$(ip r | grep "$ip" | awk '{print $1}')"
 }
 
 # Function: arp_scan

@@ -1,0 +1,86 @@
+
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+
+/* Header styles*/
+h1 {
+  background-color: rgb(24, 107, 131);
+  color: #fff;
+  padding: 1.5rem;
+  display: block;
+  text-align: center;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+h2 {
+  background-color: rgb(24, 107, 131);
+  color: #fff;
+  padding: 1.5rem;
+  display: inline-block;
+  text-align: left;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+/* List container styles */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto;
+  display: block;
+  width: 80%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, rgb(41, 180, 220), rgb(24, 107, 131));
+  border-radius: 15px;
+}
+
+/* List item styles */
+li {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgb(34, 149, 182);
+  border-radius: 5px;
+  justify-content: center;
+}
+
+/* Hyperlink styles */
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+  border-radius: 10px;
+  display: table;
+  padding: 0.8rem 5rem;
+  background-color: rgb(24, 107, 131);
+  font-weight: bold;
+  text-align: center;
+}
+
+a:hover,
+a:visited:hover {
+  background-color: rgb(34, 149, 182);
+}
+
+a:visited {
+  color: lightgrey;
+  background-color: rgb(19, 86, 105);
+}
+
+/* Footer styles */
+footer {
+  background-color: rgb(47, 208, 255);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

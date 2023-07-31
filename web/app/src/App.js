@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom';
+import './App.css';
 
 const Trigger = () => {
   useEffect(() => {
@@ -45,7 +46,6 @@ const FileDisplay = () => {
 
   return (
     <div>
-      <h1>JSON List</h1>
       <ul>
         {files.map((file, index) => (
           <li key={index}>
@@ -78,7 +78,7 @@ const FileDetails = () => {
 
   return (
     <div>
-      <h1>{filename}</h1>
+      <h2>{filename}</h2>
       <pre>{fileContent}</pre>
     </div>
   );

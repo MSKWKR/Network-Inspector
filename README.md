@@ -1,9 +1,52 @@
-## dependencies
+## Environment:
+**Ubuntu: 22.04**  
+**Python: 3.10.6**  
+
+## Installation & Setup:
 ```sh
-    sudo apt install libxml2-utils
-    sudo apt install nmap
-    sudo apt install arp-scan
-    sudo apt install python3-pip
-    pip install lxml
-    pip install beautifulsoup4
+    sudo bash package.sh
+    sudo bash setup.sh 
+```
+
+## Usage:
+**After setup visit [Here](http://localhost:3000) for a list of available JSON files.**  
+**Run [This](http://localhost:3000/trigger) to trigger a scan.**    
+**To visit the REACT app manually: http://localhost:3000.**    
+**To trigger the scan manually: http://localhost:80/trigger.**  
+
+## Structure:
+```
+├── json
+│   └── sample.json
+├── lists
+│   ├── domain_list.txt
+│   ├── ip_list.txt
+│   └── udp_list.txt
+├── log
+│   ├── dhcp_log.xml
+│   ├── dns_log.xml
+│   ├── ping_log.xml
+│   ├── pp_log.xml
+│   ├── snmp_log.xml
+│   ├── tcp_log.xml
+│   ├── udp_log.xml
+│   └── wlan_log.xml
+├── packages.sh
+├── setup.sh
+├── utils
+│   ├── log_parser.py
+│   └── scanner.sh
+└── web
+    ├── app
+    │   ├── package.json
+    │   ├── package-lock.json
+    │   └── src
+    │       ├── App.css
+    │       ├── App.js
+    │       └── index.js
+    └── server
+        ├── index.js
+        ├── index.ts
+        ├── package.json
+        └── package-lock.json
 ```

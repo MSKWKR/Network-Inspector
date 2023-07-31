@@ -9,27 +9,19 @@ var app = express();
 var port = 80;
 var hostnames = ["127.0.0.1", "172.16.7.121"];
 app.use(cors());
-app.get('/trigger', function (_, res) {
+app.get('/api/trigger', function (_, res) {
     var _a, _b;
     var scriptPath = path.resolve(__dirname, '../../utils/scanner.sh');
     var scriptProcess = (0, child_process_1.spawn)('sudo', ['bash', scriptPath]);
-    res.writeHead(200, {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive'
-    });
-    res.write('Scanner script has started\n\n');
     console.log('Script started');
     scriptProcess.on('error', function (error) {
         console.error("Error executing script: ".concat(error));
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
     });
     (_a = scriptProcess.stdout) === null || _a === void 0 ? void 0 : _a.on('data', function (data) {
         var outputLines = data.toString().split('\n');
         for (var _i = 0, outputLines_1 = outputLines; _i < outputLines_1.length; _i++) {
             var line = outputLines_1[_i];
-            res.write("".concat(line, "\n"));
+            console.log("".concat(line, "\n"));
         }
     });
     (_b = scriptProcess.stderr) === null || _b === void 0 ? void 0 : _b.on('data', function (data) {
@@ -37,23 +29,22 @@ app.get('/trigger', function (_, res) {
     });
     scriptProcess.on('close', function () {
         console.log("Scanner script has finished");
-        res.end("Scanner script has finished");
     });
 });
-app.get('/api/files', function (req, res) {
+app.get('/api/files', function (_, res) {
     var directoryPath = path.resolve(__dirname, '../../json');
     fs.readdir(directoryPath, function (err, files) {
         if (err) {
             console.error('Error reading directory:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
-        var fileData = files.map(function (file) {
+        var fileList = files.map(function (file) {
             return {
                 name: file,
                 url: "/api/files/".concat(file)
             };
         });
-        res.json(fileData);
+        res.json(fileList);
     });
 });
 app.get('/api/files/:filename', function (req, res) {

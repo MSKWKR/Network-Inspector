@@ -17,7 +17,7 @@ main() {
 # Function: set_env
 # Description: Make directories.
 set_env() {
-	wlan="$(lshw -C network | grep -B 3 -i "wireless" | grep -i "logical name" | awk '{print $3}')"
+	wlan="$(iwconfig |& grep "IEEE" | awk '{print $1}')"
 	airmon-ng stop "$wlan" > /dev/null 2>&1
 	mkdir ../../log > /dev/null 2>&1
 	mkdir ../../lists > /dev/null 2>&1
@@ -68,7 +68,7 @@ ping_scan() {
 snmp_scan() {
 	echo "Status: Performing SNMP scan..."
 	# Scan for every snmp information possible, this will take a long time
-	nmap -Pn -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T3 --disable-arp-ping -oX "$2" > /dev/null 2>&1
+	nmap -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T3 -oX "$2" > /dev/null 2>&1
 	echo "Status: SNMP scan done."
 }
 
@@ -79,7 +79,7 @@ snmp_scan() {
 dhcp_scan() {
 	echo "Status: Performing DHCP scan..."
  	# Scan port 67(dhcp) using script, results stored in xml
-	nmap -Pn -sU -p67 -n --script=dhcp-discover "$dhcp" -T3 --disable-arp-ping -oX "$1" > /dev/null 2>&1
+	nmap -sU -p67 -n --script=dhcp-discover "$dhcp" -T3 -oX "$1" > /dev/null 2>&1
 	echo "Status: DHCP scan done."
 }
 
@@ -110,7 +110,7 @@ dns_scan() {
 #	$2 - Path to output tcp_scan log.
 tcp_scan() {
 	echo "Status: Scanning TCP ports..."
-	nmap -Pn -sS -sV --version-intensity 2 -iL "$1" -T4 --min-parallelism 100 --defeat-rst-ratelimit --disable-arp-ping -oX "$2" > /dev/null 2>&1
+	nmap -sS -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-rst-ratelimit -oX "$2" > /dev/null 2>&1
 	echo "Status: Finished TCP scanning."
 }
 
@@ -121,7 +121,7 @@ tcp_scan() {
 #	$2 - Path to output udp_scan log.
 udp_scan() {
 	echo "Status: Scanning UDP ports..."
-	nmap -Pn -sU -n -sV --version-intensity 2 -iL "$1" -T4 --min-parallelism 100 --max-rtt-timeout 100ms --defeat-icmp-ratelimit --disable-arp-ping -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
+	nmap -sU -n -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-icmp-ratelimit -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
 	echo "Status: Finished UDP scanning."
 }
 
@@ -132,7 +132,7 @@ udp_scan() {
 #	$2 - Path to output port protocol log.
 #	$3 - Path to output udp list.
 pp_scan() {
-	nmap -Pn -sO -p17 -n -iL "$1" -T3 -oX "$2" > /dev/null 2>&1
+	nmap -sO -p17 -n -iL "$1" -T3 -oX "$2" > /dev/null 2>&1
 	# Parse pp_log to search for IPs that uses UDP and stores it in udp_list
 	xmllint --xpath '//address[@addrtype="ipv4"] | //port' "$2" | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > "$3" 	
 }
@@ -153,7 +153,7 @@ wlan_scan() {
 	echo "Status: Monitoring wireless network..."
 	airmon-ng check kill > /dev/null 2>&1
 	wlan="$(airmon-ng start "$wlan" | grep enabled | awk '{print $7}' | cut -d ']' -f 2)"
-	timeout --foreground 180 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
+	timeout --foreground 120 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
 	airmon-ng stop "$wlan" > /dev/null 2>&1
 	mv "$1-01.kismet.netxml" "$1"
 	echo "Status: Finished monitoring wireless network."

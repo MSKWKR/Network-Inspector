@@ -18,7 +18,7 @@ main() {
 # Description: Setup common variables
 set_var() {
 	interface="$(ip addr | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
-	wlan="$(iwconfig |& grep "IEEE" | awk '{print $1}')"
+	wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
 	dhcp="$(sudo dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
 	ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
 	mask="$(ip r | grep "$ip" | awk '{print $1}')"
@@ -144,7 +144,7 @@ wlan_scan() {
 	echo "Status: Monitoring wireless network..."
 	airmon-ng check kill > /dev/null 2>&1
 	airmon-ng start "$wlan" > /dev/null 2>&1
-	wlan="$(iwconfig |& grep "IEEE" | awk '{print $1}')"
+	wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
 	timeout --foreground 120 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
 	airmon-ng stop "$wlan" > /dev/null 2>&1
 	[ "$1-01.kismet.netxml" ] && mv "$1-01.kismet.netxml" "$1" || echo "WIRELESS MONITORING ERROR."

@@ -18,7 +18,7 @@ dir_setup() {
 # Description: Reset wireless network monitoring.
 wlan_setup() {
     # Check for wireless card
-    wlan="$(iwconfig |& grep "IEEE" | awk '{print $1}')"
+    wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
     if [ "$wlan" ]; then
     	# Check if network card is in monitor mode
     	airmon_check="$(ip addr show "$wlan" | grep radiotap)"

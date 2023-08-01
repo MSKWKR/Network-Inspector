@@ -21,7 +21,7 @@ app.get('/api/trigger', function (_, res) {
         var outputLines = data.toString().split('\n');
         for (var _i = 0, outputLines_1 = outputLines; _i < outputLines_1.length; _i++) {
             var line = outputLines_1[_i];
-            console.log("".concat(line, "\n"));
+            console.log("".concat(line));
         }
     });
     (_b = scriptProcess.stderr) === null || _b === void 0 ? void 0 : _b.on('data', function (data) {

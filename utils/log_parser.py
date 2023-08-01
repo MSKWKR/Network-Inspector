@@ -22,7 +22,7 @@ class FileChecker:
         """
         try:
             if file_type == "log":
-                with open('../../log/'+file_name+'_log.xml', 'r') as f:
+                with open('./log/'+file_name+'_log.xml', 'r') as f:
                     file = f.read()
                 data = BeautifulSoup(file, "xml")
                 if data.find("nmaprun"):
@@ -32,7 +32,7 @@ class FileChecker:
                 self.data = data
 
             elif file_type == "list":
-                with open('../../lists/'+file_name+'_list.txt', 'r') as f:
+                with open('./lists/'+file_name+'_list.txt', 'r') as f:
                     ip_list = f.readlines()
                 if len(ip_list) == 0:
                     print("Error: Empty list file.")
@@ -558,7 +558,7 @@ class InvManager:
             'WLAN': self.wlan_inv
         }
         if folder:
-            with open("../../"+folder+"/"+file_path+".json", "w") as file:
+            with open("./"+folder+"/"+file_path+".json", "w") as file:
                 json.dump(net_inv, file, indent=4)
         else:
             with open(file_path+".json", "w") as file:

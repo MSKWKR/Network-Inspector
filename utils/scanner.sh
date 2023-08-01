@@ -1,34 +1,25 @@
 #!/bin/sh
 
-
 main() {
-	set_env
-	lease_ip
-	wlan_scan "../../log/wlan_log.xml" &
-	dhcp_scan "../../log/dhcp_log.xml" &
-	arp_scan "../../lists/ip_list.txt"
-	ping_scan "../../lists/ip_list.txt" "../../log/ping_log.xml"
-	dns_scan "../../lists/domain_list.txt" "../../log/dhcp_log.xml" "../../log/dns_log.xml" &
-	tcp_scan "../../lists/ip_list.txt" "../../log/tcp_log.xml" &
-	udp_dependent 
+	set_var
+	[ "$wlan" ] && wlan_scan "./log/wlan_log.xml" &
+	[ "$dhcp" ] && dhcp_scan "./log/dhcp_log.xml" &
+	if [ "$ip" ]; then
+		arp_scan "./lists/ip_list.txt"
+		ping_scan "./lists/ip_list.txt" "./log/ping_log.xml"
+		dns_scan "./lists/domain_list.txt" "./log/dhcp_log.xml" "./log/dns_log.xml" &
+		tcp_scan "./lists/ip_list.txt" "./log/tcp_log.xml" &
+		udp_dependent 
+	fi
 	wait
 }
 
-# Function: set_env
-# Description: Make directories.
-set_env() {
+# Function: set_var
+# Description: Setup common variables
+set_var() {
+	interface="$(ip addr | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
 	wlan="$(iwconfig |& grep "IEEE" | awk '{print $1}')"
-	airmon-ng stop "$wlan" > /dev/null 2>&1
-	mkdir ../../log > /dev/null 2>&1
-	mkdir ../../lists > /dev/null 2>&1
-}
-
-# Function: lease_ip
-# Description: Lease ip from dhcp server and check for dhcp server ip at the same time.
-lease_ip() {
-	interface="$(ip a show enp1s0 | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
 	dhcp="$(sudo dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
-	# Get local machine ip and network mask
 	ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
 	mask="$(ip r | grep "$ip" | awk '{print $1}')"
 }
@@ -68,7 +59,7 @@ ping_scan() {
 snmp_scan() {
 	echo "Status: Performing SNMP scan..."
 	# Scan for every snmp information possible, this will take a long time
-	nmap -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T3 -oX "$2" > /dev/null 2>&1
+	nmap -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T4 --min-hostgroup 100 --min-parallelsim 100 -oX "$2" > /dev/null 2>&1
 	echo "Status: SNMP scan done."
 }
 
@@ -132,7 +123,7 @@ udp_scan() {
 #	$2 - Path to output port protocol log.
 #	$3 - Path to output udp list.
 pp_scan() {
-	nmap -sO -p17 -n -iL "$1" -T3 -oX "$2" > /dev/null 2>&1
+	nmap -sO -p17 -n -iL "$1" -T4 -oX "$2" > /dev/null 2>&1
 	# Parse pp_log to search for IPs that uses UDP and stores it in udp_list
 	xmllint --xpath '//address[@addrtype="ipv4"] | //port' "$2" | grep -B 1 "open" | grep -i "ipv4" | cut -d '"' -f 2 > "$3" 	
 }
@@ -140,9 +131,9 @@ pp_scan() {
 # Function: udp_dependent
 # Description: Run pp_scan first then udp_scan and snmp_scan in parallel.
 udp_dependent() {
-	pp_scan "../../lists/ip_list.txt" "../../log/pp_log.xml" "../../lists/udp_list.txt"
-	udp_scan "../../lists/udp_list.txt" "../../log/udp_log.xml" &
-	snmp_scan "../../lists/udp_list.txt" "../../log/snmp_log.xml" &
+	pp_scan "./lists/ip_list.txt" "./log/pp_log.xml" "./lists/udp_list.txt"
+	udp_scan "./lists/udp_list.txt" "./log/udp_log.xml" &
+	snmp_scan "./lists/udp_list.txt" "./log/snmp_log.xml" &
 }
 
 # Function: wlan_scan
@@ -152,15 +143,16 @@ udp_dependent() {
 wlan_scan() {
 	echo "Status: Monitoring wireless network..."
 	airmon-ng check kill > /dev/null 2>&1
-	wlan="$(airmon-ng start "$wlan" | grep enabled | awk '{print $7}' | cut -d ']' -f 2)"
+	airmon-ng start "$wlan" > /dev/null 2>&1
+	wlan="$(iwconfig |& grep "IEEE" | awk '{print $1}')"
 	timeout --foreground 120 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1
 	airmon-ng stop "$wlan" > /dev/null 2>&1
-	mv "$1-01.kismet.netxml" "$1"
+	[ "$1-01.kismet.netxml" ] && mv "$1-01.kismet.netxml" "$1" || echo "WIRELESS MONITORING ERROR."
 	echo "Status: Finished monitoring wireless network."
 }
 
 
 main
 echo "Status: Running Parser..."
-python3 ../../utils/log_parser.py
+python3 ./utils/log_parser.py
 exit 1

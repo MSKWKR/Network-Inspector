@@ -24,7 +24,7 @@ app.get('/api/trigger', (_, res) => {
     scriptProcess.stdout?.on('data', (data: string) => {
       const outputLines = data.toString().split('\n');
       for (const line of outputLines) {
-        console.log(`${line}\n`);
+        console.log(`${line}`);
       }
     });
   

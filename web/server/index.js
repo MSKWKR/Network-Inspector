@@ -12,7 +12,7 @@ app.use(cors());
 app.get('/api/trigger', function (_, res) {
     var _a, _b;
     var scriptPath = path.resolve(__dirname, '../../utils/scanner.sh');
-    var scriptProcess = (0, child_process_1.spawn)('sudo', ['bash', scriptPath]);
+    var scriptProcess = (0, child_process_1.spawn)('bash', [scriptPath]);
     console.log('Script started');
     scriptProcess.on('error', function (error) {
         console.error("Error executing script: ".concat(error));

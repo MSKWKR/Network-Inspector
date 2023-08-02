@@ -13,7 +13,7 @@ app.use(cors());
 
 app.get('/api/trigger', (_, res) => {
     const scriptPath: string = path.resolve(__dirname, '../../utils/scanner.sh');
-    const scriptProcess: ChildProcess = spawn('sudo', ['bash', scriptPath]);
+    const scriptProcess: ChildProcess = spawn('bash', [scriptPath]);
   
     console.log('Script started');
   

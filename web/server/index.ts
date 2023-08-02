@@ -6,7 +6,7 @@ import * as cors from 'cors';
 
 const app: express.Application = express();
 const port: number = 80;
-const hostnames: string[] = ["127.0.0.1", "172.16.7.121"];
+const hostnames: string[] = ["localhost"];
 
 
 app.use(cors());

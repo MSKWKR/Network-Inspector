@@ -7,7 +7,7 @@ var fs = require("fs");
 var cors = require("cors");
 var app = express();
 var port = 80;
-var hostnames = ["127.0.0.1", "172.16.7.121"];
+var hostnames = ["localhost"];
 app.use(cors());
 app.get('/api/trigger', function (_, res) {
     var _a, _b;

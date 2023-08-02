@@ -18,7 +18,7 @@ FROM node:16-slim AS scanner-builder
 
 WORKDIR /network-inspector
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     iproute2 \
     arp-scan \
     nmap \

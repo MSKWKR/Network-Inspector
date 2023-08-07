@@ -22,21 +22,25 @@
 
 ## Structure:
 ```
+├── README.md
+├── Dockerfile.infra
+├── Dockerfile.script
+├── docker-compose.yml
 ├── json
 │   └── sample.json
 ├── lists
-│   ├── domain_list.txt
-│   ├── ip_list.txt
-│   └── udp_list.txt
+│   ├── domain_list.txt
+│   ├── ip_list.txt
+│   └── udp_list.txt
 ├── log
-│   ├── dhcp_log.xml
-│   ├── dns_log.xml
-│   ├── ping_log.xml
-│   ├── pp_log.xml
-│   ├── snmp_log.xml
-│   ├── tcp_log.xml
-│   ├── udp_log.xml
-│   └── wlan_log.xml
+│   ├── dhcp_log.xml
+│   ├── dns_log.xml
+│   ├── ping_log.xml
+│   ├── pp_log.xml
+│   ├── snmp_log.xml
+│   ├── tcp_log.xml
+│   ├── udp_log.xml
+│   └── wlan_log.xml
 ├── packages.sh
 ├── setup.sh
 ├── utils
@@ -44,8 +48,9 @@
 │   └── scanner.sh
 └── web
     ├── app
-    │   ├── package.json
+    │   ├── README.md
     │   ├── package-lock.json
+    │   ├── package.json
     │   └── src
     │       ├── App.css
     │       ├── App.js
@@ -53,6 +58,6 @@
     └── server
         ├── index.js
         ├── index.ts
-        ├── package.json
-        └── package-lock.json
+        ├── package-lock.json
+        └── package.json
 ```

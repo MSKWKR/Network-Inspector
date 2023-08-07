@@ -17,11 +17,18 @@ main() {
 # Function: set_var
 # Description: Setup common variables
 set_var() {
+	echo "Status: Setting variables..."
 	interface="$(ip addr | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
+	echo "got interface $interface"
 	wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
-	dhcp="$(more /var/lib/dhcp/dhclient.leases | grep dhcp-server-identifier | awk '{print $3}' | cut -d ';' -f 1)"
-	ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
+	echo "got wlan $wlan"
+	dhcp="$(cat /var/lib/dhcp/dhclient.leases | grep dhcp-server-identifier | awk '{print $3}' | cut -d ';' -f 1)"
+	echo "got dhcp $dhcp"
+	ip="$(ip r | grep "$interface" | grep src | awk '{print $9}')"
+	echo "got ip $ip"
 	mask="$(ip r | grep "$ip" | awk '{print $1}')"
+	echo "got mask $mask"
+	echo "Status: Finished setting variables."
 }
 
 # Function: arp_scan

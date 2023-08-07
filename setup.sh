@@ -32,15 +32,15 @@ wlan_setup() {
 # Description: Check for LAN interface and setup server.
 server_setup() {
     server_stat=false
-
+    # Remove lease if any exists
+    [ -f "/var/lib/dhcp/dhclient.leases" ] && rm /var/lib/dhcp/dhclient.leases
     while true; do
         # Check which interface is plugged in
         interface="$(ip addr | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
         if [ "$interface" ]; then
             # Check if server is up
             if ! $server_stat; then
-                # Remove lease if any exists
-                [ -f "/var/lib/dhcp/dhclient.leases" ] && rm /var/lib/dhcp/dhclient.leases
+                
                 # Check for dhcp server in network, if true then lease an ip
     		    dhcp="$(dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
                 if [ "$dhcp" ]; then

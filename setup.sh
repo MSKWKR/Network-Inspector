@@ -46,7 +46,6 @@ server_setup() {
                     node ./web/server/index.js &
                     cd ./web/app
                     npm start &
-                    pwd
                     wait
                 else
                     echo "NO DHCP SERVER FOUND."

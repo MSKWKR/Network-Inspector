@@ -19,7 +19,7 @@ main() {
 set_var() {
 	interface="$(ip addr | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
 	wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
-	dhcp="$(sudo dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
+	dhcp="$(dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
 	ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
 	mask="$(ip r | grep "$ip" | awk '{print $1}')"
 }
@@ -59,7 +59,7 @@ ping_scan() {
 snmp_scan() {
 	echo "Status: Performing SNMP scan..."
 	# Scan for every snmp information possible, this will take a long time
-	nmap -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T4 --min-hostgroup 100 --min-parallelsim 100 -oX "$2" > /dev/null 2>&1
+	nmap -sU -p161 -n --script=snmp-info --script=snmp-interfaces --script=snmp-processes --script=snmp-sysdescr --script=snmp-win32-software -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 -oX "$2" > /dev/null 2>&1
 	echo "Status: SNMP scan done."
 }
 
@@ -112,7 +112,7 @@ tcp_scan() {
 #	$2 - Path to output udp_scan log.
 udp_scan() {
 	echo "Status: Scanning UDP ports..."
-	nmap -sU -n -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-icmp-ratelimit -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
+	nmap -sU -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-icmp-ratelimit -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
 	echo "Status: Finished UDP scanning."
 }
 

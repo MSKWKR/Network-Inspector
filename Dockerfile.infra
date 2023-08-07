@@ -1,0 +1,21 @@
+FROM ubuntu:22.04
+
+WORKDIR /network-inspector
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    iproute2 \
+    arp-scan \
+    nmap \
+    libxml2-utils \
+    aircrack-ng \
+    wireless-tools \
+    pciutils \
+    kmod \
+    isc-dhcp-client \
+    python3 \
+    python3-pip 
+
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - &&\
+    apt-get install -y \
+    nodejs 

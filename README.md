@@ -2,10 +2,16 @@
 **Ubuntu: 22.04**  
 **Python: 3.10.6**  
 
-## Installation & Setup:
+## Local Installation & Setup:
 ```sh
     sudo bash package.sh
     sudo bash setup.sh 
+```
+
+## Docker Installation & Setup:
+```sh
+    docker pull network-inspector:latest
+    docker run --network=host --privileged network-inspector:latest ./setup.sh
 ```
 
 ## Usage:

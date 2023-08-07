@@ -19,7 +19,7 @@ main() {
 set_var() {
 	interface="$(ip addr | grep "state UP" | awk '{print $2}' | cut -d ':' -f 1)"
 	wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
-	dhcp="$(dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
+	dhcp="$(more /var/lib/dhcp/dhclient.leases | grep dhcp-server-identifier | awk '{print $3}' | cut -d ';' -f 1)"
 	ip="$(ip a | grep "$interface" | grep "inet " | awk '{print $2}' | cut -d '/' -f 1)"
 	mask="$(ip r | grep "$ip" | awk '{print $1}')"
 }

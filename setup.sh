@@ -39,6 +39,8 @@ server_setup() {
         if [ "$interface" ]; then
             # Check if server is up
             if ! $server_stat; then
+                # Remove lease if any exists
+                [ -f "/var/lib/dhcp/dhclient.leases" ] && rm /var/lib/dhcp/dhclient.leases
                 # Check for dhcp server in network, if true then lease an ip
     		    dhcp="$(dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
                 if [ "$dhcp" ]; then

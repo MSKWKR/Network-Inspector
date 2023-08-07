@@ -1,4 +1,4 @@
-FROM network-inspector-infra as infra
+FROM network-inspector-infra:latest as infra
 
 WORKDIR /network-inspector/web
 

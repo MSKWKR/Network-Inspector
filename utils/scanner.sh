@@ -24,9 +24,9 @@ set_var() {
 	echo "got wlan $wlan"
 	dhcp="$(cat /var/lib/dhcp/dhclient.leases | grep dhcp-server-identifier | awk '{print $3}' | cut -d ';' -f 1)"
 	echo "got dhcp $dhcp"
-	ip="$(ip r | grep "$interface" | grep src | awk '{print $9}')"
+	ip="$(cat /var/lib/dhcp/dhclient.leases | grep fixed-address | awk '{print $2}' | cut -d ';' -f 1 | cut -d '.' -f 1-3)"
 	echo "got ip $ip"
-	mask="$(ip r | grep "$ip" | awk '{print $1}')"
+	mask="$(ip r | grep "$ip.0/" | awk '{print $1}')"
 	echo "got mask $mask"
 	echo "Status: Finished setting variables."
 }

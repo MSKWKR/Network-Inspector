@@ -40,7 +40,6 @@ server_setup() {
         if [ "$interface" ]; then
             # Check if server is up
             if ! $server_stat; then
-                
                 # Check for dhcp server in network, if true then lease an ip
     		    dhcp="$(dhclient -v "$interface" 2>&1 | grep "DHCPOFFER\|DHCPACK" | awk '{print $5}' | sort -u)"
                 if [ "$dhcp" ]; then

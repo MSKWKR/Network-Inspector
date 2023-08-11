@@ -10,11 +10,10 @@ apt install libxml2-utils -y
 apt install python3-pip -y 
 apt install wireless-tools -y
 apt install aircrack-ng -y 
-pip install lxml=="4.9.2" 
-pip install beautifulsoup4=="4.12.2" 
+pip install -r requirements.txt
 
 
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&\
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash - &&\
 apt-get install nodejs -y
 apt install npm -y 
 

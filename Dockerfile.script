@@ -1,4 +1,4 @@
-FROM network-inspector-infra:latest as infra
+FROM network-inspector-infra:latest as server
 
 WORKDIR /network-inspector/web
 
@@ -6,17 +6,23 @@ COPY ./web/server/package.json ./web/server/package-lock.json ./server/
 
 COPY ./web/app/package.json ./web/app/package-lock.json ./app/
 
-RUN pip install lxml=="4.9.2" beautifulsoup4=="4.12.2"
-
 RUN cd ./server && npm ci && cd ../app && npm ci
 
+FROM network-inspector-infra:latest as pip
 
-FROM infra
+WORKDIR /network-inspector
+
+COPY ./requirements.txt .
+
+RUN pip install -r ./requirements.txt
+
+FROM pip
 
 WORKDIR /network-inspector
 
 COPY . .
-COPY --from=infra /network-inspector/web ./web
+COPY --from=server /network-inspector/web ./web
+COPY --from=pip /network-inspector .
 
 RUN chmod +x ./setup.sh
 

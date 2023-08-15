@@ -32,7 +32,7 @@ const Trigger = () => {
 const FileDisplay = () => {
   const [files, setFiles] = useState([]);
 
-  useEffect(() => {
+  const fetchFiles = () => {
     // Make an API call to fetch the list of files from Node.js server
     fetch('/api/files')
       .then((response) => response.json())
@@ -42,6 +42,15 @@ const FileDisplay = () => {
       .catch((error) => {
         console.error('Error fetching files:', error);
       });
+  };
+
+  useEffect(() => {
+    fetchFiles();
+    // Refresh page every 5 seconds
+    const interval = setInterval(fetchFiles, 5000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (

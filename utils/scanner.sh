@@ -149,7 +149,6 @@ udp_dependent() {
 #	$1 - Path to output wlan_scan log.
 wlan_scan() {
 	echo "Status: Monitoring wireless network..."
-	airmon-ng check kill > /dev/null 2>&1
 	airmon-ng start "$wlan" > /dev/null 2>&1
 	wlan="$(iwconfig 2>&1 | grep "IEEE" | awk '{print $1}')"
 	timeout --foreground 120 airodump-ng "$wlan" --output-format netxml -w "$1" > /dev/null 2>&1

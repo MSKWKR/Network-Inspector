@@ -28,9 +28,9 @@
 > `pip install lxml=="4.9.2" beautifulsoup4=="4.12.2"`
 
 ## Installation & Setup:
-> ### Local installation
+> ### [Local installation](https://dev.azure.com/FreedomSystems/tech-voyager/_git/network-inspector)
 > ```sh
-> git clone 
+> git clone -b local https://FreedomSystems@dev.azure.com/FreedomSystems/tech-voyager/_git/network-inspector
 > sudo bash package.sh
 > sudo bash setup.sh 
 > ```
@@ -43,7 +43,8 @@
 ## Usage:
 > After installation and setup visit http://localhost:3000 to access the REACT app.  
 > To trigger a scan visit http://localhost:3000/trigger.  
-> :warning: Make sure prior scan is finished before triggering another, or else the results would have discrepancies.
+> For remote login, type `nslookup FDS-netspctr` into the terminal for **device ip**, then visit http://**device ip**:3000.  
+> :warning: Make sure prior scan is finished before triggering another, or else the results would have discrepancies.  
 
 ## Manual for modules
 > ### [**nmap**](https://nmap.org/)

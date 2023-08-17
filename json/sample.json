@@ -1,0 +1,4685 @@
+{
+    "LAN": {
+        "172.16.7.1": {
+            "ports": {
+                "22": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ssh",
+                    "product": "OpenSSH",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "protocol 2.0"
+                },
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "SonicWALL firewall http config",
+                    "service_type": "firewall",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8181": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "SonicWALL firewall http config",
+                    "service_type": "firewall",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "161": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "snmp",
+                    "product": "SNMPv1 server",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "public"
+                }
+            },
+            "mac_address": "18:B1:69:07:57:80",
+            "vendor": "Sonicwall",
+            "hostname": "_gateway",
+            "snmp_info": {
+                "system_name": "SonicWALL TZ 500 (SonicOS Enhanced 6.5.4.12-101n)",
+                "system_uptime": "13d06h03m12.68s (114499268 timeticks)",
+                "boot_cycle": "54",
+                "interfaces": {
+                    "X0 (Portshield Host)": {
+                        "ip": "172.16.6.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "2.61 Gb",
+                        "received": "3.49 Gb"
+                    },
+                    "X1 (WAN)": {
+                        "ip": "122.146.12.10",
+                        "mask": "255.255.255.224",
+                        "mac": "18:b1:69:07:57:81",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "989.02 Mb",
+                        "received": "3.41 Gb"
+                    },
+                    "X2 (Portshielded To X0)": {
+                        "mac": "18:b1:69:07:57:82",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "0 Kbps",
+                        "device_status": "down",
+                        "sent": "0.00 Kb",
+                        "received": "0.00 Kb"
+                    },
+                    "X3 (WAN)": {
+                        "ip": "211.23.199.105",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:83",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "3.75 Gb",
+                        "received": "420.76 Mb"
+                    },
+                    "X4 (Portshielded To X0)": {
+                        "mac": "18:b1:69:07:57:84",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "0 Kbps",
+                        "device_status": "down",
+                        "sent": "0.00 Kb",
+                        "received": "0.00 Kb"
+                    },
+                    "X5 (Portshielded To X0)": {
+                        "mac": "18:b1:69:07:57:85",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "0 Kbps",
+                        "device_status": "down",
+                        "sent": "0.00 Kb",
+                        "received": "0.00 Kb"
+                    },
+                    "X6 (Portshielded To X0)": {
+                        "mac": "18:b1:69:07:57:86",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "0 Kbps",
+                        "device_status": "down",
+                        "sent": "0.00 Kb",
+                        "received": "0.00 Kb"
+                    },
+                    "X7 (FDS_Wireless)": {
+                        "ip": "172.16.10.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:87",
+                        "vendor": "Sonicwall",
+                        "device_type": "ethernetCsmacd",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "3.74 Gb",
+                        "received": "626.51 Mb"
+                    },
+                    "U0 (WAN)": {
+                        "mac": "18:b1:69:07:57:88",
+                        "vendor": "Sonicwall",
+                        "device_type": "modem",
+                        "device_speed": "0 Kbps",
+                        "device_status": "down",
+                        "sent": "0.00 Kb",
+                        "received": "0.00 Kb"
+                    },
+                    "U1 (Unassigned)": {
+                        "mac": "18:b1:69:07:57:89",
+                        "vendor": "Sonicwall",
+                        "device_type": "other",
+                        "device_speed": "0 Kbps",
+                        "device_status": "down",
+                        "sent": "0.00 Kb",
+                        "received": "0.00 Kb"
+                    },
+                    "X0:V7 (FDS_Client)": {
+                        "ip": "172.16.7.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "2.39 Gb",
+                        "received": "811.02 Mb"
+                    },
+                    "X0:V8 (FDS_VoIP)": {
+                        "ip": "172.16.8.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "621.31 Mb",
+                        "received": "1.01 Gb"
+                    },
+                    "X0:V17 (FDS_Client)": {
+                        "ip": "172.16.17.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "3.86 Gb",
+                        "received": "2.69 Gb"
+                    },
+                    "X0:V19 (FDS_Wireless)": {
+                        "ip": "172.16.19.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "3.34 Gb",
+                        "received": "1.97 Gb"
+                    },
+                    "X0:V20 (LAB)": {
+                        "ip": "192.168.200.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "985.46 Mb",
+                        "received": "1.96 Gb"
+                    },
+                    "X0:V21 (HX)": {
+                        "ip": "172.16.100.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "2.33 Gb",
+                        "received": "3.53 Gb"
+                    },
+                    "X0:V33 (NiMiCDR)": {
+                        "ip": "192.168.2.1",
+                        "mask": "255.255.255.0",
+                        "mac": "18:b1:69:07:57:80",
+                        "vendor": "Sonicwall",
+                        "device_type": "l2vlan",
+                        "device_speed": "1 Gbps",
+                        "device_status": "up",
+                        "sent": "3.92 Gb",
+                        "received": "1.35 Gb"
+                    }
+                }
+            }
+        },
+        "172.16.7.10": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "lighttpd",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "00:15:65:72:24:B1",
+            "vendor": "Xiamen Yealink Network Technology",
+            "hostname": "SIP-T21P.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.100": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "C4:9D:ED:E7:3F:39",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1061230303.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.102": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "B0:4F:13:F4:32:28",
+            "vendor": null,
+            "hostname": "FDS-E1090230621.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.105": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "2179": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "vmrdp",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "38:14:28:C8:DE:4C",
+            "vendor": null,
+            "hostname": "FDS-Jack.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.109": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2179": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "vmrdp",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "7070": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "realserver",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "B0:4F:13:F4:32:41",
+            "vendor": null,
+            "hostname": "FDS-EddyLin.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.110": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "4000": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "remoteanything",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "58:82:A8:91:FD:57",
+            "vendor": "Microsoft",
+            "hostname": "FDS-AliciaChien.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.112": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "58:82:A8:96:12:81",
+            "vendor": "Microsoft",
+            "hostname": "FDS-Vida.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.113": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "D0:3C:1F:1A:82:22",
+            "vendor": null,
+            "hostname": "FDS-E1212230413.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.115": {
+            "ports": null,
+            "mac_address": null,
+            "vendor": null,
+            "hostname": "FDS-P1061230201.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.12": {
+            "ports": {
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49154": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "50743": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "companion-link",
+                    "extra_info": [
+                        "rpMac=0",
+                        "rpHN=209202044d44"
+                    ]
+                }
+            },
+            "mac_address": "4A:8D:4D:CA:97:B7",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.121": {
+            "ports": {
+                "22": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ssh",
+                    "product": "OpenSSH",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Linux",
+                    "extra_info": "Ubuntu Linux; protocol 2.0"
+                },
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/20%Time=64B8CBD9%P=x86_64-pc-linux-gnu%r(GetRequest,75,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nContent-Type:\\x20text/plain\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:53:29\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nNot\\x20Found\")%r(HTTPOptions,75,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nContent-Type:\\x20text/plain\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:53:29\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nNot\\x20Found\")%r(RTSPRequest,75,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nContent-Type:\\x20text/plain\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:53:29\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nNot\\x20Found\")%r(X11Probe,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(FourOhFourRequest,75,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nContent-Type:\\x20text/plain\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:53:29\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nNot\\x20Found\")%r(SSLSessionReq,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(TLSSessionReq,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConnection:\\x20close\\r\\n\\r\\n\");",
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": null,
+            "vendor": null,
+            "hostname": "ubuntu-Default.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.123": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "Boa httpd",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2200": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "A0:2E:F3:00:64:F5",
+            "vendor": "United Integrated Services",
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.13": {
+            "ports": {
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "37": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "time",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "136": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "profile",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "1067": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "instl_boots",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "16816": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "16919": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "17332": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "17836": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "18449": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "19717": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "21344": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "21644": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "23557": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "24511": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "30975": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "31681": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "37813": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "41058": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "42639": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "44968": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "45685": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49163": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49188": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "51456": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "58797": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "60423": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "02:70:FE:05:7C:B2",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.17": {
+            "ports": {
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "57378": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "rdlink",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "8A:EB:DE:A2:87:31",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.19": {
+            "ports": {
+                "19": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "chargen",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "500": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "isakmp",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2607": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "connection",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "6100": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "synchronet-db",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8010": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "xmpp",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8181": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "intermapper",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "9091": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "xmltec-xmlmail",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "10616": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "30718": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49155": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "50003": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "46:5E:3B:14:B2:61",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.21": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "28:16:A8:64:EE:9D",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1207220103.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.217": {
+            "ports": {
+                "24": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "priv-mail",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "HP LaserJet Pro MFP config httpd",
+                    "service_type": "printer",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "model: M26nw; private IP: 172.16.7.217"
+                },
+                "443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "515": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "printer",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": [
+                        "txtvers=1",
+                        "qtotal=1",
+                        "rp=auto",
+                        "pdl=application/vnd.zeno-zjs",
+                        "ty=HP LaserJet Pro MFP M26nw",
+                        "product=(HP LaserJet Pro MFP M26nw)"
+                    ]
+                },
+                "631": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ipp",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": [
+                        "txtvers=1",
+                        "qtotal=1",
+                        "pdl=image/urf,image/jpeg,application/PCLm",
+                        "rp=ipp/print",
+                        "URF=CP1,IS1,OB10,PQ3-4-5,RS600,W8,V1.2,MT1-2-3-4-5-6",
+                        "ty=HP LaserJet Pro MFP M26nw",
+                        "product=(HP LaserJet Pro MFP M26nw)",
+                        "usb_MFG=HP",
+                        "usb_MDL=HP LaserJet Pro MFP M26nw",
+                        "usb_CMD=ZJ/URF",
+                        "priority=40",
+                        "mac=80:ce:62:e9:74:18",
+                        "adminurl=http://DEVE97418.local.",
+                        "UUID=aabfd71d-938d-c62c-2ed1-b8485c283166"
+                    ]
+                },
+                "1042": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "afrog",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "1050": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "java-or-OTGfileshare",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "1533": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "virtual-places",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2288": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "netml",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2605": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "bgpd",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5050": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "mmcc",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5100": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "admd",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8080": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "HP LaserJet Pro MFP config httpd",
+                    "service_type": "printer",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "model: M26nw; private IP: 172.16.7.217"
+                },
+                "9100": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "jetdirect",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": [
+                        "txtvers=1",
+                        "qtotal=1",
+                        "pdl=application/vnd.zeno-zjs",
+                        "ty=HP LaserJet Pro MFP M26nw",
+                        "product=(HP LaserJet Pro MFP M26nw)"
+                    ]
+                },
+                "33899": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49155": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8289": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "scanner",
+                    "extra_info": [
+                        "txtvers=1",
+                        "ty=HP LaserJet Pro MFP M26nw"
+                    ]
+                }
+            },
+            "mac_address": "80:CE:62:E9:74:18",
+            "vendor": "Hewlett Packard",
+            "hostname": null,
+            "snmp_info": {
+                "system_name": "HP ETHERNET MULTI-ENVIRONMENT",
+                "system_uptime": "21h59m46.30s (7918630 timeticks)",
+                "interfaces": {
+                    "LOOPBACK": {
+                        "ip": "127.0.0.1",
+                        "mask": "255.255.255.255"
+                    },
+                    "NetDrvr": {
+                        "ip": "172.16.7.217",
+                        "mask": "255.255.255.0"
+                    }
+                }
+            }
+        },
+        "172.16.7.22": {
+            "ports": {
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49153": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "51561": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "companion-link",
+                    "extra_info": [
+                        "rpMac=0",
+                        "rpHN=bff4fcd40d4f"
+                    ]
+                }
+            },
+            "mac_address": "3E:2A:56:69:85:0D",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.23": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Samba nmbd netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: 8"
+                }
+            },
+            "mac_address": "38:14:28:C0:4C:1A",
+            "vendor": null,
+            "hostname": "FDS-Ryanlo.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.25": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "3": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "compressnet",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "1022": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "exp2",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "1028": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "ms-lsa",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5500": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "securid",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "17533": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "17638": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "17823": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "17845": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "19193": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "20678": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "20742": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "20848": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "30303": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "31731": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49214": {
+                    "protocol": "udp",
+                    "state": "closed",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "28:11:A8:C8:E0:60",
+            "vendor": null,
+            "hostname": "FDS-Stella.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.250": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/20%Time=64B8CBAE%P=x86_64-pc-linux-gnu%r(GetRequest,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x200430561c-7d43-4112-92b8-e1f11cb418b3\\r\\nX-Response-Time:\\x205ms\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:45\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\")%r(HTTPOptions,215,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x208a40577d-6fbc-4346-af77-6df881608032\\r\\nX-Response-Time:\\x20149ms\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:46\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\")%r(RTSPRequest,213,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nLocation:\\x20https://\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x2047\\r\\nX-CSRF-Token:\\x201a8d3d82-db4c-407a-8a58-1cd0e70b773d\\r\\nX-Response-Time:\\x201ms\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:46\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nRedirecting\\x20to\\x20<a\\x20href=\\\"https://\\\">https://</a>\\.\");",
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port443-TCP:V=7.80%T=SSL%I=2%D=7/20%Time=64B8CBB4%P=x86_64-pc-linux-gnu%r(GetRequest,416,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x20484\\r\\nX-CSRF-Token:\\x20ea135616-09e7-4235-8de8-d666f574205b\\r\\nX-Response-Time:\\x201ms\\r\\nSet-Cookie:\\x20TOKEN=;\\x20path=/;\\x20expires=Thu,\\x2001\\x20Jan\\x201970\\x2000:00:00\\x20GMT;\\x20samesite=none;\\x20secure;\\x20httponly\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:52\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><meta\\x20charset=\\\"utf-8\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/favicon\\.ico\\?v3\\\"\\x20sizes=\\\"any\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/icon\\.svg\\?v3\\\"\\x20type=\\\"image/svg\\+xml\\\"><link\\x20rel=\\\"apple-touch-icon\\\"\\x20href=\\\"/apple-touch-icon\\.png\\?v3\\\"><title>UniFi\\x20OS</title><meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width,initial-scale=1\\\"><script\\x20defer=\\\"def\")%r(HTTPOptions,416,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nVary:\\x20Origin\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nAccept-Ranges:\\x20bytes\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nContent-Length:\\x20484\\r\\nX-CSRF-Token:\\x2002a312bf-0ffe-4f5e-8441-c08525fbc74f\\r\\nX-Response-Time:\\x201ms\\r\\nSet-Cookie:\\x20TOKEN=;\\x20path=/;\\x20expires=Thu,\\x2001\\x20Jan\\x201970\\x2000:00:00\\x20GMT;\\x20samesite=none;\\x20secure;\\x20httponly\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:52\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><meta\\x20charset=\\\"utf-8\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/favicon\\.ico\\?v3\\\"\\x20sizes=\\\"any\\\"><link\\x20rel=\\\"icon\\\"\\x20href=\\\"/icon\\.svg\\?v3\\\"\\x20type=\\\"image/svg\\+xml\\\"><link\\x20rel=\\\"apple-touch-icon\\\"\\x20href=\\\"/apple-touch-icon\\.png\\?v3\\\"><title>UniFi\\x20OS</title><meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width,initial-scale=1\\\"><script\\x20defer=\\\"def\");",
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "6789": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "ibm-db2-admin",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "7443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "oracleas-https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port7443-TCP:V=7.80%T=SSL%I=2%D=7/20%Time=64B8CBB4%P=x86_64-pc-linux-gnu%r(GetRequest,3A6,\"HTTP/1\\.1\\x20302\\x20Found\\r\\nContent-Security-Policy:\\x20default-src\\x20'self';base-uri\\x20'self';block-all-mixed-content;font-src\\x20'self'\\x20https:\\x20data:;frame-ancestors\\x20'self';img-src\\x20'self'\\x20data:;object-src\\x20'none';script-src\\x20'self';script-src-attr\\x20'none';style-src\\x20'self'\\x20https:\\x20'unsafe-inline';upgrade-insecure-requests\\r\\nCross-Origin-Resource-Policy:\\x20same-site\\r\\nX-DNS-Prefetch-Control:\\x20off\\r\\nExpect-CT:\\x20max-age=0\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=15552000;\\x20includeSubDomains\\r\\nX-Download-Options:\\x20noopen\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-Permitted-Cross-Domain-Policies:\\x20none\\r\\nReferrer-Policy:\\x20strict-origin-when-cross-origin\\r\\nX-XSS-Protection:\\x200\\r\\nVary:\\x20Origin,\\x20Accept\\r\\nAccess-Control-Allow-Credentials:\\x20true\\r\\nLocation:\\x20https://undefined:443/protect\\r\\nContent-Type:\\x20text/plain;\\x20charset=utf-8\\r\\nContent-Length:\\x2051\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:52\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\nFound\\.\\x20Redirectin\");",
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8080": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http-proxy",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port8080-TCP:V=7.80%I=2%D=7/20%Time=64B8CBAE%P=x86_64-pc-linux-gnu%r(GetRequest,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:45\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(HTTPOptions,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:45\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(RTSPRequest,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:45\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\");",
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "8443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https-alt",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port8443-TCP:V=7.80%T=SSL%I=2%D=7/20%Time=64B8CBB4%P=x86_64-pc-linux-gnu%r(GetRequest,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:52\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(HTTPOptions,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:52\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(FourOhFourRequest,5C,\"HTTP/1\\.1\\x20404\\x20\\r\\nContent-Length:\\x200\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:52\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(SSLSessionReq,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:57\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\")%r(TLSSessionReq,24E,\"HTTP/1\\.1\\x20400\\x20\\r\\nContent-Type:\\x20text/html;charset=utf-8\\r\\nContent-Language:\\x20en\\r\\nContent-Length:\\x20435\\r\\nDate:\\x20Thu,\\x2020\\x20Jul\\x202023\\x2005:52:57\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n<!doctype\\x20html><html\\x20lang=\\\"en\\\"><head><title>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</title><style\\x20type=\\\"text/css\\\">body\\x20{font-family:Tahoma,Arial,sans-serif;}\\x20h1,\\x20h2,\\x20h3,\\x20b\\x20{color:white;background-color:#525D76;}\\x20h1\\x20{font-size:22px;}\\x20h2\\x20{font-size:16px;}\\x20h3\\x20{font-size:14px;}\\x20p\\x20{font-size:12px;}\\x20a\\x20{color:black;}\\x20\\.line\\x20{height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP\\x20Status\\x20400\\x20\\xe2\\x80\\x93\\x20Bad\\x20Request</h1></body></html>\");",
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "68:D7:9A:3F:58:D1",
+            "vendor": "Ubiquiti Networks",
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.253": {
+            "ports": {
+                "22": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ssh",
+                    "product": "OpenSSH",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "protocol 2.0"
+                },
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/20%Time=64B8CBAE%P=x86_64-pc-linux-gnu%r(GetRequest,2F7,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nPragma:\\x20no-cache\\r\\n\\r\\n\\n\\x20\\x20\\x20<!DOCTYPE\\x20HTML\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01\\x20Frameset//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/frameset\\.dtd\\\">\\n\\n\\n<!DOCTYPE\\x20html\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01\\x20Transitional//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/loose\\.dtd\\\">\\n<html>\\n<head>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=UTF-8\\\">\\n<title></title>\\n<script\\x20language=\\\"javascript\\\"\\x20type=\\\"text/javascript\\\">\\nwindow\\.top\\.location\\.href\\x20=\\x20\\\"dell_login\\.html\\\";\\n</script>\\n</head>\\n<body>\\n<div\\x20style=\\\"display:\\x20none;\\\"\\x20\\x20id=\\\"progressPage\\\">\\n<div\\x20class=\\\"progressBackground\\\"></div>\\n<div\\x20class=\\\"progressContainer\\\">\\n<div\\x20id=\\\"progressGraphicNone\\\"></div>\\n</div>\\n</div></body>\\n\\n</html>\\n\\n\\n\\n\")%r(HTTPOptions,72,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Length:\\x200\\r\\nAllow:\\x20HEAD,\\x20GET,\\x20OPTIONS\\r\\n\\r\\n\")%r(RTSPRequest,71,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nContent-Length:\\x200\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\")%r(FourOhFourRequest,5A,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n404\\x20Not\\x20Found\\r\\n\")%r(SSLSessionReq,5E,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\")%r(TLSSessionReq,5E,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nServer:\\x20Web\\x20Server\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\n\\r\\n400\\x20Bad\\x20Request\\r\\n\");",
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "161": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "snmp",
+                    "product": "SNMPv3 server",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "64:00:6A:EA:CF:0C",
+            "vendor": "Dell",
+            "hostname": null,
+            "snmp_info": {
+                "boot_cycle": "23"
+            }
+        },
+        "172.16.7.254": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": "SF-Port80-TCP:V=7.80%I=2%D=7/20%Time=64B8CBAE%P=x86_64-pc-linux-gnu%r(GetRequest,23F,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nExpires:\\x20-1\\r\\n\\r\\n<html>\\n<head>\\n<title>Redirect\\x20to\\x20Login</title>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=utf-8\\\">\\n<link\\x20rel=\\\"stylesheet\\\"\\x20type=\\\"text/css\\\"\\x20href=\\\"/style\\.css\\?b1\\.6\\.0\\.4\\\">\\n<script\\x20type=\\\"text/javascript\\\"\\x20language=\\\"JavaScript\\\">\\nfunction\\x20RedirectToLoginPage\\(\\)\\n{\\n\\ttop\\.location\\.href\\x20=\\x20\\\"/login\\.cgi\\\";\\n}\\n</script>\\n</head>\\n<body\\x20onload=\\\"RedirectToLoginPage\\(\\);\\\">\\n</body>\\n</html>\\n\")%r(FourOhFourRequest,23F,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nX-XSS-Protection:\\x201;\\x20mode=block\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nContent-Type:\\x20text/html\\r\\nCache-Control:\\x20no-cache\\r\\nExpires:\\x20-1\\r\\n\\r\\n<html>\\n<head>\\n<title>Redirect\\x20to\\x20Login</title>\\n<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"text/html;\\x20charset=utf-8\\\">\\n<link\\x20rel=\\\"stylesheet\\\"\\x20type=\\\"text/css\\\"\\x20href=\\\"/style\\.css\\?b1\\.6\\.0\\.4\\\">\\n<script\\x20type=\\\"text/javascript\\\"\\x20language=\\\"JavaScript\\\">\\nfunction\\x20RedirectToLoginPage\\(\\)\\n{\\n\\ttop\\.location\\.href\\x20=\\x20\\\"/login\\.cgi\\\";\\n}\\n</script>\\n</head>\\n<body\\x20onload=\\\"RedirectToLoginPage\\(\\);\\\">\\n</body>\\n</html>\\n\");",
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "C0:FF:D4:D4:BD:EC",
+            "vendor": "Netgear",
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.26": {
+            "ports": null,
+            "mac_address": "E2:45:85:3F:9C:2A",
+            "vendor": null,
+            "hostname": null
+        },
+        "172.16.7.27": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "4000": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "58:82:A8:9B:25:87",
+            "vendor": "Microsoft",
+            "hostname": "FDS-ChenWendy.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.28": {
+            "ports": {
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49155": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "CA:99:13:12:78:52",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.29": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "Microsoft HTTPAPI httpd",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "SSDP/UPnP"
+                },
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "902": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "vmware-auth",
+                    "product": "VMware Authentication Daemon",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "Uses VNC, SOAP"
+                },
+                "912": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "vmware-auth",
+                    "product": "VMware Authentication Daemon",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "Uses VNC, SOAP"
+                },
+                "3389": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ms-wbt-server",
+                    "product": "Microsoft Terminal Services",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "8443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https-alt",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "74:78:27:F3:FE:2F",
+            "vendor": null,
+            "hostname": "FDS-TomTang.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.32": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "54:B2:03:F7:1A:3A",
+            "vendor": "Pegatron",
+            "hostname": "freedom-pizza.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.33": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "64:79:F0:B7:B0:D8",
+            "vendor": null,
+            "hostname": "FDS-E1159230130.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.34": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "C8:4B:D6:B4:D4:87",
+            "vendor": null,
+            "hostname": "FDS-JudyHou.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.37": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "58:82:A8:97:36:5B",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1210230301.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.38": {
+            "ports": {
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "12:3B:79:90:17:27",
+            "vendor": null,
+            "hostname": null
+        },
+        "172.16.7.39": {
+            "ports": null,
+            "mac_address": null,
+            "vendor": null,
+            "hostname": "Hub2SH.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.45": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "28:11:A8:C5:6A:ED",
+            "vendor": null,
+            "hostname": "FDS-Debby2.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.5": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "Yealink VoIP phone httpd",
+                    "service_type": "VoIP phone",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5060": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "sip",
+                    "product": "Yealink SIP-T21P_E2 VoIP phone sipd",
+                    "service_type": "VoIP phone",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5061": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "sip-tls",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "00:15:65:E1:61:B2",
+            "vendor": "Xiamen Yealink Network Technology",
+            "hostname": "SIP-T21P_E2.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.50": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "58:82:A8:96:91:9F",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1159230130.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.56": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "D0:3C:1F:1A:81:A5",
+            "vendor": null,
+            "hostname": "FDS-E1210230301.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.58": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "28:DF:EB:E5:38:C8",
+            "vendor": null,
+            "hostname": "FDS-E1061230303.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.59": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "38:14:28:C7:0D:DA",
+            "vendor": null,
+            "hostname": "FDS-Gary.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.60": {
+            "ports": {
+                "5060": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "sip",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5061": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "sip-tls",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "04:18:D6:A1:A7:04",
+            "vendor": "Ubiquiti Networks",
+            "hostname": "uvp-0418d6a1a704.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.63": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "38:14:28:C0:8A:0D",
+            "vendor": null,
+            "hostname": "FDS-E1216230703.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.64": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "58:82:A8:97:2F:D9",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1212230413.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.68": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "Microsoft HTTPAPI httpd",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "SSDP/UPnP"
+                },
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "902": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "vmware-auth",
+                    "product": "VMware Authentication Daemon",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "Uses VNC, SOAP"
+                },
+                "912": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "vmware-auth",
+                    "product": "VMware Authentication Daemon",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "Uses VNC, SOAP"
+                },
+                "3389": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ms-wbt-server",
+                    "product": "Microsoft Terminal Services",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "8443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https-alt",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "F8:5E:A0:95:49:3A",
+            "vendor": null,
+            "hostname": "FDS-TomTang.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.7": {
+            "ports": null,
+            "mac_address": "CA:DD:20:1A:48:AA",
+            "vendor": null,
+            "hostname": "Galaxy-S20-FE-5G.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.71": {
+            "ports": null,
+            "mac_address": null,
+            "vendor": null,
+            "hostname": "FDS-NB-DANCHAO.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.72": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "7070": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "realserver",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "58:82:A8:97:13:39",
+            "vendor": "Microsoft",
+            "hostname": "FDS-JaneHu.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.73": {
+            "ports": {
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "lighttpd",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "443": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "https",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5060": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "sip",
+                    "product": "Yealink SIP-T21P_E2 VoIP phone sipd",
+                    "service_type": "VoIP phone",
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "80:5E:C0:4B:1F:50",
+            "vendor": "Yealink(xiamen) Network Technology",
+            "hostname": "SIP-T21P_E2.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.75": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "28:16:A8:60:A3:B3",
+            "vendor": "Microsoft",
+            "hostname": "FDS-Mandy1.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.76": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "1801": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msmq",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2103": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "zephyr-clt",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2105": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "eklogin",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "2107": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msmq-mgmt",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "28:16:A8:64:74:1B",
+            "vendor": "Microsoft",
+            "hostname": "FDS-DESRAY.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.8": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "C8:34:8E:49:1C:AA",
+            "vendor": "Intel Corporate",
+            "hostname": "FDS-JudyHou.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.80": {
+            "ports": {
+                "1723": {
+                    "protocol": "tcp",
+                    "state": "filtered",
+                    "service": "pptp",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "closed|filtered",
+                    "service": "netbios-ns",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "138": {
+                    "protocol": "udp",
+                    "state": "closed|filtered",
+                    "service": "netbios-dgm",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "mdns",
+                    "product": "DNS-based service discovery",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "58340": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "companion-link",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "BC:D0:74:1B:66:EC",
+            "vendor": null,
+            "hostname": "Edwards-MBP.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.81": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "60:A5:E2:59:98:B8",
+            "vendor": null,
+            "hostname": "FDS-E1130221214.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.82": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "58:82:A8:95:AD:69",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1035221213.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.85": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "94:9A:A9:20:EB:E1",
+            "vendor": "Microsoft",
+            "hostname": "FDS-TerryCheng.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.86": {
+            "ports": {
+                "49152": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "49155": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "unknown",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "62078": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "tcpwrapped",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "5353": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "zeroconf",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                }
+            },
+            "mac_address": "56:39:87:E2:F3:5B",
+            "vendor": null,
+            "hostname": null,
+            "snmp_info": null
+        },
+        "172.16.7.87": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "C8:34:8E:4F:51:F9",
+            "vendor": "Intel Corporate",
+            "hostname": "FDS-GloriaYang.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.88": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "28:DF:EB:E9:23:ED",
+            "vendor": null,
+            "hostname": "FDS-E1180221208.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.89": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "58:82:A8:9A:C7:1E",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1213230424.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.90": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Samba nmbd netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: D"
+                }
+            },
+            "mac_address": "B0:4F:13:1E:95:0E",
+            "vendor": null,
+            "hostname": "FDS-Yi-Chia.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.92": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "C4:9D:ED:EB:5B:77",
+            "vendor": "Microsoft",
+            "hostname": "FDS-E1211230327.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.97": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "139": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "netbios-ssn",
+                    "product": "Microsoft Windows netbios-ssn",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                },
+                "445": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "microsoft-ds",
+                    "product": null,
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": null
+                },
+                "137": {
+                    "protocol": "udp",
+                    "state": "open",
+                    "service": "netbios-ns",
+                    "product": "Microsoft Windows or Samba netbios-ns",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "workgroup: FREEDOM"
+                }
+            },
+            "mac_address": "60:A5:E2:57:FB:B6",
+            "vendor": null,
+            "hostname": "FDS-P1040230201.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.98": {
+            "ports": {
+                "135": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "msrpc",
+                    "product": "Microsoft Windows RPC",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Windows",
+                    "extra_info": null
+                }
+            },
+            "mac_address": "D0:3C:1F:1B:77:40",
+            "vendor": null,
+            "hostname": "FDS-E1211230327.freedom.local",
+            "snmp_info": null
+        },
+        "172.16.7.99": {
+            "ports": {
+                "22": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "ssh",
+                    "product": "OpenSSH",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": "Linux",
+                    "extra_info": "Ubuntu Linux; protocol 2.0"
+                },
+                "80": {
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": "http",
+                    "product": "Apache httpd",
+                    "service_type": null,
+                    "service_fingerprint": null,
+                    "os_type": null,
+                    "extra_info": "(Ubuntu)"
+                }
+            },
+            "mac_address": "54:B2:03:0A:09:0D",
+            "vendor": "Pegatron",
+            "hostname": "danchao-NUC8i7HVK.freedom.local",
+            "snmp_info": null
+        },
+        "dhcp_server": "172.16.6.16",
+        "router_ip": "172.16.7.1",
+        "dns_cache": {
+            "172.16.6.16": [
+                "163.com",
+                "2ksports.com",
+                "2miners.com",
+                "360safe.com",
+                "abtasty.com",
+                "accountkit.com",
+                "accuweather.com",
+                "acrobat.com",
+                "acronis.com",
+                "acsechocaptiveportal.com",
+                "activision.com",
+                "acuityplatform.com",
+                "adcolony.com",
+                "addthis.com",
+                "addtoany.com",
+                "adgrx.com",
+                "adguard.com",
+                "adjust.com",
+                "adlightning.com",
+                "adobelogin.com",
+                "adroll.com",
+                "adrta.com",
+                "adskeeper.com",
+                "adsmoloco.com",
+                "adswizz.com",
+                "adtelligent.com",
+                "adthrive.com",
+                "adtilt.com",
+                "advertising.com",
+                "affirm.com",
+                "ahcdn.com",
+                "aimtell.com",
+                "airbnb.com",
+                "akamai.com",
+                "alibaba.com",
+                "alibabausercontent.com",
+                "aliyun.com",
+                "aliyuncs.com",
+                "amap.com",
+                "amazonvideo.com",
+                "amcrestcloud.com",
+                "americanexpress.com",
+                "android.com",
+                "anker-in.com",
+                "anyclip.com",
+                "aol.com",
+                "app-measurement.com",
+                "appboy.com",
+                "applovin.com",
+                "applvn.com",
+                "appsflyer.com",
+                "apptentive.com",
+                "arkoselabs.com",
+                "arlo.com",
+                "arubanetworks.com",
+                "atlassian.com",
+                "att.com",
+                "audrte.com",
+                "autodesk.com",
+                "avira.com",
+                "backblaze.com",
+                "bankofamerica.com",
+                "batch.com",
+                "bbc.com",
+                "bdstatic.com",
+                "belkin.com",
+                "bestbuy.com",
+                "betrad.com",
+                "betweendigital.com",
+                "bfmio.com",
+                "bidtheatre.com",
+                "bilibili.com",
+                "binance.com",
+                "bing.com",
+                "bitdefender.com",
+                "bitmoji.com",
+                "bitwarden.com",
+                "blismedia.com",
+                "blizzard.com",
+                "bluecore.com",
+                "booking.com",
+                "bounceexchange.com",
+                "box.com",
+                "brand-display.com",
+                "brave.com",
+                "braze-images.com",
+                "braze.com",
+                "brightcloud.com",
+                "brightcove.com",
+                "browser-intake-datadoghq.com",
+                "bstatic.com",
+                "bttrack.com",
+                "bugsnag.com",
+                "buzzoola.com",
+                "bytedance.com",
+                "capcut.com",
+                "capitalone.com",
+                "capitaloneshopping.com",
+                "cdnwidget.com",
+                "cedexis-test.com",
+                "celtra.com",
+                "chartbeat.com",
+                "chartboost.com",
+                "chase.com",
+                "chaturbate.com",
+                "checkpoint.com",
+                "cisco.com",
+                "citi.com",
+                "citrix.com",
+                "clashofclans.com",
+                "classdojo.com",
+                "clevertap-prod.com",
+                "cleverwebserver.com",
+                "clickup.com",
+                "cloud.com",
+                "cloudflare-dns.com",
+                "cloudflareclient.com",
+                "cloudflareinsights.com",
+                "cloudinary.com",
+                "cnbc.com",
+                "cnn.com",
+                "coinbase.com",
+                "coingecko.com",
+                "colossusssp.com",
+                "comcast.com",
+                "connatix.com",
+                "constantcontact.com",
+                "control4.com",
+                "conviva.com",
+                "cootlogix.com",
+                "cos-rd.com",
+                "costco.com",
+                "cpmstar.com",
+                "cquotient.com",
+                "crashlytics.com",
+                "crazyegg.com",
+                "createjs.com",
+                "crunchyroll.com",
+                "cxense.com",
+                "dailymotion.com",
+                "dashlane.com",
+                "deepl.com",
+                "deezer.com",
+                "delta.com",
+                "demandbase.com",
+                "desync.com",
+                "didiglobal.com",
+                "digitaloceanspaces.com",
+                "discord.com",
+                "disneyplus.com",
+                "docker.com",
+                "doordash.com",
+                "drift.com",
+                "dropboxstatic.com",
+                "dtscout.com",
+                "duckduckgo.com",
+                "duolingo.com",
+                "dynatrace.com",
+                "dyndns.com",
+                "ea.com",
+                "easybrain.com",
+                "ebay.com",
+                "ecobee.com",
+                "ekatox.com",
+                "emxdgt.com",
+                "epicgames.com",
+                "eporner.com",
+                "erome.com",
+                "eset.com",
+                "espncdn.com",
+                "etahub.com",
+                "etsy.com",
+                "eu-1-id5-sync.com",
+                "example.com",
+                "example.org",
+                "exelator.com",
+                "exoclick.com",
+                "expedia.com",
+                "ezvizlife.com",
+                "facebook-hardware.com",
+                "facebook.com",
+                "fandom.com",
+                "fast.com",
+                "fastly-insights.com",
+                "fb.com",
+                "fedex.com",
+                "fidelity.com",
+                "figma.com",
+                "fireoscaptiveportal.com",
+                "firetvcaptiveportal.com",
+                "fitanalytics.com",
+                "fitbit.com",
+                "flickr.com",
+                "flightradar24.com",
+                "flipboard.com",
+                "flixcdn.com",
+                "flurry.com",
+                "force.com",
+                "foresee.com",
+                "forgeofempires.com",
+                "foxnews.com",
+                "freefiremobile.com",
+                "fyber.com",
+                "gameanalytics.com",
+                "gameloft.com",
+                "gamepass.com",
+                "garmin.com",
+                "gcloudcs.com",
+                "geotrust.com",
+                "getgo.com",
+                "getpocket.com",
+                "gifshow.com",
+                "gigya.com",
+                "giphy.com",
+                "gitlab.com",
+                "glance-cdn.com",
+                "glip.com",
+                "globo.com",
+                "go.com",
+                "gog.com",
+                "google.co.jp",
+                "google.com",
+                "googlemail.com",
+                "googleoptimize.com",
+                "gotinder.com",
+                "grafana.com",
+                "grindr.com",
+                "hbo.com",
+                "hcaptcha.com",
+                "heapanalytics.com",
+                "heartlandportico.com",
+                "helpshift.com",
+                "here.com",
+                "herokuapp.com",
+                "hicloud.com",
+                "highwebmedia.com",
+                "histats.com",
+                "hm.com",
+                "holadns.com",
+                "homedepot.com",
+                "honeywell.com",
+                "hotels.com",
+                "hotmail.com",
+                "hp.com",
+                "hpeprint.com",
+                "hubapi.com",
+                "hubspot.com",
+                "hulu.com",
+                "hungryroot.com",
+                "hzmklvdieo.com",
+                "icanhazip.com",
+                "iesnare.com",
+                "iheart.com",
+                "imdb.com",
+                "imolive2.com",
+                "impactradius-event.com",
+                "incognia.com",
+                "indeed.com",
+                "innovid.com",
+                "insightexpressai.com",
+                "instructure.com",
+                "insurads.com",
+                "int08h.com",
+                "intel.com",
+                "intentiq.com",
+                "intercomcdn.com",
+                "intuit.com",
+                "ip-api.com",
+                "ipv4only.arpa",
+                "ipvanish.com",
+                "iqiyi.com",
+                "iqzone.com",
+                "iterable.com",
+                "itunes.com",
+                "iubenda.com",
+                "jd.com",
+                "jetbrains.com",
+                "jhkkjkj.com",
+                "jivox.com",
+                "joinhoney.com",
+                "juicyads.com",
+                "kampyle.com",
+                "kaspersky-labs.com",
+                "kaspersky.com",
+                "kgslb.com",
+                "king.com",
+                "klaviyo.com",
+                "kochava.com",
+                "kohls.com",
+                "kuaishou.com",
+                "kueezrtb.com",
+                "kwai.com",
+                "lalapush.com",
+                "larkplayerapp.com",
+                "lastline.com",
+                "lastpass.com",
+                "launchdarkly.com",
+                "lenovo.com",
+                "lgappstv.com",
+                "lge.com",
+                "lgsmartad.com",
+                "lgthinq.com",
+                "life360.com",
+                "lightboxcdn.com",
+                "linkedin.com",
+                "list-manage.com",
+                "live.com",
+                "lngtd.com",
+                "localytics.com",
+                "logitech.com",
+                "logmein.com",
+                "loom.com",
+                "lowes.com",
+                "ltwebstatic.com",
+                "lync.com",
+                "macys.com",
+                "mailchimp.com",
+                "malwarebytes.com",
+                "mapbox.com",
+                "market-trk.com",
+                "max.com",
+                "mcusercontent.com",
+                "me.com",
+                "medallia.com",
+                "media6degrees.com",
+                "mediarithmics.com",
+                "mediatek.com",
+                "mediavine.com",
+                "medium.com",
+                "meethue.com",
+                "meituan.com",
+                "meraki.com",
+                "mercadolibre.com",
+                "mercadopago.com",
+                "messenger.com",
+                "mfadsrvr.com",
+                "micpn.com",
+                "mikrotik.com",
+                "mintegral.com",
+                "miro.com",
+                "miwifi.com",
+                "mixpanel.com",
+                "mlb.com",
+                "mmcdn.com",
+                "mmechocaptiveportal.com",
+                "mob.com",
+                "moengage.com",
+                "mojang.com",
+                "mopub.com",
+                "mountain.com",
+                "msftstatic.com",
+                "msgamestudios.com",
+                "mxplay.com",
+                "mydatamanagerapp.com",
+                "myharmony.com",
+                "myqcloud.com",
+                "myshopify.com",
+                "n-able.com",
+                "navdmp.com",
+                "nba.com",
+                "nbcnews.com",
+                "nest.com",
+                "netgear.com",
+                "newyorker.com",
+                "nexon.com",
+                "nextdoor.com",
+                "nflximg.com",
+                "nianticlabs.com",
+                "nicehash.com",
+                "nike.com",
+                "nintendo.com",
+                "no-ip.com",
+                "noip.com",
+                "nordvpn.com",
+                "norton.com",
+                "nyt.com",
+                "nytimes.com",
+                "oculus.com",
+                "office.com",
+                "ojsbdjn.com",
+                "okta.com",
+                "olo.com",
+                "omnatuor.com",
+                "onaudience.com",
+                "onedrive.com",
+                "onefootball.com",
+                "onetag-sys.com",
+                "onlyfans.com",
+                "openbittorrent.com",
+                "opendns.com",
+                "opera-api.com",
+                "opera-api2.com",
+                "operacdn.com",
+                "optimizely.com",
+                "oracle.com",
+                "oraclecloud.com",
+                "origin.com",
+                "palmplaystore.com",
+                "paloaltonetworks.com",
+                "pandasecurity.com",
+                "pandora.com",
+                "parastorage.com",
+                "particlenews.com",
+                "paypal.com",
+                "paypalobjects.com",
+                "peacocktv.com",
+                "pghub.io",
+                "philips.com",
+                "picsart.com",
+                "pippio.com",
+                "playrix.com",
+                "playstation.com",
+                "playtika.com",
+                "pndsn.com",
+                "polyfill.io",
+                "pornhub.com",
+                "primevideo.com",
+                "publpush.com",
+                "pubnub.com",
+                "pusher.com",
+                "pushimg.com",
+                "pushnami.com",
+                "qcloud.com",
+                "quantcast.com",
+                "quantummetric.com",
+                "qvdt3feo.com",
+                "rainberrytv.com",
+                "rainbird.com",
+                "rakuten.com",
+                "rapid7.com",
+                "rayjump.com",
+                "razersynapse.com",
+                "rbx.com",
+                "reasonsecurity.com",
+                "redditmedia.com",
+                "remotepc.com",
+                "reolink.com",
+                "reson8.com",
+                "respawn.com",
+                "returnyoutubedislikeapi.com",
+                "revcontent.com",
+                "revenuecat.com",
+                "revjet.com",
+                "richaudience.com",
+                "ring.com",
+                "ringcentral.com",
+                "rkdms.com",
+                "rncdn7.com",
+                "robinhood.com",
+                "roblox.com",
+                "rockstargames.com",
+                "roku.com",
+                "rtbhouse.com",
+                "rtbrennab.com",
+                "rudderlabs.com",
+                "runescape.com",
+                "s-onetag.com",
+                "saasexch.com",
+                "salesforce.com",
+                "salesforceliveagent.com",
+                "samsclub.com",
+                "samsungads.com",
+                "samsungapps.com",
+                "samsungelectronics.com",
+                "samsunghealth.com",
+                "samsungknox.com",
+                "samsungmax.com",
+                "sascdn.com",
+                "sb-cd.com",
+                "scarabresearch.com",
+                "scene7.com",
+                "securedvisit.com",
+                "seedtag.com",
+                "segment.com",
+                "sendbird.com",
+                "sense.com",
+                "sentry.io",
+                "service-now.com",
+                "sgmbocast.com",
+                "shalltry.com",
+                "sharepoint.com",
+                "shein.com",
+                "shopee.com",
+                "shopify.com",
+                "shopifycloud.com",
+                "shutterfly.com",
+                "siftscience.com",
+                "sina.com",
+                "siriusxm.com",
+                "skimresources.com",
+                "sky.com",
+                "slackb.com",
+                "slickstream.com",
+                "smadex.com",
+                "smartasset.com",
+                "smartthings.com",
+                "snapkit.com",
+                "snigelweb.com",
+                "snssdk.com",
+                "sonobi.com",
+                "sonos.com",
+                "soundcloud.com",
+                "spankbang.com",
+                "spectrum.com",
+                "sportradar.com",
+                "sportradarserving.com",
+                "springserve.com",
+                "sprinklr.com",
+                "squarespace.com",
+                "squareup.com",
+                "stackadapt.com",
+                "starbucks.com",
+                "starfieldtech.com",
+                "starmakerstudios.com",
+                "steamcommunity.com",
+                "steampowered.com",
+                "streamtheworld.com",
+                "stripchat.com",
+                "stripe.com",
+                "stripst.com",
+                "supercell.com",
+                "supersonicads.com",
+                "surfshark.com",
+                "surfsharkstatus.com",
+                "swiftkey.com",
+                "swrve.com",
+                "system-monitor.com",
+                "t-mobile.com",
+                "tabletcaptiveportal.com",
+                "tailscale.com",
+                "tailtarget.com",
+                "tapjoy.com",
+                "tapjoyads.com",
+                "target.com",
+                "tealiumiq.com",
+                "teamviewer.com",
+                "temu.com",
+                "tenable.com",
+                "tencent.com",
+                "tenor.com",
+                "terabox.com",
+                "teslamotors.com",
+                "thawte.com",
+                "theguardian.com",
+                "thepennyhoarder.com",
+                "thetake.com",
+                "thrtle.com",
+                "ticketmaster.com",
+                "tidal.com",
+                "tidaltv.com",
+                "tiktokv.com",
+                "time.com",
+                "tinypass.com",
+                "tlivepush.com",
+                "tp-link.com",
+                "tplinkcloud.com",
+                "tradingview.com",
+                "trafficjunky.com",
+                "treasuredata.com",
+                "trello.com",
+                "trendmicro.com",
+                "tribalfusion.com",
+                "tripadvisor.com",
+                "truecaller.com",
+                "truste.com",
+                "trustpilot.com",
+                "tsyndicate.com",
+                "ttproxy.com",
+                "tumblr.com",
+                "tvpixel.com",
+                "tvsquared.com",
+                "twitter.com",
+                "uber.com",
+                "ubi.com",
+                "ubnt.com",
+                "ucweb.com",
+                "ueiwsp.com",
+                "uisp.com",
+                "umeng.com",
+                "unifi-ai.com",
+                "unity3d.com",
+                "unpkg.com",
+                "unsplash.com",
+                "uplynk.com",
+                "urban-vpn.com",
+                "urbanairship.com",
+                "uribl.com",
+                "useinsider.com",
+                "userapi.com",
+                "usertrust.com",
+                "utorrent.com",
+                "uvfuns.com",
+                "vcmdiawe.com",
+                "verisign.com",
+                "verizon.com",
+                "verkada.com",
+                "viber.com",
+                "vidazoo.com",
+                "vidoomy.com",
+                "viglink.com",
+                "vimeo.com",
+                "vimeocdn.com",
+                "visualwebsiteoptimizer.com",
+                "vivoglobal.com",
+                "vk.com",
+                "vungle.com",
+                "vzmessages.com",
+                "walkme.com",
+                "walmart.com",
+                "washingtonpost.com",
+                "watchguard.com",
+                "wattpad.com",
+                "wayfair.com",
+                "waze.com",
+                "weathercn.com",
+                "webengage.com",
+                "webex.com",
+                "webpkgcache.com",
+                "webrootanywhere.com",
+                "websense.com",
+                "wellsfargo.com",
+                "wetransfer.com",
+                "whatsapp.com",
+                "wikipedia.org",
+                "wistia.com",
+                "withgoogle.com",
+                "wix.com",
+                "woolypooly.com",
+                "worldtimeserver.com",
+                "wps.com",
+                "wshareit.com",
+                "wunderground.com",
+                "wyzecam.com",
+                "wzrkt.com",
+                "xfinity.com",
+                "xg4ken.com",
+                "xhamster.com",
+                "xhamsterlive.com",
+                "xhcdn.com",
+                "xhscdn.com",
+                "xiaomi.com",
+                "xiaoyi.com",
+                "xiti.com",
+                "xnxx-cdn.com",
+                "xnxx.com",
+                "xvideos-cdn.com",
+                "xvideos.com",
+                "yahoosandbox.com",
+                "yammer.com",
+                "yandex.com",
+                "yelp.com",
+                "yotpo.com",
+                "youku.com",
+                "youngjoygame.com",
+                "youtube-nocookie.com",
+                "youversionapi.com",
+                "ys7.com",
+                "yximgs.com",
+                "zaloapp.com",
+                "zendesk.com",
+                "zillow.com",
+                "zillowstatic.com",
+                "zoho.com",
+                "zscaler.com",
+                "zuimeitianqi.com",
+                "zynga.com"
+            ],
+            "172.16.6.18": [
+                "addthis.com",
+                "app-measurement.com",
+                "bttrack.com",
+                "cloudflareinsights.com",
+                "dailymotion.com",
+                "example.org",
+                "google.co.jp",
+                "google.com",
+                "ipv4only.arpa",
+                "office.com",
+                "onetag-sys.com",
+                "paypal.com",
+                "paypalobjects.com",
+                "pippio.com",
+                "polyfill.io",
+                "sentry.io",
+                "sharepoint.com",
+                "twitter.com",
+                "webpkgcache.com",
+                "wikipedia.org"
+            ]
+        }
+    },
+    "WLAN": {
+        "wireless_info": {
+            "hidden_network": {
+                "9A:79:6C:2A:0F:96": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "signal_dbm": "-88",
+                    "client": {
+                        "BE:16:89:BB:A5:9C": {
+                            "manufacturer": "Unknown",
+                            "channel": "6",
+                            "seen_speed": 1,
+                            "signal_dbm": "-88"
+                        }
+                    }
+                },
+                "FA:9F:C2:D7:13:2D": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-87",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "16:18:D6:C2:59:04": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-84",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "AE:15:A2:CA:C5:19": {
+                    "manufacturer": "Unknown",
+                    "channel": "4",
+                    "frequency": "2427",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-89",
+                    "max_speed": 270,
+                    "seen_speed": 270
+                },
+                "8A:2A:A8:D4:84:A2": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-91",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "AE:15:A2:CA:C5:1A": {
+                    "manufacturer": "Unknown",
+                    "channel": "4",
+                    "frequency": "2427",
+                    "signal_dbm": "-93"
+                },
+                "C0:25:5C:49:94:B0": {
+                    "manufacturer": "Cisco Systems, Inc",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "signal_dbm": "-88",
+                    "client": {
+                        "3C:9C:0F:D6:F1:19": {
+                            "manufacturer": "Intel Corporate",
+                            "channel": "6",
+                            "seen_speed": 6,
+                            "signal_dbm": "-88"
+                        }
+                    }
+                },
+                "AE:15:A2:CA:C5:1B": {
+                    "manufacturer": "Unknown",
+                    "channel": "4",
+                    "frequency": "2427",
+                    "signal_dbm": "-89"
+                },
+                "36:16:7E:12:F0:5D": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "signal_dbm": "-88",
+                    "client": {
+                        "54:C9:DF:93:B6:9A": {
+                            "manufacturer": "FN-LINK TECHNOLOGY LIMITED",
+                            "channel": "11",
+                            "seen_speed": 1,
+                            "signal_dbm": "-88"
+                        }
+                    }
+                },
+                "FE:9F:C2:D7:13:2D": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-85",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "C8:D3:A3:4F:5A:1A": {
+                    "manufacturer": "D-Link International",
+                    "channel": "5",
+                    "frequency": "2432",
+                    "encryption": [
+                        "WPA+TKIP",
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-85",
+                    "max_speed": 270,
+                    "seen_speed": 270
+                },
+                "26:18:D6:C2:59:04": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-82",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "FE:9F:C2:2A:E0:BD": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-85",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "FA:9F:C2:2A:E0:BD": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-85",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "C0:25:5C:C7:CE:70": {
+                    "manufacturer": "Cisco Systems, Inc",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "0"
+                }
+            },
+            "DIRECT-": {
+                "86:C0:EF:5A:7E:71": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WEP"
+                    ],
+                    "signal_dbm": "-63",
+                    "max_speed": 54,
+                    "seen_speed": 54
+                },
+                "9A:5F:D3:BC:21:CA": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WEP"
+                    ],
+                    "signal_dbm": "-65",
+                    "max_speed": 54,
+                    "seen_speed": 54
+                },
+                "2A:18:78:B9:68:79": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WEP"
+                    ],
+                    "signal_dbm": "-71",
+                    "max_speed": 54,
+                    "seen_speed": 54
+                },
+                "9A:5F:D3:BE:C6:88": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WEP"
+                    ],
+                    "signal_dbm": "-69",
+                    "max_speed": 54,
+                    "seen_speed": 54
+                }
+            },
+            "HTK_TP_AP1": {
+                "1C:B7:2C:7A:AA:10": {
+                    "manufacturer": "ASUSTek COMPUTER INC.",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-84",
+                    "max_speed": 130,
+                    "seen_speed": 130,
+                    "client": {
+                        "C4:BD:E5:72:D5:7B": {
+                            "manufacturer": "Unknown",
+                            "channel": "1",
+                            "seen_speed": 6,
+                            "signal_dbm": "-84"
+                        },
+                        "84:5C:F3:8A:AC:FF": {
+                            "manufacturer": "Intel Corporate",
+                            "channel": "1",
+                            "seen_speed": 6,
+                            "signal_dbm": "-84"
+                        },
+                        "80:32:53:CB:38:C9": {
+                            "manufacturer": "Intel Corporate",
+                            "channel": "1",
+                            "seen_speed": 6,
+                            "signal_dbm": "-80"
+                        }
+                    }
+                }
+            },
+            "TW Demo Use": {
+                "B0:A7:B9:CC:E1:DC": {
+                    "manufacturer": "TP-Link Corporation Limited",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-83",
+                    "max_speed": 270,
+                    "seen_speed": 270
+                }
+            },
+            "TGCS-SW-Android": {
+                "AC:B6:87:1D:ED:0C": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-91",
+                    "max_speed": 360,
+                    "seen_speed": 360
+                }
+            },
+            "BG_2.4G": {
+                "04:18:D6:C2:59:04": {
+                    "manufacturer": "Ubiquiti Networks Inc.",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-82",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "F0:9F:C2:D7:13:2D": {
+                    "manufacturer": "Ubiquiti Networks Inc.",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-89",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "Lumosa_AD_Auth": {
+                "80:2A:A8:D4:84:A2": {
+                    "manufacturer": "Ubiquiti Networks Inc.",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-89",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "F0:9F:C2:2A:E0:BD": {
+                    "manufacturer": "Ubiquiti Networks Inc.",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-80",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "Lumosa_Guest": {
+                "86:2A:A8:D4:84:A2": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-89",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "F6:9F:C2:2A:E0:BD": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-84",
+                    "max_speed": 195,
+                    "seen_speed": 195,
+                    "client": {
+                        "7C:7A:91:D1:A8:DF": {
+                            "manufacturer": "Intel Corporate",
+                            "channel": "6",
+                            "seen_speed": 6,
+                            "signal_dbm": "-84"
+                        }
+                    }
+                }
+            },
+            "771": {
+                "0C:9D:92:59:F9:9C": {
+                    "manufacturer": "ASUSTek COMPUTER INC.",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-88",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "BG-guest_2.4G": {
+                "F6:9F:C2:D7:13:2D": {
+                    "manufacturer": "Unknown",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-91",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                },
+                "06:18:D6:C2:59:04": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-82",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "EB6035BD-KE85USO3Mz1AOlR": {
+                "50:57:9C:60:35:BD": {
+                    "manufacturer": "Seiko Epson Corporation",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-80",
+                    "max_speed": 130,
+                    "seen_speed": 130
+                }
+            },
+            "ZT-CORP-NEW": {
+                "10:B3:D6:4D:FB:C1": {
+                    "manufacturer": "Cisco Systems, Inc",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-81",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "ANYA_WiFi": {
+                "00:11:32:4D:42:5B": {
+                    "manufacturer": "Synology Incorporated",
+                    "channel": "8",
+                    "frequency": "2447",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-81",
+                    "max_speed": 405,
+                    "seen_speed": 405
+                }
+            },
+            "ZT-BYOD": {
+                "10:B3:D6:4D:FB:C0": {
+                    "manufacturer": "Cisco Systems, Inc",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-78",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "vwire-7fb88c1b6cdffaa1": {
+                "02:9F:C2:2A:E0:BD": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-83",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "ZT-GUEST-NEW": {
+                "10:B3:D6:4D:FB:C2": {
+                    "manufacturer": "Cisco Systems, Inc",
+                    "channel": "11",
+                    "frequency": "2462",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-81",
+                    "max_speed": 195,
+                    "seen_speed": 195
+                }
+            },
+            "BestComm": {
+                "04:8D:38:0A:63:FF": {
+                    "manufacturer": "Netcore Technology Inc.",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+TKIP",
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-88",
+                    "max_speed": 270,
+                    "seen_speed": 270,
+                    "client": {
+                        "C2:17:3A:4B:4D:2A": {
+                            "manufacturer": "Unknown",
+                            "channel": "6",
+                            "seen_speed": 1,
+                            "signal_dbm": "-88"
+                        },
+                        "5A:42:FA:17:23:5C": {
+                            "manufacturer": "Unknown",
+                            "channel": "6",
+                            "seen_speed": 5,
+                            "signal_dbm": "-72"
+                        }
+                    }
+                }
+            },
+            "CEE20180800929": {
+                "A0:2E:F3:00:64:F6": {
+                    "manufacturer": "United Integrated Services Co., Led.",
+                    "channel": "10",
+                    "frequency": "2457",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-66",
+                    "max_speed": 135,
+                    "seen_speed": 135
+                }
+            },
+            "FREEDOM-X2": {
+                "C0:EA:E4:B4:D0:6C": {
+                    "manufacturer": "Sonicwall",
+                    "channel": "2",
+                    "frequency": "2417",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-64",
+                    "max_speed": 195,
+                    "seen_speed": 195,
+                    "client": {
+                        "C4:9D:ED:0C:30:8A": {
+                            "manufacturer": "Microsoft Corporation",
+                            "channel": "1",
+                            "seen_speed": 6,
+                            "signal_dbm": "-64"
+                        },
+                        "0C:DD:24:FD:83:AB": {
+                            "manufacturer": "Intel Corporate",
+                            "channel": "2",
+                            "seen_speed": 11,
+                            "signal_dbm": "-56"
+                        },
+                        "28:16:A8:58:73:18": {
+                            "manufacturer": "Microsoft Corporation",
+                            "channel": "2",
+                            "seen_speed": 1,
+                            "signal_dbm": "-46"
+                        }
+                    }
+                }
+            },
+            "DIRECT-D0-HP M479fdw Color LJ": {
+                "4A:9E:BD:08:3F:D0": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-50",
+                    "max_speed": 65,
+                    "seen_speed": 65
+                }
+            },
+            "BS_2.4GHz": {
+                "00:1A:EF:5C:63:0D": {
+                    "manufacturer": "Loopcomm Technology, Inc.",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+TKIP",
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-50",
+                    "max_speed": 405,
+                    "seen_speed": 405
+                }
+            },
+            "FDS-Guest": {
+                "82:45:58:83:A7:69": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-49",
+                    "max_speed": 360,
+                    "seen_speed": 360
+                },
+                "7A:45:58:2B:1F:D1": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "None"
+                    ],
+                    "signal_dbm": "-80",
+                    "max_speed": 130,
+                    "seen_speed": 130,
+                    "client": {
+                        "8E:5C:3C:27:6C:B5": {
+                            "manufacturer": "Unknown",
+                            "channel": "1",
+                            "seen_speed": 1,
+                            "signal_dbm": "-80"
+                        },
+                        "D8:E7:43:05:79:E6": {
+                            "manufacturer": "Wush, Inc",
+                            "channel": "1",
+                            "seen_speed": 6,
+                            "signal_dbm": "-58"
+                        }
+                    }
+                }
+            },
+            "FDSLAB-01": {
+                "86:45:58:83:A7:69": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-82",
+                    "max_speed": 360,
+                    "seen_speed": 360,
+                    "client": {
+                        "00:0B:82:C7:6A:AB": {
+                            "manufacturer": "Grandstream Networks, Inc.",
+                            "channel": "11",
+                            "seen_speed": 1,
+                            "signal_dbm": "-82"
+                        }
+                    }
+                },
+                "7A:45:58:3B:1F:D1": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-70",
+                    "max_speed": 130,
+                    "seen_speed": 130,
+                    "client": {
+                        "84:C0:EF:5A:7E:71": {
+                            "manufacturer": "Samsung Electronics Co.,Ltd",
+                            "channel": "1",
+                            "seen_speed": 11,
+                            "signal_dbm": "-70"
+                        },
+                        "5C:96:66:AD:0F:21": {
+                            "manufacturer": "Unknown",
+                            "channel": "1",
+                            "seen_speed": 1,
+                            "signal_dbm": "-58"
+                        },
+                        "04:CF:8C:E6:8A:7D": {
+                            "manufacturer": "XIAOMI Electronics,CO.,LTD",
+                            "channel": "1",
+                            "seen_speed": 24,
+                            "signal_dbm": "-48"
+                        }
+                    }
+                }
+            },
+            "FREEDOM-X": {
+                "7E:45:58:83:A7:69": {
+                    "manufacturer": "Unknown",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-49",
+                    "max_speed": 360,
+                    "seen_speed": 360
+                },
+                "7A:45:58:1B:1F:D1": {
+                    "manufacturer": "Unknown",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+MGT",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-40",
+                    "max_speed": 130,
+                    "seen_speed": 130
+                }
+            },
+            "FREEDOM": {
+                "78:45:58:83:A7:69": {
+                    "manufacturer": "Ubiquiti Networks Inc.",
+                    "channel": "6",
+                    "frequency": "2437",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-49",
+                    "max_speed": 360,
+                    "seen_speed": 360
+                },
+                "78:45:58:4B:1F:D1": {
+                    "manufacturer": "Ubiquiti Networks Inc.",
+                    "channel": "1",
+                    "frequency": "2412",
+                    "encryption": [
+                        "WPA+PSK",
+                        "WPA+AES-CCM"
+                    ],
+                    "signal_dbm": "-40",
+                    "max_speed": 130,
+                    "seen_speed": 130
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  infra:
+    build:
+      context: . 
+      dockerfile: Dockerfile.infra 
+    image: network-inspector-infra:latest
+
+  script:
+    build:
+      context: . 
+      dockerfile: Dockerfile.script 
+    depends_on:
+      - infra

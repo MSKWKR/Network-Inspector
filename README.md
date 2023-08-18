@@ -149,6 +149,9 @@
 >     │   ├── README.md
 >     │   ├── package-lock.json
 >     │   ├── package.json
+>     │   ├── public
+>     │   │   ├── favicon.ico
+>     │   │   └── index.html
 >     │   └── src
 >     │       ├── App.css
 >     │       ├── App.js

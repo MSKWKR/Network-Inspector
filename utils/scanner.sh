@@ -5,7 +5,6 @@ main() {
 	[ "$wlan" ] && wlan_scan "./log/wlan_log.xml" &
 	[ "$dhcp" ] && dhcp_scan "./log/dhcp_log.xml" &
 	if [ "$ip" ]; then
-		arp_scan "./lists/ip_list.txt"
 		ping_scan "./lists/ip_list.txt" "./log/ping_log.xml"
 		dns_scan "./lists/domain_list.txt" "./log/dhcp_log.xml" "./log/dns_log.xml" &
 		tcp_scan "./lists/ip_list.txt" "./log/tcp_log.xml" &
@@ -31,17 +30,6 @@ set_var() {
 	echo "Status: Finished setting variables."
 }
 
-# Function: arp_scan
-# Description: Find ip from arp-scan and output into a list.
-# Parameters: 
-#	$1 - Path to output ip list. 
-arp_scan() {
-	echo "Status: Initiating ARP scan..."
-	# arp-scan to pull ipv4 and store it in ip_list
-	arp-scan -q -x "$mask" | awk '{print $1}' | sort -u > "$1"
-	echo "Status: ARP scan done."
-}
-
 # Function: ping_scan
 # Description: Find responsive addresses using nmap ping scan and output into a list.
 # Parameters:
@@ -52,9 +40,7 @@ ping_scan() {
 	# Ping scan the network using multiple methods for working ips, results stored in xml
 	nmap -sn -PR -PE -PS443 -PA80 -PP "$mask" -T3 -oX "$2" > /dev/null 2>&1
 	# Parse xml file for ip and store it in ip_list
-	xmllint --xpath '//host/address[@addrtype="ipv4"]/@addr' "$2" | cut -d '"' -f 2 >> "$1"
-	# Sort out duplicates
-	sort -o "$1" -u "$1"
+	xmllint --xpath '//host/address[@addrtype="ipv4"]/@addr' "$2" | cut -d '"' -f 2 > "$1"
 	echo "Status: Ping scan finished."
 }
 
@@ -108,7 +94,7 @@ dns_scan() {
 #	$2 - Path to output tcp_scan log.
 tcp_scan() {
 	echo "Status: Scanning TCP ports..."
-	nmap -sS -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-rst-ratelimit -oX "$2" > /dev/null 2>&1
+	nmap -Pn -sS -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-rst-ratelimit --open -oX "$2" > /dev/null 2>&1
 	echo "Status: Finished TCP scanning."
 }
 
@@ -119,7 +105,7 @@ tcp_scan() {
 #	$2 - Path to output udp_scan log.
 udp_scan() {
 	echo "Status: Scanning UDP ports..."
-	nmap -sU -sV --version-intensity 2 -iL "$1" -T4 --min-hostgroup 100 --min-parallelism 100 --defeat-icmp-ratelimit -oX "$2" > /dev/null 2>&1 	## udp port scan udp_list, results stored in xml
+	nmap -Pn -sU -sV --version-intensity 2 -iL "$1" -T5 --min-hostgroup 100 --min-parallelism 100 --defeat-icmp-ratelimit --max-scan-delay 100ms --open -oX "$2" > /dev/null 2>&1   ## udp port scan udp_list, results stored in xml
 	echo "Status: Finished UDP scanning."
 }
 

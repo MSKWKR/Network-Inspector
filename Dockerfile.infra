@@ -5,7 +5,6 @@ WORKDIR /network-inspector
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     iproute2 \
-    arp-scan \
     nmap \
     libxml2-utils \
     aircrack-ng \

@@ -412,7 +412,7 @@ class InvManager:
         """
             Adds hostname, mac address and vendor to inventory.
         """
-        check = FileChecker("tcp", "log")
+        check = FileChecker("ping", "log")
         for host in check.get_host():
             ip_address = self.parse.find_address(host, "ipv4")
             if ip_address in self.lan_inv:
